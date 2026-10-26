@@ -37,10 +37,18 @@ export function Home(){
  const reducedMotion = useReducedMotion();
 
  useEffect(() => {
+  // Preload all slides for immediate, crisp rendering
+  heroSlides.forEach((slide) => {
+   const img = new Image();
+   img.src = slide.src;
+  });
+ }, []);
+
+ useEffect(() => {
   if (reducedMotion) return;
   const timer = setInterval(() => {
    setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-  }, 4800);
+  }, 2000);
   return () => clearInterval(timer);
  }, [reducedMotion]);
 
@@ -56,7 +64,7 @@ export function Home(){
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.85, ease: 'easeInOut' }}
+    transition={{ duration: 0.5, ease: 'easeInOut' }}
     className="absolute inset-0"
     style={{ transform: 'translateZ(0)', willChange: 'opacity' }}
    >
