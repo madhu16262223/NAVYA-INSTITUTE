@@ -34,7 +34,6 @@ const heroSlides = [
 export function Home(){
  const {openDemoModal}=useDemoModal();
  const [slideIndex, setSlideIndex] = useState(0);
- const reducedMotion = useReducedMotion();
 
  useEffect(() => {
   // Preload all slides for immediate, crisp rendering
@@ -47,9 +46,9 @@ export function Home(){
  useEffect(() => {
   const timer = setInterval(() => {
    setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-  }, 1000);
+  }, 2000);
   return () => clearInterval(timer);
- }, []);
+ }, [slideIndex]);
 
  return <>
 <Seo desc="Navya Techno Institute of Computer Education Training Center, Porumamilla: practical computer courses, certificates and career support. 4.8 on Google."/>
@@ -60,7 +59,7 @@ export function Home(){
   {heroSlides.map((slide, idx) => (
    <div
     key={idx}
-    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
      slideIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
     }`}
    >
@@ -68,7 +67,7 @@ export function Home(){
      src={slide.src}
      alt={slide.alt}
      className="h-full w-full object-cover object-center pointer-events-none"
-     loading={idx === 0 ? 'eager' : 'lazy'}
+     loading="eager"
     />
    </div>
   ))}
