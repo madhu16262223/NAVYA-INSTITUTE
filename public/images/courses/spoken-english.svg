@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd2a8"/>
+      <stop offset="100%" stop-color="#e69c64"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2c1a1d"/>
+      <stop offset="100%" stop-color="#120b0d"/>
+    </linearGradient>
+    <linearGradient id="yellowTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="speechBubble" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <filter id="shadowSpk" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#831843" flood-opacity="0.2"/>
+    </filter>
+    <filter id="bubbleShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#1e3a8a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadows -->
+  <ellipse cx="205" cy="205" rx="55" ry="6" fill="#831843" opacity="0.12"/>
+
+  <!-- Character Illustration (Friendly Confident Young Indian Woman) -->
+  <g transform="translate(130, 28)" filter="url(#shadowSpk)">
+    <!-- Back Hair Volume -->
+    <path d="M40,30 C30,-5 110,-5 105,35 C118,65 115,115 105,140 C85,150 45,145 35,130 C25,100 25,65 40,30 Z" fill="url(#hair)"/>
+
+    <!-- Body / Shoulders in Yellow Kurti Top -->
+    <path d="M30,145 C45,125 95,125 110,145 L135,200 L0,200 Z" fill="url(#yellowTop)"/>
+    <!-- Collar & Neckline -->
+    <path d="M60,135 Q70,155 80,135" fill="none" stroke="#b45309" stroke-width="2"/>
+
+    <!-- Neck -->
+    <rect x="62" y="105" width="16" height="28" rx="4" fill="url(#skin)"/>
+
+    <!-- Head Face -->
+    <path d="M46,55 C46,30 94,30 94,55 C94,88 84,115 70,115 C56,115 46,88 46,55 Z" fill="url(#skin)"/>
+
+    <!-- Ears & Small Gold Earrings -->
+    <ellipse cx="45" cy="72" rx="4" ry="7" fill="url(#skin)"/>
+    <circle cx="45" cy="76" r="2" fill="#f59e0b"/>
+    <ellipse cx="95" cy="72" rx="4" ry="7" fill="url(#skin)"/>
+    <circle cx="95" cy="76" r="2" fill="#f59e0b"/>
+
+    <!-- Front Hair Style / Side Bangs -->
+    <path d="M44,45 C55,22 88,22 96,45 C98,60 94,80 94,80 C88,52 75,45 68,45 C60,45 48,58 44,78 Z" fill="url(#hair)"/>
+
+    <!-- Eyebrows -->
+    <path d="M52,56 Q60,53 66,56" fill="none" stroke="#2c1a1d" stroke-width="2" stroke-linecap="round"/>
+    <path d="M74,56 Q80,53 88,56" fill="none" stroke="#2c1a1d" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Expressive Eyes -->
+    <ellipse cx="59" cy="64" rx="4.5" ry="3" fill="#ffffff"/>
+    <circle cx="60" cy="64" r="2.5" fill="#1e1014"/>
+    <circle cx="61" cy="63" r="0.8" fill="#ffffff"/>
+    <path d="M54,63 Q60,59 65,63" fill="none" stroke="#1e1014" stroke-width="1.2"/>
+
+    <ellipse cx="81" cy="64" rx="4.5" ry="3" fill="#ffffff"/>
+    <circle cx="80" cy="64" r="2.5" fill="#1e1014"/>
+    <circle cx="81" cy="63" r="0.8" fill="#ffffff"/>
+    <path d="M76,63 Q82,59 87,63" fill="none" stroke="#1e1014" stroke-width="1.2"/>
+
+    <!-- Small Traditional Bindi Dot -->
+    <circle cx="70" cy="56" r="1.3" fill="#be123c"/>
+
+    <!-- Nose -->
+    <path d="M70,64 L68,75 L73,75" fill="none" stroke="#c27b47" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Warm Confident Smile -->
+    <path d="M62,86 Q70,96 78,86 Z" fill="#be123c"/>
+    <path d="M63,86 Q70,90 77,86" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+
+    <!-- Cheerful Cheeks Blushes -->
+    <ellipse cx="54" cy="75" rx="4" ry="2.5" fill="#f43f5e" opacity="0.25"/>
+    <ellipse cx="86" cy="75" rx="4" ry="2.5" fill="#f43f5e" opacity="0.25"/>
+
+    <!-- Gesturing Hand (Explaining confidently) -->
+    <g transform="translate(10, 140)">
+      <!-- Arm -->
+      <path d="M26,12 C20,18 8,24 -15,18" fill="none" stroke="url(#skin)" stroke-width="12" stroke-linecap="round"/>
+      <!-- Hand Palm & Fingers -->
+      <path d="M-15,14 Q-22,6 -28,10 Q-30,16 -24,24 Q-14,24 -12,18 Z" fill="url(#skin)"/>
+      <path d="M-22,10 Q-28,6 -32,10" fill="none" stroke="url(#skin)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M-20,14 Q-26,12 -30,16" fill="none" stroke="url(#skin)" stroke-width="2.8" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Royal Blue Speech Bubble "Speak Confidently" on Left -->
+  <g transform="translate(18, 38)" filter="url(#bubbleShadow)">
+    <!-- Rounded Speech Balloon -->
+    <rect x="0" y="0" width="112" height="48" rx="20" fill="url(#speechBubble)"/>
+    <!-- Speech Tail pointing to woman -->
+    <polygon points="100,26 118,36 94,36" fill="#1d4ed8"/>
+
+    <!-- Text inside bubble -->
+    <text x="56" y="21" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">Speak</text>
+    <text x="56" y="36" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="0.4">Confidently</text>
+  </g>
+
+  <!-- Floating Communication Audio/Speech Waves -->
+  <g transform="translate(142, 42)" stroke="#f43f5e" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7">
+    <path d="M0,8 A12,12 0 0,1 0,24"/>
+    <path d="M6,3 A18,18 0 0,1 6,29"/>
+  </g>
+</svg>

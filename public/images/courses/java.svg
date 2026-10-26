@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="javaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8f3"/>
+      <stop offset="100%" stop-color="#feeddd"/>
+    </linearGradient>
+    <linearGradient id="cupSteam" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadowJ" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#7c2d12" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadows -->
+  <ellipse cx="150" cy="195" rx="105" ry="7" fill="#431407" opacity="0.14"/>
+
+  <!-- Laptop Base in Perspective -->
+  <g transform="translate(36, 148)" filter="url(#shadowJ)">
+    <polygon points="12,0 200,0 218,36 0,36" fill="#e2e8f0"/>
+    <polygon points="14,1 198,1 215,34 3,34" fill="#f8fafc"/>
+    <rect x="90" y="16" width="38" height="15" rx="2" fill="#cbd5e1"/>
+    <polygon points="26,3 184,3 196,14 18,14" fill="#334155"/>
+    <line x1="28" y1="6" x2="185" y2="6" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="25" y1="9" x2="189" y2="9" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="22" y1="12" x2="193" y2="12" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5 2"/>
+  </g>
+
+  <!-- Laptop Screen Lid -->
+  <g transform="translate(48, 34)" filter="url(#shadowJ)">
+    <rect x="0" y="0" width="186" height="118" rx="7" fill="#334155"/>
+    <rect x="2" y="2" width="182" height="114" rx="5" fill="#1e293b"/>
+    <rect x="6" y="6" width="174" height="106" rx="3" fill="url(#javaBg)"/>
+
+    <!-- IDE Window Bar -->
+    <rect x="6" y="6" width="174" height="12" fill="#ffedd5"/>
+    <circle cx="14" cy="12" r="2" fill="#ea580c"/>
+    <circle cx="20" cy="12" r="2" fill="#f97316"/>
+    <circle cx="26" cy="12" r="2" fill="#fb923c"/>
+    <text x="36" y="15" font-family="'Segoe UI', sans-serif" font-weight="bold" font-size="5" fill="#9a3412">Eclipse IDE / IntelliJ - Application.java</text>
+
+    <!-- Java Coffee Cup Center Artwork -->
+    <g transform="translate(93, 24)">
+      <!-- Rising Steam Curving Waves -->
+      <path d="M-4,18 C-10,10 6,2 -2,-8" fill="none" stroke="url(#cupSteam)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M4,15 C-2,8 14,0 6,-10" fill="none" stroke="#ea580c" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M-8,14 C-14,6 0,-2 -6,-12" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Coffee Cup Body -->
+      <path d="M-18,22 L18,22 C17,38 12,48 -1,49 C-14,48 -17,38 -18,22 Z" fill="#0284c7"/>
+      <ellipse cx="0" cy="22" rx="18" ry="4" fill="#38bdf8"/>
+      <ellipse cx="0" cy="22" rx="15" ry="3" fill="#ea580c"/>
+
+      <!-- Cup Handle -->
+      <path d="M16,25 C24,25 24,40 14,42" fill="none" stroke="#0284c7" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Saucer Base -->
+      <ellipse cx="0" cy="51" rx="26" ry="3.5" fill="#ea580c"/>
+      <ellipse cx="0" cy="50" rx="23" ry="2.5" fill="#f97316"/>
+
+      <!-- "Java" Wordmark below cup -->
+      <text x="0" y="66" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="14" fill="#0f172a" text-anchor="middle" letter-spacing="1">Java</text>
+      <text x="0" y="73" font-family="sans-serif" font-weight="bold" font-size="5" fill="#ea580c" text-anchor="middle" letter-spacing="0.5">OBJECT ORIENTED PROGRAMMING</text>
+    </g>
+
+    <!-- Code Snippet on Left and Right of Cup -->
+    <g font-family="monospace" font-size="4" fill="#9a3412" opacity="0.65">
+      <text x="12" y="32">public class App {</text>
+      <text x="16" y="40">  public static void main() {</text>
+      <text x="20" y="48">    List&lt;Student&gt; s =</text>
+      <text x="20" y="56">      new ArrayList&lt;&gt;();</text>
+      <text x="16" y="64">    s.add(new Student());</text>
+      <text x="12" y="72">  }</text>
+      <text x="12" y="80">}</text>
+    </g>
+  </g>
+
+  <!-- Potted Little Plant on Right of Laptop -->
+  <g transform="translate(258, 126)">
+    <polygon points="5,16 19,16 22,32 2,32" fill="#c2410c"/>
+    <ellipse cx="12" cy="16" rx="7" ry="2.5" fill="#7c2d12"/>
+    <path d="M12,16 Q4,8 7,1 Q15,9 12,16 Z" fill="#16a34a"/>
+    <path d="M12,16 Q20,7 17,1 Q13,9 12,16 Z" fill="#15803d"/>
+    <path d="M12,16 Q2,14 1,8 Q7,12 12,16 Z" fill="#22c55e"/>
+  </g>
+</svg>

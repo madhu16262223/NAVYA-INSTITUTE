@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tallyScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#052c28"/>
+      <stop offset="60%" stop-color="#0a4d46"/>
+      <stop offset="100%" stop-color="#083832"/>
+    </linearGradient>
+    <linearGradient id="tallyHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#08b9b0"/>
+      <stop offset="100%" stop-color="#0d9488"/>
+    </linearGradient>
+    <linearGradient id="laptopBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <linearGradient id="calcBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="shadowT" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#042f2e" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadows -->
+  <ellipse cx="145" cy="195" rx="95" ry="7" fill="#042f2e" opacity="0.12"/>
+  <ellipse cx="250" cy="192" rx="35" ry="5" fill="#042f2e" opacity="0.15"/>
+
+  <!-- Laptop Screen Lid -->
+  <g transform="translate(48, 38)" filter="url(#shadowT)">
+    <!-- Lid Outer Frame -->
+    <rect x="0" y="0" width="185" height="116" rx="7" fill="#334155"/>
+    <rect x="2" y="2" width="181" height="112" rx="5" fill="#1e293b"/>
+    <!-- Screen Display -->
+    <rect x="6" y="6" width="173" height="104" rx="3" fill="url(#tallyScreen)"/>
+
+    <!-- Tally Top Navigation Bar -->
+    <rect x="6" y="6" width="173" height="14" fill="url(#tallyHeader)"/>
+    <text x="14" y="16" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="8.5" fill="#ffffff" letter-spacing="0.5">Tally.ERP 9 / Prime</text>
+    <circle cx="160" cy="13" r="2" fill="#ffffff" opacity="0.8"/>
+    <circle cx="167" cy="13" r="2" fill="#ffffff" opacity="0.8"/>
+
+    <!-- Tally Gateway Menu / Accounting Vouchers Window -->
+    <!-- Left Menu Box -->
+    <rect x="12" y="26" width="62" height="78" rx="2" fill="#08332f" stroke="#0d9488" stroke-width="0.7"/>
+    <rect x="12" y="26" width="62" height="11" fill="#0d9488"/>
+    <text x="16" y="34" font-family="sans-serif" font-weight="bold" font-size="5.5" fill="#ffffff">Gateway of Tally</text>
+
+    <!-- Menu Items -->
+    <text x="16" y="44" font-family="sans-serif" font-size="5" fill="#a7f3d0">Accounts Info</text>
+    <text x="16" y="52" font-family="sans-serif" font-size="5" fill="#a7f3d0">Inventory Info</text>
+    <text x="16" y="60" font-family="sans-serif" font-size="5" fill="#34d399" font-weight="bold">> Accounting Vouchers</text>
+    <text x="16" y="68" font-family="sans-serif" font-size="5" fill="#a7f3d0">Balance Sheet</text>
+    <text x="16" y="76" font-family="sans-serif" font-size="5" fill="#a7f3d0">Profit &amp; Loss A/c</text>
+    <text x="16" y="84" font-family="sans-serif" font-size="5" fill="#a7f3d0">GST / Tax Reports</text>
+    <text x="16" y="92" font-family="sans-serif" font-size="5" fill="#a7f3d0">Banking &amp; Cash</text>
+
+    <!-- Right Voucher Entry Box -->
+    <rect x="80" y="26" width="93" height="78" rx="2" fill="#062622" stroke="#08b9b0" stroke-width="0.7"/>
+    <rect x="80" y="26" width="93" height="11" fill="#115e59"/>
+    <text x="86" y="34" font-family="sans-serif" font-weight="bold" font-size="5.5" fill="#5eead4">Sales Voucher (GST)</text>
+
+    <!-- Voucher Details Lines -->
+    <line x1="84" y1="44" x2="168" y2="44" stroke="#134e4a" stroke-width="0.6"/>
+    <text x="86" y="42" font-family="monospace" font-size="4.5" fill="#99f6e4">Inv No: NT-2026/089</text>
+    <text x="86" y="52" font-family="monospace" font-size="4.5" fill="#cbd5e1">Party A/c: Navya Commercial</text>
+    <text x="86" y="60" font-family="monospace" font-size="4.5" fill="#cbd5e1">Item: Computer Hardware</text>
+    <text x="86" y="68" font-family="monospace" font-size="4.5" fill="#cbd5e1">CGST @ 9%: ₹ 1,620.00</text>
+    <text x="86" y="76" font-family="monospace" font-size="4.5" fill="#cbd5e1">SGST @ 9%: ₹ 1,620.00</text>
+
+    <rect x="84" y="83" width="85" height="15" rx="1.5" fill="#042f2e"/>
+    <text x="88" y="93" font-family="sans-serif" font-weight="bold" font-size="6.5" fill="#34d399">Total: ₹ 21,240.00</text>
+
+    <!-- Screen Glare -->
+    <path d="M6 6 L60 6 L25 110 L6 110 Z" fill="#ffffff" opacity="0.05"/>
+  </g>
+
+  <!-- Laptop Base in Perspective -->
+  <g transform="translate(36, 150)" filter="url(#shadowT)">
+    <polygon points="12,0 197,0 216,36 0,36" fill="url(#laptopBody)"/>
+    <polygon points="14,1 195,1 213,34 3,34" fill="#f1f5f9"/>
+
+    <!-- Trackpad -->
+    <rect x="88" y="16" width="38" height="15" rx="2" fill="#cbd5e1"/>
+
+    <!-- Keyboard Area -->
+    <polygon points="26,3 182,3 194,14 18,14" fill="#334155"/>
+    <!-- Keys rows -->
+    <line x1="28" y1="6" x2="183" y2="6" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="25" y1="9" x2="187" y2="9" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="22" y1="12" x2="191" y2="12" stroke="#64748b" stroke-width="1.2" stroke-dasharray="5 2"/>
+  </g>
+
+  <!-- Digital Calculator On Right -->
+  <g transform="translate(228, 118)" filter="url(#shadowT)">
+    <!-- Calc Body -->
+    <rect x="0" y="0" width="56" height="74" rx="6" fill="url(#calcBody)"/>
+    <rect x="1" y="1" width="54" height="72" rx="5" fill="#1e293b"/>
+
+    <!-- LCD Display Screen -->
+    <rect x="6" y="7" width="44" height="16" rx="2.5" fill="#64748b"/>
+    <rect x="7" y="8" width="42" height="14" rx="2" fill="#042f2e"/>
+    <text x="45" y="19" font-family="'Courier New', monospace" font-weight="bold" font-size="9" fill="#2dd4bf" text-anchor="end">128,450.00</text>
+
+    <!-- Solar Cell -->
+    <rect x="7" y="26" width="16" height="4" rx="1" fill="#78350f"/>
+    <!-- Keys Grid -->
+    <g fill="#334155" rx="1">
+      <!-- Row 1 -->
+      <rect x="7" y="33" width="9" height="7" rx="1.5" fill="#ef4444"/>
+      <rect x="18" y="33" width="9" height="7" rx="1.5"/>
+      <rect x="29" y="33" width="9" height="7" rx="1.5"/>
+      <rect x="40" y="33" width="9" height="7" rx="1.5" fill="#0d9488"/>
+      <!-- Row 2 -->
+      <rect x="7" y="42" width="9" height="7" rx="1.5"/>
+      <rect x="18" y="42" width="9" height="7" rx="1.5"/>
+      <rect x="29" y="42" width="9" height="7" rx="1.5"/>
+      <rect x="40" y="42" width="9" height="7" rx="1.5" fill="#0d9488"/>
+      <!-- Row 3 -->
+      <rect x="7" y="51" width="9" height="7" rx="1.5"/>
+      <rect x="18" y="51" width="9" height="7" rx="1.5"/>
+      <rect x="29" y="51" width="9" height="7" rx="1.5"/>
+      <rect x="40" y="51" width="9" height="7" rx="1.5" fill="#0d9488"/>
+      <!-- Row 4 -->
+      <rect x="7" y="60" width="9" height="7" rx="1.5"/>
+      <rect x="18" y="60" width="9" height="7" rx="1.5"/>
+      <rect x="29" y="60" width="20" height="7" rx="1.5" fill="#08b9b0"/>
+    </g>
+  </g>
+
+  <!-- Desk Potted Plant in Background -->
+  <g transform="translate(268, 62)">
+    <polygon points="5,24 23,24 26,42 2,42" fill="#0d9488" opacity="0.85"/>
+    <ellipse cx="14" cy="24" rx="9" ry="3" fill="#134e4a"/>
+    <path d="M14,24 Q5,12 8,2 Q17,14 14,24 Z" fill="#2dd4bf"/>
+    <path d="M14,24 Q23,10 20,2 Q15,14 14,24 Z" fill="#14b8a6"/>
+    <path d="M14,24 Q3,20 1,14 Q8,18 14,24 Z" fill="#5eead4"/>
+  </g>
+</svg>

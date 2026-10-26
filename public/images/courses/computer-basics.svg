@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <!-- Screen gradient with Windows 11 style blue bloom -->
+    <linearGradient id="winBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a192f"/>
+      <stop offset="50%" stop-color="#003882"/>
+      <stop offset="100%" stop-color="#001a40"/>
+    </linearGradient>
+    <radialGradient id="bloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4db2ff" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#0d6efd" stop-opacity="0.85"/>
+      <stop offset="65%" stop-color="#003c96" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#001433" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="petal1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#70c4ff"/>
+      <stop offset="50%" stop-color="#1982fc"/>
+      <stop offset="100%" stop-color="#0046a6"/>
+    </linearGradient>
+    <linearGradient id="petal2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a8dcff"/>
+      <stop offset="60%" stop-color="#2a91ff"/>
+      <stop offset="100%" stop-color="#08479e"/>
+    </linearGradient>
+    <linearGradient id="standGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a3342"/>
+      <stop offset="100%" stop-color="#141a24"/>
+    </linearGradient>
+    <linearGradient id="bezelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c2430"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0a2540" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="160" cy="198" rx="110" ry="8" fill="#0c2340" opacity="0.12"/>
+  <ellipse cx="160" cy="192" rx="45" ry="4" fill="#0c2340" opacity="0.2"/>
+
+  <!-- Monitor Stand Base -->
+  <rect x="125" y="186" width="70" height="7" rx="3.5" fill="url(#standGrad)" filter="url(#shadow)"/>
+  <!-- Stand Pole -->
+  <path d="M152 145 L150 187 L170 187 L168 145 Z" fill="url(#standGrad)"/>
+
+  <!-- Monitor Outer Bezel -->
+  <g filter="url(#shadow)">
+    <rect x="45" y="25" width="230" height="132" rx="8" fill="url(#bezelGrad)"/>
+    <!-- Inner Bezel border -->
+    <rect x="47" y="27" width="226" height="128" rx="6" fill="#0b0e14"/>
+    <!-- Screen Glass -->
+    <rect x="52" y="32" width="216" height="118" rx="3" fill="url(#winBg)"/>
+  </g>
+
+  <!-- Windows 11 Bloom Art -->
+  <g transform="translate(160, 91)">
+    <!-- Central Glow -->
+    <circle cx="0" cy="0" r="46" fill="url(#bloom)"/>
+    
+    <!-- Flower Petals Flow -->
+    <path d="M0,0 C-18,-35 15,-48 24,-24 C32,-2 10,8 0,0 Z" fill="url(#petal1)" opacity="0.9"/>
+    <path d="M0,0 C-36,-18 -44,14 -22,25 C-3,33 5,10 0,0 Z" fill="url(#petal2)" opacity="0.85"/>
+    <path d="M0,0 C12,-38 48,-18 36,10 C25,28 6,10 0,0 Z" fill="url(#petal1)" opacity="0.9"/>
+    <path d="M0,0 C-28,15 -10,42 16,35 C32,28 14,5 0,0 Z" fill="url(#petal2)" opacity="0.95"/>
+    <path d="M0,0 C-32,-2 -25,-32 -5,-25 C10,-18 5,4 0,0 Z" fill="#60b8ff" opacity="0.8"/>
+    <path d="M0,0 C20,5 28,-18 10,-22 C-5,-24 -2,2 0,0 Z" fill="#9cd6ff" opacity="0.9"/>
+    <circle cx="0" cy="0" r="7" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- Screen Taskbar -->
+  <rect x="52" y="141" width="216" height="9" fill="#081426" opacity="0.95"/>
+  <!-- Windows centered app icons -->
+  <rect x="146" y="143" width="5" height="5" rx="1" fill="#0078d4"/>
+  <rect x="153" y="143" width="5" height="5" rx="1" fill="#26b5d6"/>
+  <rect x="160" y="143" width="5" height="5" rx="1" fill="#f25022"/>
+  <rect x="167" y="143" width="5" height="5" rx="1" fill="#ffb900"/>
+
+  <!-- Screen Glare / Reflection -->
+  <path d="M52 32 L130 32 L75 141 L52 141 Z" fill="#ffffff" opacity="0.06"/>
+
+  <!-- Keyboard in Front -->
+  <g transform="translate(62, 172)" filter="url(#shadow)">
+    <!-- Keyboard Base -->
+    <polygon points="12,0 148,0 156,22 4,22" fill="#1e2632"/>
+    <polygon points="13,1 147,1 154,21 6,21" fill="#2d3748"/>
+    <!-- Keys Grid Representation -->
+    <rect x="18" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="28" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="38" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="48" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="58" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="68" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="78" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="88" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="98" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="108" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="118" y="4" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="128" y="4" width="14" height="3" rx="0.5" fill="#4a5568"/>
+
+    <rect x="16" y="9" width="10" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="28" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="38" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="48" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="58" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="68" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="78" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="88" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="98" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="108" y="9" width="8" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="118" y="9" width="10" height="3" rx="0.5" fill="#4a5568"/>
+    <rect x="130" y="9" width="14" height="3" rx="0.5" fill="#4a5568"/>
+
+    <!-- Spacebar Row -->
+    <rect x="14" y="14" width="12" height="4" rx="0.5" fill="#4a5568"/>
+    <rect x="28" y="14" width="10" height="4" rx="0.5" fill="#4a5568"/>
+    <rect x="42" y="14" width="60" height="4" rx="1" fill="#718096"/>
+    <rect x="106" y="14" width="12" height="4" rx="0.5" fill="#4a5568"/>
+    <rect x="122" y="14" width="22" height="4" rx="0.5" fill="#4a5568"/>
+  </g>
+
+  <!-- Ergonomic Mouse on Right -->
+  <g transform="translate(232, 178)" filter="url(#shadow)">
+    <ellipse cx="10" cy="12" rx="9" ry="14" fill="#1e2632"/>
+    <ellipse cx="10" cy="12" rx="8" ry="13" fill="#2d3748"/>
+    <line x1="10" y1="2" x2="10" y2="12" stroke="#1a202c" stroke-width="1"/>
+    <rect x="9" y="5" width="2" height="4" rx="1" fill="#718096"/>
+    <!-- Mouse highlight -->
+    <ellipse cx="8" cy="8" rx="3" ry="5" fill="#ffffff" opacity="0.15"/>
+  </g>
+
+  <!-- Potted Little Plant on Left (adds warm organic aesthetic) -->
+  <g transform="translate(28, 148)">
+    <polygon points="4,18 16,18 18,32 2,32" fill="#d97706" opacity="0.9"/>
+    <ellipse cx="10" cy="18" rx="6" ry="2" fill="#92400e"/>
+    <!-- Succulent leaves -->
+    <path d="M10,18 Q4,10 8,4 Q12,12 10,18 Z" fill="#10b981"/>
+    <path d="M10,18 Q16,8 14,3 Q10,12 10,18 Z" fill="#059669"/>
+    <path d="M10,18 Q3,16 1,12 Q6,14 10,18 Z" fill="#34d399"/>
+    <path d="M10,18 Q17,16 19,13 Q14,14 10,18 Z" fill="#10b981"/>
+  </g>
+</svg>

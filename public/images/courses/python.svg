@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pyDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b"/>
+      <stop offset="100%" stop-color="#1c2541"/>
+    </linearGradient>
+    <linearGradient id="pyBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="pyYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <filter id="shadowPy" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0369a1" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Shadows -->
+  <ellipse cx="145" cy="195" rx="100" ry="7" fill="#0c4a6e" opacity="0.14"/>
+  <ellipse cx="260" cy="190" rx="20" ry="4" fill="#0c4a6e" opacity="0.15"/>
+
+  <!-- Laptop Base in Perspective -->
+  <g transform="translate(36, 148)" filter="url(#shadowPy)">
+    <polygon points="12,0 198,0 216,36 0,36" fill="#1e293b"/>
+    <polygon points="13,1 196,1 214,34 2,34" fill="#334155"/>
+    <rect x="88" y="16" width="38" height="15" rx="2" fill="#1e293b"/>
+    <polygon points="26,3 182,3 194,14 18,14" fill="#0b132b"/>
+    <line x1="28" y1="6" x2="183" y2="6" stroke="#475569" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="25" y1="9" x2="187" y2="9" stroke="#475569" stroke-width="1.2" stroke-dasharray="4 2"/>
+    <line x1="22" y1="12" x2="191" y2="12" stroke="#475569" stroke-width="1.2" stroke-dasharray="5 2"/>
+  </g>
+
+  <!-- Laptop Screen Lid -->
+  <g transform="translate(48, 34)" filter="url(#shadowPy)">
+    <rect x="0" y="0" width="186" height="118" rx="7" fill="#1e293b"/>
+    <rect x="2" y="2" width="182" height="114" rx="5" fill="#0f172a"/>
+    <rect x="6" y="6" width="174" height="106" rx="3" fill="url(#pyDark)"/>
+
+    <!-- IDE Titlebar -->
+    <rect x="6" y="6" width="174" height="12" fill="#1e293b"/>
+    <circle cx="14" cy="12" r="2" fill="#ef4444"/>
+    <circle cx="20" cy="12" r="2" fill="#f59e0b"/>
+    <circle cx="26" cy="12" r="2" fill="#10b981"/>
+    <text x="36" y="15" font-family="'Fira Code', monospace" font-size="5" fill="#38bdf8">VS Code - main.py [Python 3.12]</text>
+
+    <!-- Center Iconic Python Logo -->
+    <g transform="translate(136, 62)">
+      <!-- Python Blue Snake Head & Body -->
+      <path d="M-22,-20 L-8,-20 C-2,-20 0,-18 0,-12 L0,-2 L-10,-2 C-16,-2 -18,0 -18,6 L-18,14 L-22,14 C-28,14 -30,12 -30,6 L-30,-12 C-30,-18 -28,-20 -22,-20 Z" fill="url(#pyBlue)"/>
+      <circle cx="-24" cy="-14" r="2" fill="#ffffff"/>
+
+      <!-- Python Yellow Snake Head & Body -->
+      <path d="M-4,14 L10,14 C16,14 18,12 18,6 L18,-4 L8,-4 C2,-4 0,-6 0,-12 L0,-20 L4,-20 C10,-20 12,-18 12,-12 L12,6 C12,12 10,14 4,14 Z" fill="url(#pyYellow)"/>
+      <circle cx="6" cy="8" r="2" fill="#0b132b"/>
+    </g>
+
+    <!-- Code Snippet on Left -->
+    <g transform="translate(12, 24)" font-family="'Fira Code', monospace" font-size="4.5">
+      <text x="0" y="8" fill="#c084fc">import</text>
+      <text x="22" y="8" fill="#38bdf8">numpy</text>
+      <text x="38" y="8" fill="#c084fc">as</text>
+      <text x="46" y="8" fill="#e2e8f0">np</text>
+
+      <text x="0" y="16" fill="#c084fc">import</text>
+      <text x="22" y="16" fill="#38bdf8">pandas</text>
+      <text x="40" y="16" fill="#c084fc">as</text>
+      <text x="48" y="16" fill="#e2e8f0">pd</text>
+
+      <text x="0" y="28" fill="#facc15">def</text>
+      <text x="14" y="28" fill="#60a5fa">analyze_data</text>
+      <text x="50" y="28" fill="#e2e8f0">(x):</text>
+
+      <text x="6" y="36" fill="#94a3b8"># Machine learning prep</text>
+
+      <text x="6" y="44" fill="#e2e8f0">model =</text>
+      <text x="30" y="44" fill="#38bdf8">TrainModel()</text>
+
+      <text x="6" y="52" fill="#facc15">return</text>
+      <text x="26" y="52" fill="#4ade80">model.predict(x)</text>
+
+      <text x="0" y="64" fill="#38bdf8">print</text>
+      <text x="16" y="64" fill="#fde047">("Python AI Ready")</text>
+    </g>
+  </g>
+
+  <!-- Mouse on Right -->
+  <g transform="translate(250, 168)" filter="url(#shadowPy)">
+    <ellipse cx="10" cy="14" rx="9" ry="14" fill="#1e293b"/>
+    <ellipse cx="10" cy="14" rx="8" ry="13" fill="#334155"/>
+    <line x1="10" y1="4" x2="10" y2="14" stroke="#0f172a" stroke-width="1"/>
+    <rect x="9" y="7" width="2" height="4" rx="1" fill="#38bdf8"/>
+  </g>
+</svg>
