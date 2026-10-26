@@ -45,12 +45,11 @@ export function Home(){
  }, []);
 
  useEffect(() => {
-  if (reducedMotion) return;
   const timer = setInterval(() => {
    setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-  }, 2000);
+  }, 1000);
   return () => clearInterval(timer);
- }, [reducedMotion]);
+ }, []);
 
  return <>
 <Seo desc="Navya Techno Institute of Computer Education Training Center, Porumamilla: practical computer courses, certificates and career support. 4.8 on Google."/>
@@ -58,24 +57,21 @@ export function Home(){
 <section aria-label="Welcome" className="relative overflow-hidden min-h-[500px] sm:min-h-[540px] lg:h-[580px] lg:max-h-[620px] flex items-center bg-[#021333]">
  {/* 1. Animated Lab Photos with Crystal Clear High-Definition Presentation */}
  <div className="absolute inset-0 z-0 overflow-hidden">
-  <AnimatePresence initial={false}>
-   <motion.div
-    key={slideIndex}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.5, ease: 'easeInOut' }}
-    className="absolute inset-0"
-    style={{ transform: 'translateZ(0)', willChange: 'opacity' }}
+  {heroSlides.map((slide, idx) => (
+   <div
+    key={idx}
+    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+     slideIndex === idx ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
+    }`}
    >
     <img
-     src={heroSlides[slideIndex].src}
-     alt={heroSlides[slideIndex].alt}
+     src={slide.src}
+     alt={slide.alt}
      className="h-full w-full object-cover object-center pointer-events-none"
-     fetchPriority={slideIndex === 0 ? 'high' : 'auto'}
+     loading={idx === 0 ? 'eager' : 'lazy'}
     />
-   </motion.div>
-  </AnimatePresence>
+   </div>
+  ))}
  </div>
   {/* Pure, clear photo slideshow without color tints or corner swooshes */}
   {/* Subtle, soft ambient vignette strictly for text contrast */}
