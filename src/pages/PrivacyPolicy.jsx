@@ -24,7 +24,7 @@ export function PrivacyPolicy() {
       />
 
       <section className="section bg-white">
-        <div className="container-x max-w-4xl space-y-10 text-slate-700 leading-relaxed text-sm sm:text-base">
+        <div className="container-x max-w-4xl space-y-10 text-slate-600 leading-relaxed text-sm sm:text-base">
           
           {/* Top Compliance Trust Card */}
           <div className="rounded-3xl border border-blue-200 bg-gradient-to-br from-[#F0F6FD] to-white p-6 sm:p-8 shadow-sm">
@@ -58,7 +58,7 @@ export function PrivacyPolicy() {
           {/* Quick Summary Highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-100 text-emerald-700 mb-2">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-emerald-100 text-emerald-600 mb-2">
                 <CheckCircle size={18} />
               </span>
               <h3 className="font-bold text-navy text-sm">Zero Commercial Sale</h3>
@@ -72,7 +72,7 @@ export function PrivacyPolicy() {
               <p className="mt-1 text-xs text-slate-500">All browser traffic is encrypted via 256-bit TLS/SSL with strict frame and XSS mitigation headers.</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-100 text-amber-700 mb-2">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-100 text-accent mb-2">
                 <UserCheck size={18} />
               </span>
               <h3 className="font-bold text-navy text-sm">Right to Erasure</h3>

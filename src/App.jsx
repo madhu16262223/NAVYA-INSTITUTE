@@ -24,7 +24,7 @@ function PageLoader() {
     <div className="min-h-[50vh] flex items-center justify-center">
       <div className="flex flex-col items-center gap-3">
         <div className="h-10 w-10 animate-spin rounded-full border-4 border-slate-200 border-t-[#0B5ED7]" />
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Loading...</span>
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Loading...</span>
       </div>
     </div>
   );

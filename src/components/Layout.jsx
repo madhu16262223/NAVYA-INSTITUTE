@@ -289,7 +289,7 @@ export function Footer() {
             <p className="text-xs font-semibold text-blue-100">
               {site.telugu}
             </p>
-            <p className="text-sm text-blue-100/90 leading-relaxed">
+            <p className="text-sm text-blue-100 leading-relaxed">
               Practical, career-oriented computer education and hands-on skill development in Porumamilla.
             </p>
 

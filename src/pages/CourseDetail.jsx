@@ -282,37 +282,37 @@ const THEMES = [
     bg: 'bg-[#EEF6FF]',
     border: 'border-blue-200/90',
     badgeBg: 'bg-[#0866F5]',
-    iconColor: 'text-[#0866F5]',
+    iconColor: 'text-[#0B5ED7]',
   },
   {
     bg: 'bg-[#E8F8F5]',
     border: 'border-teal-200/90',
     badgeBg: 'bg-[#0D9488]',
-    iconColor: 'text-[#0D9488]',
+    iconColor: 'text-[#0B5ED7]',
   },
   {
     bg: 'bg-[#F4EEFD]',
     border: 'border-purple-200/90',
     badgeBg: 'bg-[#8B5CF6]',
-    iconColor: 'text-[#8B5CF6]',
+    iconColor: 'text-[#0B5ED7]',
   },
   {
     bg: 'bg-[#FFF4E6]',
     border: 'border-amber-200/90',
     badgeBg: 'bg-[#F97316]',
-    iconColor: 'text-[#F97316]',
+    iconColor: 'text-[#FF850A]',
   },
   {
     bg: 'bg-[#E8F6FE]',
     border: 'border-sky-200/90',
     badgeBg: 'bg-[#0284C7]',
-    iconColor: 'text-[#0284C7]',
+    iconColor: 'text-[#0B5ED7]',
   },
   {
     bg: 'bg-[#FDEEF5]',
     border: 'border-pink-200/90',
     badgeBg: 'bg-[#EC4899]',
-    iconColor: 'text-[#EC4899]',
+    iconColor: 'text-[#FF850A]',
   },
 ];
 
@@ -322,7 +322,7 @@ function renderTitle(title) {
     return (
       <>
         {parts[0].trim()} &amp;{' '}
-        <span className="text-[#0866F5]">{parts.slice(1).join('&').trim()}</span>
+        <span className="text-[#0B5ED7]">{parts.slice(1).join('&').trim()}</span>
       </>
     );
   }
@@ -332,11 +332,11 @@ function renderTitle(title) {
     const last = words[words.length - 1];
     return (
       <>
-        {main} <span className="text-[#0866F5]">{last}</span>
+        {main} <span className="text-[#0B5ED7]">{last}</span>
       </>
     );
   }
-  return <span className="text-[#0866F5]">{title}</span>;
+  return <span className="text-[#0B5ED7]">{title}</span>;
 }
 
 export function CourseDetail() {
@@ -403,11 +403,11 @@ export function CourseDetail() {
       {/* Breadcrumb Navigation */}
       <div className="border-b border-blue-100/60 bg-[#F8FBFE] py-3 sm:py-3.5 text-xs font-medium text-slate-500">
         <div className="container-x flex items-center gap-2">
-          <Link to="/" className="hover:text-[#0866F5] transition-colors">Home</Link>
-          <ChevronRight size={13} className="text-slate-400" />
-          <Link to="/courses" className="hover:text-[#0866F5] transition-colors">Courses</Link>
-          <ChevronRight size={13} className="text-slate-400" />
-          <span className="font-bold text-[#0B2B59] truncate">{course.title}</span>
+          <Link to="/" className="hover:text-[#0B5ED7] transition-colors">Home</Link>
+          <ChevronRight size={13} className="text-slate-500" />
+          <Link to="/courses" className="hover:text-[#0B5ED7] transition-colors">Courses</Link>
+          <ChevronRight size={13} className="text-slate-500" />
+          <span className="font-bold text-navy truncate">{course.title}</span>
         </div>
       </div>
 
@@ -430,7 +430,7 @@ export function CourseDetail() {
               {course.cat ? course.cat.toUpperCase() : 'PROFESSIONAL COURSE'}
             </span>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black text-[#0B2B59] leading-[1.18] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black text-navy leading-[1.18] tracking-tight">
               {renderTitle(course.title)}
             </h1>
 
@@ -441,31 +441,31 @@ export function CourseDetail() {
             {/* Three Compact Benefit Items */}
             <div className="mt-7 flex flex-wrap items-center gap-4 sm:gap-7">
               <div className="flex items-center gap-2.5">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0866F5]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0B5ED7]">
                   <BookOpen size={18} strokeWidth={2.4} />
                 </span>
                 <div>
-                  <p className="text-xs font-bold text-[#0B2B59]">Learn</p>
+                  <p className="text-xs font-bold text-navy">Learn</p>
                   <p className="text-[11px] text-slate-500 font-medium">Cutting-Edge Skills</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0866F5]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0B5ED7]">
                   <Laptop size={18} strokeWidth={2.4} />
                 </span>
                 <div>
-                  <p className="text-xs font-bold text-[#0B2B59]">Build</p>
+                  <p className="text-xs font-bold text-navy">Build</p>
                   <p className="text-[11px] text-slate-500 font-medium">Real Projects</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0866F5]">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-[#0B5ED7]">
                   <TrendingUp size={18} strokeWidth={2.4} />
                 </span>
                 <div>
-                  <p className="text-xs font-bold text-[#0B2B59]">Grow</p>
+                  <p className="text-xs font-bold text-navy">Grow</p>
                   <p className="text-[11px] text-slate-500 font-medium">Your Career</p>
                 </div>
               </div>
@@ -524,10 +524,10 @@ export function CourseDetail() {
               <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] items-start">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0866F5] border border-blue-100">
+                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0B5ED7] border border-blue-100">
                       <BookOpen size={20} strokeWidth={2.4} />
                     </span>
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#0B2B59]">Course Overview</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-navy">Course Overview</h2>
                   </div>
                   <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
                     {course.overview || course.desc}
@@ -536,16 +536,16 @@ export function CourseDetail() {
 
                 {/* Promotional Target Panel */}
                 <div className="rounded-2xl bg-[#F0F6FD] border border-blue-100/90 p-4 sm:p-5 flex items-start gap-3.5 shadow-sm">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-blue-100 text-[#0866F5]">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-blue-100 text-[#0B5ED7]">
                     <Target size={20} strokeWidth={2.4} />
                   </span>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-bold text-[#0B2B59]">{config.targetHeading}</h4>
+                    <h4 className="text-sm font-bold text-navy">{config.targetHeading}</h4>
                     <p className="mt-1 text-xs text-slate-600 leading-relaxed">
                       {config.targetDesc}
                     </p>
                     {/* Orange Curved Swoosh Underline */}
-                    <svg className="w-16 h-2 mt-2 text-amber-500" viewBox="0 0 70 8" fill="none">
+                    <svg className="w-16 h-2 mt-2 text-[#FF850A]" viewBox="0 0 70 8" fill="none">
                       <path d="M2 5C22 1.5 48 1.5 68 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
                     </svg>
                   </div>
@@ -556,10 +556,10 @@ export function CourseDetail() {
               {course.whoFor && (
                 <div className="mt-6 pt-5 border-t border-slate-100">
                   <div className="flex items-center gap-3">
-                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-[#0866F5] border border-blue-100">
+                    <span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-[#0B5ED7] border border-blue-100">
                       <Users size={18} strokeWidth={2.4} />
                     </span>
-                    <h3 className="text-base sm:text-lg font-bold text-[#0B2B59]">Who Is This Course For?</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-navy">Who Is This Course For?</h3>
                   </div>
                   <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed pl-12">
                     {course.whoFor}
@@ -570,7 +570,7 @@ export function CourseDetail() {
               {/* Career Opportunities / Job Roles You Can Target */}
               {config.careerRoles && config.careerRoles.length > 0 && (
                 <div className="mt-5 pt-5 border-t border-slate-100">
-                  <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-[#0866F5]">
+                  <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-[#0B5ED7]">
                     <Briefcase size={15} />
                     <span>Career Opportunities You Can Target</span>
                   </div>
@@ -578,9 +578,9 @@ export function CourseDetail() {
                     {config.careerRoles.map((role, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-100/90 px-3 py-1 text-xs font-semibold text-[#0B2B59]"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-100/90 px-3 py-1 text-xs font-semibold text-navy"
                       >
-                        <CheckCircle2 size={13} className="text-[#0866F5]" />
+                        <CheckCircle2 size={13} className="text-[#0B5ED7]" />
                         {role}
                       </span>
                     ))}
@@ -593,11 +593,11 @@ export function CourseDetail() {
             {moduleCards.length > 0 && (
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0866F5] border border-blue-100">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0B5ED7] border border-blue-100">
                     <Lightbulb size={20} strokeWidth={2.4} />
                   </span>
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#0B2B59]">What You Will Learn</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-navy">What You Will Learn</h2>
                     <p className="mt-0.5 text-xs sm:text-sm text-slate-500">
                       Practical modules designed for hands-on mastery in our computer lab.
                     </p>
@@ -620,7 +620,7 @@ export function CourseDetail() {
                             <ModIcon size={22} strokeWidth={2.2} />
                           </span>
                         </div>
-                        <h3 className="text-xs sm:text-[13px] font-bold text-[#0B2B59] leading-snug">
+                        <h3 className="text-xs sm:text-[13px] font-bold text-navy leading-snug">
                           {m.title}
                         </h3>
                       </div>
@@ -632,17 +632,17 @@ export function CourseDetail() {
 
             {/* 3. Key Course Highlights & Methodology */}
             <div className="rounded-[24px] border border-blue-100/90 bg-white p-6 sm:p-7 shadow-[0_4px_20px_rgba(11,42,91,0.04)]">
-              <h3 className="text-base sm:text-lg font-bold text-[#0B2B59] mb-4 flex items-center gap-2">
-                <Sparkles size={18} className="text-[#0866F5]" />
+              <h3 className="text-base sm:text-lg font-bold text-navy mb-4 flex items-center gap-2">
+                <Sparkles size={18} className="text-[#0B5ED7]" />
                 Why Study This Course at Navya Techno Institute?
               </h3>
               <div className="grid gap-3.5 sm:grid-cols-2">
                 <div className="flex items-start gap-3 rounded-xl bg-[#F8FBFE] border border-blue-100/70 p-3.5">
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-blue-100 text-[#0866F5] shrink-0 font-bold text-xs">
+                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-blue-100 text-[#0B5ED7] shrink-0 font-bold text-xs">
                     💻
                   </span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0B2B59]">100% Practical Lab Training</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-navy">100% Practical Lab Training</h4>
                     <p className="mt-0.5 text-xs text-slate-500 leading-relaxed">
                       Every student gets dedicated daily computer time with high-speed internet and updated software.
                     </p>
@@ -654,7 +654,7 @@ export function CourseDetail() {
                     👨‍🏫
                   </span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0B2B59]">Experienced Mentors</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-navy">Experienced Mentors</h4>
                     <p className="mt-0.5 text-xs text-slate-500 leading-relaxed">
                       Direct 1-on-1 personal attention with clear step-by-step explanations in Telugu and English.
                     </p>
@@ -662,11 +662,11 @@ export function CourseDetail() {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl bg-[#F8FBFE] border border-blue-100/70 p-3.5">
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-purple-100 text-purple-600 shrink-0 font-bold text-xs">
+                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-purple-100 text-[#0B5ED7] shrink-0 font-bold text-xs">
                     📜
                   </span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0B2B59]">Recognized Course Certificate</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-navy">Recognized Course Certificate</h4>
                     <p className="mt-0.5 text-xs text-slate-500 leading-relaxed">
                       Valuable credential demonstrating hands-on proficiency for private, government, and business jobs.
                     </p>
@@ -674,11 +674,11 @@ export function CourseDetail() {
                 </div>
 
                 <div className="flex items-start gap-3 rounded-xl bg-[#F8FBFE] border border-blue-100/70 p-3.5">
-                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-100 text-amber-600 shrink-0 font-bold text-xs">
+                  <span className="grid h-8 w-8 place-items-center rounded-lg bg-amber-100 text-[#FF850A] shrink-0 font-bold text-xs">
                     🎯
                   </span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-[#0B2B59]">Flexible Batch Timings</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-navy">Flexible Batch Timings</h4>
                     <p className="mt-0.5 text-xs text-slate-500 leading-relaxed">
                       Convenient morning, afternoon, and evening batches tailored for college students and working people.
                     </p>
@@ -692,27 +692,27 @@ export function CourseDetail() {
               {/* Batch Timings */}
               <div className="rounded-2xl bg-[#EEF5FD] border border-blue-100/90 p-5 sm:p-6 flex flex-col justify-between shadow-sm">
                 <div>
-                  <div className="flex items-center gap-2.5 text-[#0866F5]">
+                  <div className="flex items-center gap-2.5 text-[#0B5ED7]">
                     <Calendar size={18} strokeWidth={2.4} />
-                    <h3 className="text-base font-bold text-[#0B2B59]">Batch Timings</h3>
+                    <h3 className="text-base font-bold text-navy">Batch Timings</h3>
                   </div>
                   <p className="mt-2 text-xs text-slate-600 leading-relaxed">
                     Flexible batches available for students, job seekers, and working individuals:
                   </p>
                   <div className="mt-4 space-y-2">
-                    <div className="flex items-center gap-2 text-xs text-slate-700">
-                      <Sun size={14} className="text-amber-500 shrink-0" />
-                      <span className="font-semibold text-[#0B2B59]">Morning:</span>
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <Sun size={14} className="text-[#FF850A] shrink-0" />
+                      <span className="font-semibold text-navy">Morning:</span>
                       <span>9:00 AM – 12:00 PM</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-700">
-                      <Sun size={14} className="text-blue-500 shrink-0" />
-                      <span className="font-semibold text-[#0B2B59]">Afternoon:</span>
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <Sun size={14} className="text-[#0B5ED7] shrink-0" />
+                      <span className="font-semibold text-navy">Afternoon:</span>
                       <span>1:00 PM – 4:00 PM</span>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-slate-700">
-                      <Moon size={14} className="text-indigo-500 shrink-0" />
-                      <span className="font-semibold text-[#0B2B59]">Evening:</span>
+                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                      <Moon size={14} className="text-[#0B5ED7] shrink-0" />
+                      <span className="font-semibold text-navy">Evening:</span>
                       <span>4:30 PM – 7:30 PM</span>
                     </div>
                   </div>
@@ -720,7 +720,7 @@ export function CourseDetail() {
 
                 <div className="mt-5 pt-3 border-t border-blue-200/60 flex items-center gap-2 text-[11px] text-slate-600">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span>Current batch availability: <strong className="text-[#0B2B59] font-bold">{course.batchTimings || 'Special Batches Available'}</strong></span>
+                  <span>Current batch availability: <strong className="text-navy font-bold">{course.batchTimings || 'Special Batches Available'}</strong></span>
                 </div>
               </div>
 
@@ -729,7 +729,7 @@ export function CourseDetail() {
                 <div>
                   <div className="flex items-center gap-2.5 text-emerald-600">
                     <Award size={18} strokeWidth={2.4} />
-                    <h3 className="text-base font-bold text-[#0B2B59]">Course Certificate</h3>
+                    <h3 className="text-base font-bold text-navy">Course Certificate</h3>
                   </div>
                   <p className="mt-2 text-xs text-slate-600 leading-relaxed">
                     Students successfully completing the course and practical assessments receive a formal Course Completion Certificate from Navya Techno.
@@ -739,7 +739,7 @@ export function CourseDetail() {
                 <div className="mt-5 pt-3 border-t border-emerald-200/60 flex items-center justify-between gap-3">
                   <Link
                     to="/certificates"
-                    className="text-xs font-bold text-[#0866F5] hover:underline inline-flex items-center gap-1"
+                    className="text-xs font-bold text-[#0B5ED7] hover:underline inline-flex items-center gap-1"
                   >
                     View sample certificate <ArrowRight size={13} strokeWidth={2.4} />
                   </Link>
@@ -755,7 +755,7 @@ export function CourseDetail() {
                       <div className="h-0.5 w-full bg-slate-200" />
                       <div className="flex items-center justify-between">
                         <span className="h-0.5 w-6 bg-slate-300" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-amber-400 flex items-center justify-center text-[6px] text-amber-950 font-bold">★</span>
+                        <span className="h-2.5 w-2.5 rounded-full bg-amber-400 flex items-center justify-center text-[6px] text-[#FF850A] font-bold">★</span>
                       </div>
                     </div>
                   </div>
@@ -767,11 +767,11 @@ export function CourseDetail() {
             {config.faqs && config.faqs.length > 0 && (
               <div className="rounded-[24px] border border-blue-100/90 bg-white p-6 sm:p-7 shadow-[0_4px_20px_rgba(11,42,91,0.04)]">
                 <div className="flex items-center gap-3 mb-5">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0866F5] border border-blue-100">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-[#0B5ED7] border border-blue-100">
                     <HelpCircle size={20} strokeWidth={2.4} />
                   </span>
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-[#0B2B59]">Frequently Asked Questions</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-navy">Frequently Asked Questions</h3>
                     <p className="mt-0.5 text-xs text-slate-500">
                       Got questions? Here are quick answers about this course at Navya Techno.
                     </p>
@@ -789,12 +789,12 @@ export function CourseDetail() {
                         <button
                           type="button"
                           onClick={() => setOpenFaq(isOpen ? -1 : idx)}
-                          className="w-full flex items-center justify-between gap-3 p-4 text-left font-bold text-xs sm:text-sm text-[#0B2B59] hover:text-[#0866F5] transition-colors"
+                          className="w-full flex items-center justify-between gap-3 p-4 text-left font-bold text-xs sm:text-sm text-navy hover:text-[#0B5ED7] transition-colors"
                         >
                           <span>{faq.q}</span>
                           <ChevronDown
                             size={16}
-                            className={`shrink-0 text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#0866F5]' : ''}`}
+                            className={`shrink-0 text-slate-500 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#0B5ED7]' : ''}`}
                           />
                         </button>
                         {isOpen && (
@@ -826,69 +826,69 @@ export function CourseDetail() {
               {/* Card Body */}
               <div className="p-4 sm:p-5">
                 <div className="flex items-center gap-2.5 pb-2.5 border-b border-slate-100">
-                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-blue-50 text-[#0866F5]">
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-blue-50 text-[#0B5ED7]">
                     <ClipboardList size={16} strokeWidth={2.4} />
                   </span>
-                  <h3 className="text-base font-bold text-[#0B2B59]">Course Details</h3>
+                  <h3 className="text-base font-bold text-navy">Course Details</h3>
                 </div>
 
                 {/* Details Rows */}
                 <dl className="mt-1.5 divide-y divide-slate-100 text-xs sm:text-[13px]">
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <Bookmark size={13} />
                       </span>
                       <span>Category</span>
                     </div>
-                    <dd className="font-bold text-[#0B2B59]">{course.cat}</dd>
+                    <dd className="font-bold text-navy">{course.cat}</dd>
                   </div>
 
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <Clock size={13} />
                       </span>
                       <span>Duration</span>
                     </div>
-                    <dd className="font-bold text-[#0B2B59]">{course.duration}</dd>
+                    <dd className="font-bold text-navy">{course.duration}</dd>
                   </div>
 
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <Compass size={13} />
                       </span>
                       <span>Level</span>
                     </div>
-                    <dd className="font-bold text-[#0B2B59]">{course.level}</dd>
+                    <dd className="font-bold text-navy">{course.level}</dd>
                   </div>
 
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <Users size={13} />
                       </span>
                       <span>Eligibility</span>
                     </div>
-                    <dd className="font-bold text-[#0B2B59] text-right truncate max-w-[155px]">
+                    <dd className="font-bold text-navy text-right truncate max-w-[155px]">
                       {course.eligibility}
                     </dd>
                   </div>
 
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <CreditCard size={13} />
                       </span>
                       <span>Course Fee</span>
                     </div>
-                    <dd className="font-bold text-[#0866F5]">{course.fee}</dd>
+                    <dd className="font-bold text-[#0B5ED7]">{course.fee}</dd>
                   </div>
 
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
-                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0866F5]">
+                      <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
                         <Award size={13} />
                       </span>
                       <span>Certificate</span>
@@ -903,7 +903,7 @@ export function CourseDetail() {
                     href={wa(whatsappMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF7A00] to-[#FF9500] hover:from-[#E66E00] hover:to-[#EB8800] py-2.5 px-4 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange-500/25 transition-all hover:scale-[1.01]"
+                    className="btn-primary w-full text-xs sm:text-sm !py-2.5"
                   >
                     <MessageCircle size={16} fill="currentColor" stroke="none" />
                     Enquire on WhatsApp →
@@ -911,7 +911,7 @@ export function CourseDetail() {
 
                   <Link
                     to="/contact"
-                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-blue-50/60 border border-[#0866F5] py-2.5 px-4 text-xs sm:text-sm font-bold text-[#0866F5] transition-all hover:scale-[1.01]"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-white hover:bg-blue-50/60 border border-[#0866F5] py-2.5 px-4 text-xs sm:text-sm font-bold text-[#0B5ED7] transition-all hover:scale-[1.01]"
                   >
                     <MapPin size={15} />
                     Visit Institute / Enrol →
@@ -922,13 +922,13 @@ export function CourseDetail() {
                 <div className="mt-3 pt-2.5 border-t border-slate-100 text-center">
                   <a
                     href={links.call}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0866F5] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-[#0B5ED7] transition-colors"
                   >
-                    <Phone size={12} className="text-[#0866F5]" />
+                    <Phone size={12} className="text-[#0B5ED7]" />
                     Call Institute: {site.phone}
                   </a>
-                  <p className="mt-1 text-[11px] text-slate-400 font-medium">
-                    ⭐ Google Rating: <strong className="text-slate-700">{site.rating.score} / 5</strong> ({site.rating.count} reviews)
+                  <p className="mt-1 text-[11px] text-slate-500 font-medium">
+                    ⭐ Google Rating: <strong className="text-slate-600">{site.rating.score} / 5</strong> ({site.rating.count} reviews)
                   </p>
                 </div>
               </div>
@@ -937,11 +937,11 @@ export function CourseDetail() {
             {/* Help Panel */}
             <div className="rounded-2xl bg-[#EAF3FD] border border-blue-100/90 p-3.5 sm:p-4 flex items-center justify-between gap-3 shadow-sm relative overflow-hidden">
               <div className="flex items-start gap-2.5 min-w-0 z-10">
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-blue-100 text-[#0866F5] shrink-0 mt-0.5">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-blue-100 text-[#0B5ED7] shrink-0 mt-0.5">
                   <HelpCircle size={16} />
                 </span>
                 <div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2B59]">Have questions?</h4>
+                  <h4 className="text-xs sm:text-sm font-bold text-navy">Have questions?</h4>
                   <p className="mt-0.5 text-[11px] text-slate-500 leading-snug">
                     Visit near APSRTC Busstand or talk to our trainers.
                   </p>
@@ -968,12 +968,12 @@ export function CourseDetail() {
           <div className="container-x">
             <div className="flex items-end justify-between mb-8">
               <div>
-                <p className="text-xs font-bold tracking-[.22em] text-[#0866F5] uppercase">Explore More</p>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#0B2B59] mt-1">Related Courses</h2>
+                <p className="text-xs font-bold tracking-[.22em] text-[#0B5ED7] uppercase">Explore More</p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-navy mt-1">Related Courses</h2>
               </div>
               <Link
                 to="/courses"
-                className="text-sm font-bold text-[#0866F5] hover:underline flex items-center gap-1"
+                className="text-sm font-bold text-[#0B5ED7] hover:underline flex items-center gap-1"
               >
                 View All <ArrowRight size={15} />
               </Link>

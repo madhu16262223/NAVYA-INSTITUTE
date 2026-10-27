@@ -168,7 +168,7 @@ export function DemoModalProvider({ children }) {
                 ref={firstFocusableRef}
                 onClick={closeDemoModal}
                 aria-label="Close dialog"
-                className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/15 text-white transition hover:bg-white/30"
+                className="btn-icon absolute right-4 top-4 !h-9 !w-9 bg-white/15 text-white hover:bg-white/30"
               >
                 <X size={18} aria-hidden="true" />
               </button>
@@ -228,7 +228,7 @@ export function DemoModalProvider({ children }) {
                       Full Name <span className="text-accent">*</span>
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3.5 text-slate-400">
+                      <span className="absolute left-3.5 top-3.5 text-slate-500">
                         <User size={18} aria-hidden="true" />
                       </span>
                       <input
@@ -254,7 +254,7 @@ export function DemoModalProvider({ children }) {
                       Mobile Number (WhatsApp) <span className="text-accent">*</span>
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3.5 text-slate-400">
+                      <span className="absolute left-3.5 top-3.5 text-slate-500">
                         <Phone size={18} aria-hidden="true" />
                       </span>
                       <input
@@ -280,7 +280,7 @@ export function DemoModalProvider({ children }) {
                       Course Interested In <span className="text-accent">*</span>
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3.5 text-slate-400">
+                      <span className="absolute left-3.5 top-3.5 text-slate-500">
                         <BookOpen size={18} aria-hidden="true" />
                       </span>
                       <select
@@ -311,7 +311,7 @@ export function DemoModalProvider({ children }) {
                       Preferred Time Slot
                     </label>
                     <div className="relative">
-                      <span className="absolute left-3.5 top-3.5 text-slate-400">
+                      <span className="absolute left-3.5 top-3.5 text-slate-500">
                         <Clock size={18} aria-hidden="true" />
                       </span>
                       <select

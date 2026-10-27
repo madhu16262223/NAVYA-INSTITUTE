@@ -37,7 +37,7 @@ export function AnnouncementBar() {
           {site.announcement.cta && (
             <button
               onClick={() => openDemoModal()}
-              className="inline-flex items-center gap-1 font-bold text-accent hover:underline hover:text-white transition"
+              className="btn-ghost !text-accent hover:!text-white !py-1 !px-2.5 text-xs font-bold"
             >
               {site.announcement.cta} <ArrowRight size={13} aria-hidden="true" />
             </button>
@@ -46,7 +46,7 @@ export function AnnouncementBar() {
         <button
           onClick={handleDismiss}
           aria-label="Dismiss announcement"
-          className="grid h-6 w-6 place-items-center rounded-full text-white/70 hover:bg-white/20 hover:text-white transition shrink-0"
+          className="btn-icon !h-6 !w-6 text-blue-100 hover:bg-white/20 hover:text-white shrink-0"
         >
           <X size={14} aria-hidden="true" />
         </button>
@@ -122,7 +122,7 @@ export function SoftDivider({ flip, light }) {
   return (
     <div aria-hidden="true" className={`overflow-hidden leading-none ${flip ? 'rotate-180' : ''}`}>
       <svg
-        className={`relative block w-full h-8 sm:h-12 ${light ? 'text-[#F4F9FE]' : 'text-mist'}`}
+        className={`relative block w-full h-8 sm:h-12 ${light ? 'text-blue-100' : 'text-blue-100'}`}
         viewBox="0 0 1200 120"
         preserveAspectRatio="none"
       >

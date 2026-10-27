@@ -109,7 +109,7 @@ export function VerifyCertificate() {
             <form onSubmit={handleSearch} className="mt-8 max-w-xl mx-auto">
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <div className="relative w-full">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                   <input
                     type="text"
                     value={certId}
@@ -157,7 +157,7 @@ export function VerifyCertificate() {
                     <CheckCircle2 size={28} />
                   </span>
                   <div>
-                    <span className="inline-block rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-emerald-700 border border-emerald-200">
+                    <span className="inline-block rounded-full bg-emerald-50 px-3 py-0.5 text-xs font-extrabold uppercase tracking-wider text-emerald-600 border border-emerald-200">
                       Official Record Authenticated
                     </span>
                     <h3 className="text-xl sm:text-2xl font-black text-navy mt-1">
@@ -167,7 +167,7 @@ export function VerifyCertificate() {
                 </div>
 
                 <div className="text-right self-end sm:self-center">
-                  <span className="text-xs uppercase font-bold text-slate-400 block">Certificate No.</span>
+                  <span className="text-xs uppercase font-bold text-slate-500 block">Certificate No.</span>
                   <span className="font-mono text-lg font-black text-[#0B5ED7]">{searchResult.id}</span>
                 </div>
               </div>
@@ -190,23 +190,23 @@ export function VerifyCertificate() {
 
                 <div className="rounded-2xl bg-slate-50 p-4 border border-slate-100">
                   <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-                    <Calendar size={15} className="text-slate-400" /> Duration & Hours
+                    <Calendar size={15} className="text-slate-500" /> Duration & Hours
                   </p>
-                  <p className="mt-1.5 text-sm font-bold text-slate-800">{searchResult.duration}</p>
+                  <p className="mt-1.5 text-sm font-bold text-navy">{searchResult.duration}</p>
                 </div>
 
                 <div className="rounded-2xl bg-slate-50 p-4 border border-slate-100">
                   <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-                    <FileText size={15} className="text-emerald-500" /> Performance Grade
+                    <FileText size={15} className="text-emerald-600" /> Performance Grade
                   </p>
                   <p className="mt-1.5 text-sm font-extrabold text-emerald-600">{searchResult.grade}</p>
                 </div>
 
                 <div className="rounded-2xl bg-slate-50 p-4 border border-slate-100">
                   <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-                    <Calendar size={15} className="text-slate-400" /> Issue Date
+                    <Calendar size={15} className="text-slate-500" /> Issue Date
                   </p>
-                  <p className="mt-1.5 text-sm font-bold text-slate-800">{searchResult.issueDate}</p>
+                  <p className="mt-1.5 text-sm font-bold text-navy">{searchResult.issueDate}</p>
                 </div>
               </div>
 
@@ -234,7 +234,7 @@ export function VerifyCertificate() {
                     <School size={20} />
                   </div>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-sky-200">Issuing Institution</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-blue-100">Issuing Institution</p>
                     <p className="text-sm font-extrabold">{site.fullName}</p>
                     <p className="text-xs text-blue-100">{site.address}</p>
                   </div>
@@ -242,7 +242,7 @@ export function VerifyCertificate() {
 
                 <div className="flex items-center gap-2 shrink-0">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
                     Blockchain/DB Registry Verified
                   </span>
                 </div>

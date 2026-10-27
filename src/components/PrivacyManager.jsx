@@ -88,7 +88,7 @@ export function PrivacyManager() {
           aria-live="polite"
           className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-full bg-navy px-5 py-2.5 text-xs font-bold text-white shadow-xl ring-2 ring-white flex items-center gap-2"
         >
-          <Check size={14} className="text-emerald-400" />
+          <Check size={14} className="text-emerald-600" />
           <span>{toastMsg}</span>
         </div>
       )}
@@ -99,7 +99,7 @@ export function PrivacyManager() {
         onClick={() => setShowModal(true)}
         aria-label="Manage Privacy & Cookie Preferences"
         title="Privacy Preferences"
-        className="fixed bottom-5 left-5 z-40 hidden sm:flex h-10 items-center gap-2 rounded-full border border-slate-200/90 bg-white/95 px-3 text-xs font-bold text-navy shadow-md backdrop-blur-md transition-all hover:bg-slate-50 hover:shadow-lg hover:border-[#0B5ED7]/40"
+        className="btn-outline fixed bottom-5 left-5 z-40 hidden sm:flex !h-9 !py-1.5 !px-3 text-xs !bg-white/95 backdrop-blur-md shadow-md"
       >
         <Shield size={15} className="text-[#0B5ED7]" aria-hidden="true" />
         <span className="hidden md:inline">Privacy</span>
@@ -148,7 +148,7 @@ export function PrivacyManager() {
                   setShowBanner(false);
                   setShowModal(true);
                 }}
-                className="rounded-full px-3 py-2 text-xs font-semibold text-[#0B5ED7] hover:underline"
+                className="btn-ghost !text-brand !border-transparent !bg-transparent text-xs hover:underline"
               >
                 Customize
               </button>
@@ -184,7 +184,7 @@ export function PrivacyManager() {
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="grid h-8 w-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="btn-icon !h-8 !w-8 text-slate-500 hover:bg-slate-100 hover:text-navy"
                 aria-label="Close privacy preferences modal"
               >
                 <X size={18} />

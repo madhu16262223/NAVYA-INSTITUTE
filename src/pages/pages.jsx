@@ -136,7 +136,7 @@ export function Home(){
    </h1>
 
    {/* Description Paragraph with Clean Breathing Room */}
-   <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base lg:text-lg text-white/95 leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,10,30,0.85)]">
+   <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base lg:text-lg text-white leading-relaxed font-medium drop-shadow-[0_2px_8px_rgba(0,10,30,0.85)]">
     Practical, career-oriented computer education in Porumamilla. We offer computer fundamentals, software coding, Tally accounting and more — designed for your success.
    </p>
 
@@ -162,12 +162,12 @@ export function Home(){
 
    {/* Live Batch Urgency & Trust Seals */}
    <div className="mt-5 flex flex-wrap items-center gap-2.5">
-    <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/50 bg-black/40 px-3.5 py-1 text-xs font-bold text-orange-200 backdrop-blur-md shadow-sm">
+    <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/50 bg-black/40 px-3.5 py-1 text-xs font-bold text-accent backdrop-blur-md shadow-sm">
      <span className="h-2 w-2 rounded-full bg-[#FF850A] animate-ping" />
      <span>Next Batch: Monday 10:00 AM • Limited Seats Left!</span>
     </div>
-    <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3.5 py-1 text-xs font-medium text-white/90 backdrop-blur-md">
-     <span className="text-amber-400 font-bold">★ 4.8/5</span> Google Verified (83 Reviews)
+    <div className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3.5 py-1 text-xs font-medium text-white backdrop-blur-md">
+     <span className="text-accent font-bold">★ 4.8/5</span> Google Verified (83 Reviews)
     </div>
    </div>
   </div>
@@ -383,7 +383,7 @@ export function Placements(){return <><Seo title="Placements" desc="Career prepa
 <section className="section"><div className="container-x"><SectionHeading eyebrow="Career Journey" title="Possible Career Paths" sub="Your journey, step by step. Outcomes depend on your effort and opportunities; employment is not guaranteed."/><ol className="grid gap-4 md:grid-cols-5">{pathSteps.map((s,i)=><li key={s} className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-card"><span className="mx-auto mb-2 grid h-9 w-9 place-items-center rounded-full bg-navy font-bold text-white">{i+1}</span><span className="font-semibold text-navy">{s}</span></li>)}</ol></div></section><CTA/></>}
 
 export function Faculty(){const [md,...rest]=faculty;return <><Seo title="Faculty" desc="Meet the leadership and trainers of Navya Techno."/><PageHeader title="Faculty & Trainers" sub="The people behind your learning."/>
-<section className="section"><div className="container-x"><div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#082256] to-[#0B4FA8] p-8 text-white sm:p-12"><span aria-hidden="true" className="absolute -bottom-8 right-24 h-40 w-3 rotate-[30deg] bg-accent"/><div className="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]"><div><Eyebrow>LEADERSHIP</Eyebrow><h2 className="!text-white text-3xl sm:text-4xl">Leadership That Inspires Learning</h2><p className="mt-5 text-lg text-blue-100">{leadership.paragraph}</p><p className="mt-2 text-sm text-sky-200">{leadership.note}</p><div className="mt-6 border-l-4 border-accent pl-4"><p className="text-xl font-bold">{md.name}</p><p className="text-sky-200">{md.role}</p></div></div><Photo src={md.photo} label="[Managing Director photo]" ratio="aspect-[4/5]" className="mx-auto w-full max-w-sm"/></div></div></div></section>
+<section className="section"><div className="container-x"><div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#082256] to-[#0B4FA8] p-8 text-white sm:p-12"><span aria-hidden="true" className="absolute -bottom-8 right-24 h-40 w-3 rotate-[30deg] bg-accent"/><div className="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]"><div><Eyebrow>LEADERSHIP</Eyebrow><h2 className="!text-white text-3xl sm:text-4xl">Leadership That Inspires Learning</h2><p className="mt-5 text-lg text-blue-100">{leadership.paragraph}</p><p className="mt-2 text-sm text-blue-100">{leadership.note}</p><div className="mt-6 border-l-4 border-accent pl-4"><p className="text-xl font-bold">{md.name}</p><p className="text-blue-100">{md.role}</p></div></div><Photo src={md.photo} label="[Managing Director photo]" ratio="aspect-[4/5]" className="mx-auto w-full max-w-sm"/></div></div></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="OUR TRAINERS" title="Meet Our Trainers" sub="Dedicated trainers committed to your growth."/><Grid cols="lg:grid-cols-3">{rest.map((f,i)=><Reveal key={i}><FacultyCard f={f}/></Reveal>)}</Grid></div></section><CTA/></>}
 
 export function Certificates(){const cc=courses.filter(c=>c.certificate);return <><Seo title="Certificates" desc="Course completion certificates from Navya Techno."/><PageHeader title="Certificates" sub="Learn. Complete. Get Certified."/>

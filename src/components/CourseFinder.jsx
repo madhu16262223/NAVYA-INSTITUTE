@@ -286,7 +286,7 @@ export function CourseFinder() {
                   Not sure which course is<br />
                   <span className="text-[#0B5ED7]">right for you?</span>
                 </h2>
-                <p className="mt-2 text-xs sm:text-sm text-[#64748B] leading-relaxed max-w-2xl">
+                <p className="mt-2 text-xs sm:text-sm text-slate-500 leading-relaxed max-w-2xl">
                   Answer a few simple questions and we'll suggest the best course based on your interests, goals and background.
                 </p>
               </div>
@@ -296,7 +296,7 @@ export function CourseFinder() {
                 <div className="mt-6 pt-5 border-t border-slate-100">
                   <div className="flex items-center justify-between text-xs font-bold">
                     <span className="text-navy">Question {currentStep + 1} of 3</span>
-                    <span className="text-[#64748B]">{progressPercent}% Complete</span>
+                    <span className="text-slate-500">{progressPercent}% Complete</span>
                   </div>
                   <div className="mt-2 h-2 w-full rounded-full bg-[#EAEFF6] overflow-hidden" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100}>
                     <div
@@ -317,7 +317,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">Who are you?</h3>
-                      <p className="text-xs text-[#64748B]">Select your current background to get tailored recommendations.</p>
+                      <p className="text-xs text-slate-500">Select your current background to get tailored recommendations.</p>
                     </div>
                   </div>
 
@@ -420,7 +420,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">What would you like to achieve?</h3>
-                      <p className="text-xs text-[#64748B]">Choose the learning focus that best matches your target goal.</p>
+                      <p className="text-xs text-slate-500">Choose the learning focus that best matches your target goal.</p>
                     </div>
                   </div>
 
@@ -444,7 +444,7 @@ export function CourseFinder() {
                             </span>
                           )}
                           <h4 className="text-sm font-bold text-navy pr-6">{g.title}</h4>
-                          <p className="mt-1.5 text-xs text-[#64748B] leading-relaxed">{g.desc}</p>
+                          <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{g.desc}</p>
                         </button>
                       );
                     })}
@@ -480,7 +480,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">What is your current skill level?</h3>
-                      <p className="text-xs text-[#64748B]">This helps us recommend the right batch pace and practical support.</p>
+                      <p className="text-xs text-slate-500">This helps us recommend the right batch pace and practical support.</p>
                     </div>
                   </div>
 
@@ -508,7 +508,7 @@ export function CourseFinder() {
                               {lvl.tag}
                             </span>
                             <h4 className="mt-2 text-sm font-bold text-navy">{lvl.title}</h4>
-                            <p className="mt-1 text-xs text-[#64748B] leading-relaxed">{lvl.desc}</p>
+                            <p className="mt-1 text-xs text-slate-500 leading-relaxed">{lvl.desc}</p>
                           </div>
                         </button>
                       );
@@ -584,7 +584,7 @@ export function CourseFinder() {
                           <Calendar size={13} className="text-[#0B5ED7]" /> {matchedCourse.duration}
                         </span>
                         <span className="flex items-center gap-1.5 font-semibold text-navy">
-                          <CheckCircle2 size={13} className="text-[#31C48D]" /> Hands-on Practical Lab
+                          <CheckCircle2 size={13} className="text-emerald-600" /> Hands-on Practical Lab
                         </span>
                         <span className="flex items-center gap-1.5 font-semibold text-navy">
                           <Award size={13} className="text-[#FF850A]" /> Course Certificate
@@ -620,7 +620,7 @@ export function CourseFinder() {
 
                   {/* Secondary Recommendations */}
                   <div className="mt-6 pt-5 border-t border-slate-100">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
                       Also Relevant to Your Goals:
                     </p>
                     <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
