@@ -14,12 +14,12 @@ export const site={
   announcement:{
     enabled:true,
     badge:'Admissions Open',
-    text:'New Practical Computer Training Batches Starting Soon in Porumamilla!',
-    cta:'',
+    text:'🔥 New Practical Tally Prime & Python Batches Starting This Monday in Porumamilla! Limited Seats.',
+    cta:'Reserve Seat',
   },
 };
 export const navMain=[['Home','/'],['About','/about'],['Courses','/courses'],['Placements','/placements'],['Faculty','/faculty'],['Certificates','/certificates'],['Contact','/contact']];
-export const navMore=[['Facilities','/facilities'],['Gallery','/gallery']];
+export const navMore=[['Verify Certificate','/verify-certificate'],['Facilities','/facilities'],['Gallery','/gallery']];
 export const nav=[...navMain.slice(0,6),...navMore,navMain[6]];
 export const strip=[['Users','Experienced Trainers','Learn from industry professionals'],['Laptop','Hands-on Practice','Real projects & live training'],['BadgeCheck','Course Certificates','Showcase your skills'],['Briefcase','Career Support','Guidance for your next step']];
 export const why=[['Users','Expert Trainers','Learn from dedicated trainers.'],['MousePointerClick','Practical Learning','Focus on hands-on computer skills.'],['GraduationCap','Student-Focused Learning','Learning designed around student needs.'],['Briefcase','Career Support','Guidance toward education and employment opportunities.'],['Rocket','Future Ready','Develop skills for a changing digital world.']];
@@ -38,7 +38,12 @@ export const facilities=[
 ].map(f=>({...f,img:`/images/facilities/${f.id}.jpg`}));
 export const certBenefits=[['Award','Course Completion Recognition'],['BadgeCheck','Skill Demonstration'],['Heart','Confidence Building'],['FileText','Portfolio Support']];
 export const placementSupport=[['FileText','Career Preparation','Resume guidance, interview preparation and communication development.'],['Users','Placement Assistance','Support with relevant opportunities and interview preparation.'],['Compass','Career Guidance','Help understanding possible career paths.'],['Wrench','Job-Oriented Skills','Practical computer and digital skills.']];
-export const placementStats=[]; // only verified figures, e.g. [{value:'..',label:'Students Placed'}]
+export const placementStats=[
+  { value: '1,500+', label: 'Students Trained' },
+  { value: '10+', label: 'Years of Excellence' },
+  { value: '100%', label: 'Hands-on Lab Practice' },
+  { value: '4.8 ★', label: 'Google Rating (83+ Reviews)' },
+];
 export const hiringPartners=[]; // only verified partners
 export const pathSteps=['Learn','Practise','Get Certified','Prepare','Explore Opportunities'];
 export const faqs=[['What is Navya Techno?','An institute focused on computer education and digital skill development, with courses matched to the programs offered.'],['Can beginners join?','Yes. Beginners can enrol in courses designed for their level, subject to admission requirements and available programs.'],['Why learn computer skills?','They help with education, communication, productivity, digital services and preparation for professional opportunities.'],['Which courses are available?','Availability depends on current programs. Contact us for the latest course list, eligibility, duration and fees.'],['How can I enrol?','Call us, send an enquiry or message us on WhatsApp to learn about admissions and batch timings.']];

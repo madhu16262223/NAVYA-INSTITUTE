@@ -88,7 +88,12 @@ export function Navbar() {
                 {t('more')} <ChevronDown size={16} className={`transition-transform duration-200 ${m ? 'rotate-180' : ''}`} />
               </button>
               {m && (
-                <ul className="absolute right-0 top-full mt-3 w-44 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                <ul className="absolute right-0 top-full mt-3 w-52 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+                  <li>
+                    <NavLink to="/verify-certificate" className="block rounded-lg px-3 py-2 text-sm font-semibold text-navy hover:bg-mist">
+                      📜 Verify Certificate
+                    </NavLink>
+                  </li>
                   <li>
                     <NavLink to="/facilities" className="block rounded-lg px-3 py-2 text-sm font-semibold text-navy hover:bg-mist">
                       {t('facilities')}
@@ -106,8 +111,17 @@ export function Navbar() {
             <NavLink to="/contact" className={lk}>{t('contact')}</NavLink>
           </nav>
 
-          {/* Right Header Actions: Language Toggle & CTA */}
+          {/* Right Header Actions: Call Pill, Language Toggle & CTA */}
           <div className="hidden items-center gap-3 xl:flex">
+            {/* Quick Call Button */}
+            <a
+              href="tel:+919849638258"
+              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1.5 text-xs font-bold text-[#0B5ED7] transition hover:bg-[#0B5ED7] hover:text-white"
+            >
+              <Phone size={13} className="text-[#FF850A]" />
+              <span>Call: 98496 38258</span>
+            </a>
+
             {/* Language Switcher */}
             <button
               onClick={toggleLang}
@@ -165,6 +179,7 @@ export function Navbar() {
               ['Placements', '/placements'],
               ['Faculty', '/faculty'],
               ['Certificates', '/certificates'],
+              ['Verify Certificate', '/verify-certificate'],
               ['Facilities', '/facilities'],
               ['Gallery', '/gallery'],
               ['Contact', '/contact'],

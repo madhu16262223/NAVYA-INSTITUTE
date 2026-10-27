@@ -599,18 +599,28 @@ export function CourseFinder() {
                       </div>
                     </div>
 
-                    <div className="flex sm:flex-col gap-3 w-full sm:w-auto shrink-0">
+                    <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 w-full sm:w-auto shrink-0">
+                      <a
+                        href={`https://wa.me/919849638258?text=${encodeURIComponent(
+                          `Hi Navya Techno! I completed the online Course Finder quiz.\nMy Profile: ${backgrounds.find(b => b.id === selectedBackground)?.title || 'Learner'}\nRecommended Course: ${matchedCourse.title}\n\nPlease share upcoming batch timings, fees, and admission details!`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-center inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-emerald-700 transition"
+                      >
+                        <MessageSquare size={16} /> Send Match to WhatsApp
+                      </a>
                       <Link
                         to={`/courses/${matchedCourse.id}`}
-                        className="flex-1 sm:flex-none text-center rounded-full bg-[#0968DE] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#085bc3] transition"
+                        className="text-center rounded-full bg-[#0968DE] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#085bc3] transition"
                       >
-                        View Course Details →
+                        View Syllabus Details →
                       </Link>
                       <Link
                         to="/contact"
-                        className="flex-1 sm:flex-none text-center rounded-full border border-slate-200 bg-white px-6 py-3 text-xs sm:text-sm font-bold text-[#092B55] hover:bg-slate-50 transition"
+                        className="text-center rounded-full border border-slate-200 bg-white px-6 py-2 text-xs font-bold text-[#092B55] hover:bg-slate-50 transition"
                       >
-                        Enquire for Batch
+                        Enquire at Institute
                       </Link>
                     </div>
                   </div>

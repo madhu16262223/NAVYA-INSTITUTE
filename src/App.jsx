@@ -15,6 +15,7 @@ const Certificates = lazy(() => import('./pages/pages').then((m) => ({ default: 
 const Facilities = lazy(() => import('./pages/pages').then((m) => ({ default: m.Facilities })));
 const Gallery = lazy(() => import('./pages/pages').then((m) => ({ default: m.Gallery })));
 const Contact = lazy(() => import('./pages/pages').then((m) => ({ default: m.Contact })));
+const VerifyCertificate = lazy(() => import('./pages/VerifyCertificate').then((m) => ({ default: m.VerifyCertificate })));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then((m) => ({ default: m.PrivacyPolicy })));
 const NotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
 
@@ -43,6 +44,7 @@ export default function App() {
               <Route path="placements" element={<Placements />} />
               <Route path="faculty" element={<Faculty />} />
               <Route path="certificates" element={<Certificates />} />
+              <Route path="verify-certificate" element={<VerifyCertificate />} />
               <Route path="facilities" element={<Facilities />} />
               <Route path="gallery" element={<Gallery />} />
               <Route path="contact" element={<Contact />} />
