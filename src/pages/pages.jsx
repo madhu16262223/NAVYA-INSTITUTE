@@ -104,7 +104,7 @@ export function Home(){
    type="button"
    onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
    aria-label="Previous slide"
-   className="grid h-7 w-7 place-items-center rounded-full bg-black/40 hover:bg-[#FF850A] text-white backdrop-blur-md border border-white/20 transition-colors"
+   className="btn-icon !h-8 !w-8 bg-black/40 hover:bg-accent text-white backdrop-blur-md border border-white/20"
   >
    <ChevronLeft size={14} />
   </button>
@@ -112,7 +112,7 @@ export function Home(){
    type="button"
    onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
    aria-label="Next slide"
-   className="grid h-7 w-7 place-items-center rounded-full bg-black/40 hover:bg-[#FF850A] text-white backdrop-blur-md border border-white/20 transition-colors"
+   className="btn-icon !h-8 !w-8 bg-black/40 hover:bg-accent text-white backdrop-blur-md border border-white/20"
   >
    <ChevronRight size={14} />
   </button>
@@ -154,7 +154,7 @@ export function Home(){
      className="btn-ghost"
     >
      <span className="grid h-6 w-6 place-items-center rounded-full bg-white text-navy">
-      <Play size={11} className="fill-[#0B2A5B] translate-x-0.5" aria-hidden="true" />
+      <Play size={11} className="fill-[#0A2540] translate-x-0.5" aria-hidden="true" />
      </span>
      Watch Our Intro
     </button>
@@ -339,7 +339,7 @@ export function Home(){
       <Link to="/courses" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B5ED7] hover:underline">
        Explore All Offerings <ArrowRight size={13}/>
       </Link>
-      <Link to="/contact" aria-label="Start enquiry" className="grid h-8 w-8 place-items-center rounded-full bg-[#FF850A] text-white shadow-sm hover:scale-105 transition-transform">
+      <Link to="/contact" aria-label="Start enquiry" className="btn-icon !h-8 !w-8 bg-accent text-white shadow-sm hover:scale-105">
        <ArrowRight size={14} strokeWidth={2.5}/>
       </Link>
      </div>
@@ -355,7 +355,7 @@ export function Home(){
 <section className="section bg-mist"><div className="container-x grid items-center gap-10 lg:grid-cols-2"><Reveal><CertificateImage/></Reveal><div><Eyebrow>Certificates</Eyebrow><h2 className="text-3xl sm:text-4xl">Learn. Complete. Get Certified.</h2><p className="mt-3 text-lg text-slate-600">Receive official course completion certificates upon successful completion of your training modules and practical tests.</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{certBenefits.map(([i,t])=><li key={t} className="flex items-center gap-3 font-semibold text-navy"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-accent shadow-sm"><Icon name={i} size={20}/></span>{t}</li>)}</ul><div className="mt-8 flex flex-wrap items-center gap-3"><LinkBtn to="/certificates">View Certificate Details</LinkBtn><Link to="/verify-certificate" className="btn-outline text-xs !py-2.5 !px-5">📜 Verify Certificate Online →</Link></div></div></div></section>
 <section className="section bg-white"><div className="container-x grid items-stretch gap-8 lg:grid-cols-2"><Reveal className="flex flex-col justify-center rounded-3xl border border-slate-200 bg-[#F4F9FE] p-8 shadow-card sm:p-10">
  <Eyebrow>Find Us</Eyebrow><h2 className="text-3xl font-extrabold text-navy">Visit Navya Techno in Porumamilla</h2><div className="mt-4"><RatingLine/></div>
- <address className="mt-5 space-y-2.5 not-italic text-slate-700"><p className="font-bold text-navy text-base">{site.fullName}</p><p lang="te" className="text-sm text-slate-500">{site.telugu}</p><p className="flex gap-2 text-sm pt-1"><MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/>{site.address}</p><p className="flex gap-2 text-sm"><Phone size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/><a href={links.call} className="font-bold text-[#0B5ED7] hover:underline">{site.phone}</a></p></address>
+ <address className="mt-5 space-y-2.5 not-italic text-slate-600"><p className="font-bold text-navy text-base">{site.fullName}</p><p lang="te" className="text-sm text-slate-500">{site.telugu}</p><p className="flex gap-2 text-sm pt-1"><MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/>{site.address}</p><p className="flex gap-2 text-sm"><Phone size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/><a href={links.call} className="font-bold text-[#0B5ED7] hover:underline">{site.phone}</a></p></address>
  <div className="mt-6 flex flex-col gap-3 sm:flex-row"><a href={links.directions} target="_blank" rel="noopener noreferrer" className="btn-primary"><Navigation size={18} aria-hidden="true"/>Get Directions</a><a href={links.call} className="btn-outline"><Phone size={18} aria-hidden="true"/>Call Now</a></div></Reveal>
  <MapEmbed h="h-80 lg:h-full lg:min-h-[380px]"/></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="Reviews" title="What Our Learners Say" sub="Verified Google Rating 4.8 / 5 based on 83 student reviews."/><Reviews/></div></section>
@@ -372,7 +372,7 @@ export function About(){return <><Seo title="About" desc="About Navya Techno: ou
 <section className="section bg-mist"><div className="container-x max-w-3xl"><SectionHeading eyebrow="FAQ" title="Frequently Asked Questions"/>{faqs.map(([q,a])=><details key={q} className="mb-3 rounded-2xl border border-slate-200 bg-white p-5 shadow-card"><summary className="cursor-pointer font-semibold text-navy">{q}</summary><p className="mt-3 text-slate-600">{a}</p></details>)}</div></section><CTA/></>}
 
 export function Courses(){const [cat,setCat]=useState('All');const list=courses.filter(c=>cat==='All'||c.cat===cat);return <><Seo title="Courses" desc="Computer courses at Navya Techno, Porumamilla: basic computer, MS Office, Tally, typing, hardware and more."/><PageHeader title="Our Courses" sub="Discover the skills that move you forward. Contact us for the latest list, eligibility, duration and fees."/>
-<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter courses">{courseCats.map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${cat===c?'bg-[#0B5ED7] text-white shadow-md':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div><Grid cols="lg:grid-cols-3 xl:grid-cols-4">{list.map(c=><Reveal key={c.id}><CourseCard c={c}/></Reveal>)}</Grid></div></section>
+<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter courses">{courseCats.map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`btn-pill ${cat===c?'bg-[#0B5ED7] text-white shadow-md':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div><Grid cols="lg:grid-cols-3 xl:grid-cols-4">{list.map(c=><Reveal key={c.id}><CourseCard c={c}/></Reveal>)}</Grid></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="Who Can Join" title="Computer Education for Every Ambitious Learner"/><ul className="flex flex-wrap justify-center gap-3">{audience.map(a=><li key={a} className="rounded-full border border-slate-200 bg-white px-5 py-3 font-semibold text-navy shadow-card">{a}</li>)}</ul></div></section><CTA/></>}
 
 export function Placements(){return <><Seo title="Placements" desc="Career preparation and placement support at Navya Techno."/><PageHeader title="Placements & Career Support" sub="Build Skills. Prepare for Your Career."/>
@@ -403,7 +403,7 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
 export function Gallery(){const [cat,setCat]=useState('All');const [open,setOpen]=useState(null);const opener=useRef(null);const list=gallery.filter(g=>cat==='All'||g.cat===cat);
  const close=()=>{setOpen(null);opener.current?.focus()};const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
  return <><Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training and events."/><PageHeader title="Our Gallery" sub="Moments That Inspire"/>
-<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter gallery">{['All',...galleryCats].map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${cat===c?'bg-navy text-white':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div>
+<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter gallery">{['All',...galleryCats].map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`btn-pill ${cat===c?'bg-navy text-white':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div>
 {list.length?<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{list.map((g,i)=><li key={g.src}><button onClick={e=>{opener.current=e.currentTarget;setOpen(i)}} aria-label={`Open image: ${g.alt}`} className="block w-full overflow-hidden rounded-2xl transition-transform hover:scale-[1.02]"><Photo src={g.src} label={g.alt} ratio="aspect-square"/></button></li>)}</ul>:<Empty>No photos in this category yet.</Empty>}</div></section>
 {open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}</>}
 

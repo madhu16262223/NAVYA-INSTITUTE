@@ -184,7 +184,7 @@ export function PrivacyManager() {
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="grid h-8 w-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+                className="grid h-8 w-8 place-items-center rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600"
                 aria-label="Close privacy preferences modal"
               >
                 <X size={18} />
@@ -263,15 +263,15 @@ export function PrivacyManager() {
               {/* Data Rights & Erasure */}
               <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-3.5 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <Trash2 size={16} className="text-amber-700 shrink-0" />
-                  <span className="text-xs font-medium text-amber-900">
+                  <Trash2 size={16} className="text-accent shrink-0" />
+                  <span className="text-xs font-medium text-navy">
                     Exercise Right to Erasure / Clear Local Cache
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={handleResetData}
-                  className="rounded-lg border border-amber-300 bg-white px-3 py-1 text-xs font-bold text-amber-800 hover:bg-amber-100 transition"
+                  className="rounded-lg border border-amber-300 bg-white px-3 py-1 text-xs font-bold text-accent hover:bg-amber-100 transition"
                 >
                   Reset Cache
                 </button>

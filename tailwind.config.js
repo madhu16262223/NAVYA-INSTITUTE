@@ -4,8 +4,8 @@ export default {
     extend: {
       colors: {
         navy: { DEFAULT: '#0B2A5B', 900: '#071B3D' },
-        brand: { DEFAULT: '#1677D2', 600: '#0F5FB0' },
-        accent: { DEFAULT: '#F58220', 600: '#D96C0E' },
+        brand: { DEFAULT: '#0B5ED7', 600: '#0A4FB4' },
+        accent: { DEFAULT: '#FF850A', 600: '#E67300' },
         mist: '#F3F8FE',
       },
       fontFamily: {

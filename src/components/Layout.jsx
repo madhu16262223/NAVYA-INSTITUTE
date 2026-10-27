@@ -286,7 +286,7 @@ export function Footer() {
                 className="h-14 w-auto"
               />
             </Link>
-            <p className="text-xs font-semibold text-sky-200">
+            <p className="text-xs font-semibold text-blue-100">
               {site.telugu}
             </p>
             <p className="text-sm text-blue-100/90 leading-relaxed">
@@ -301,7 +301,7 @@ export function Footer() {
                     <span className="text-lg font-black text-white">{site.rating.score}</span>
                     <span>★★★★★</span>
                   </div>
-                  <p className="text-xs text-blue-200 mt-0.5">
+                  <p className="text-xs text-blue-100 mt-0.5">
                     Based on <strong>{site.rating.count} Google Reviews</strong>
                   </p>
                 </div>
@@ -309,7 +309,7 @@ export function Footer() {
                   href={links.maps}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg bg-white/10 px-2.5 py-1 text-xs font-bold text-sky-300 hover:bg-white/20 transition"
+                  className="rounded-lg bg-white/10 px-2.5 py-1 text-xs font-bold text-blue-100 hover:bg-white/20 transition"
                 >
                   Verified
                 </a>
@@ -317,7 +317,7 @@ export function Footer() {
             </div>
 
             {/* Quote */}
-            <p className="border-l-2 border-accent pl-3 text-xs italic text-blue-200/80">
+            <p className="border-l-2 border-accent pl-3 text-xs italic text-blue-100">
               “{t('footerQuote')}”
             </p>
           </div>
@@ -333,7 +333,7 @@ export function Footer() {
                 <li key={c.id}>
                   <Link
                     to={`/courses/${c.id}`}
-                    className="group flex items-center gap-2 transition hover:text-sky-300"
+                    className="group flex items-center gap-2 transition hover:text-blue-100"
                   >
                     <span className="text-accent text-xs transition-transform group-hover:translate-x-1">▸</span>
                     <span>{c.title}</span>
@@ -374,7 +374,7 @@ export function Footer() {
                     to={href}
                     className="group flex items-center gap-2 transition hover:text-white"
                   >
-                    <span className="text-slate-400 text-xs transition-transform group-hover:translate-x-1">→</span>
+                    <span className="text-slate-500 text-xs transition-transform group-hover:translate-x-1">→</span>
                     <span>{label}</span>
                   </Link>
                 </li>
@@ -390,7 +390,7 @@ export function Footer() {
             </h4>
 
             {/* Landmark Tag */}
-            <div className="inline-flex items-center gap-2 rounded-xl bg-sky-500/15 border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-sky-200">
+            <div className="inline-flex items-center gap-2 rounded-xl bg-sky-500/15 border border-sky-400/30 px-3 py-1.5 text-xs font-bold text-blue-100">
               <MapPin size={14} className="text-accent shrink-0" />
               <span>Near APSRTC Bus Stand</span>
             </div>
@@ -402,7 +402,7 @@ export function Footer() {
               </p>
               <p className="flex items-center gap-2.5">
                 <Phone size={16} className="shrink-0 text-accent" />
-                <a href={links.call} className="font-semibold text-white hover:text-sky-300 transition">
+                <a href={links.call} className="font-semibold text-white hover:text-blue-100 transition">
                   {site.phone}
                 </a>
               </p>
@@ -413,13 +413,13 @@ export function Footer() {
                 href={links.directions}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-white/10 border border-white/20 px-4 py-2 text-xs font-bold text-white hover:bg-white/20 transition"
+                className="btn-outline text-xs !py-2 !px-4 !text-white !border-white/30 hover:!bg-white/20"
               >
                 <MapPin size={14} /> Get Directions
               </a>
               <a
                 href={links.call}
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-[#0B5ED7] px-4 py-2 text-xs font-bold text-white hover:bg-[#0A4FB4] transition shadow-md"
+                className="btn-brand text-xs !py-2 !px-4"
               >
                 <Phone size={14} /> Call Now
               </a>
@@ -430,7 +430,7 @@ export function Footer() {
 
       {/* 3. Bottom Bar */}
       <div className="border-t border-white/10 bg-black/20 py-5">
-        <div className="container-x flex flex-col items-center justify-between gap-3 text-xs text-blue-200/80 sm:flex-row text-center sm:text-left">
+        <div className="container-x flex flex-col items-center justify-between gap-3 text-xs text-blue-100 sm:flex-row text-center sm:text-left">
           <p>
             © 2026 {site.fullName}. {t('allRightsReserved')}
           </p>

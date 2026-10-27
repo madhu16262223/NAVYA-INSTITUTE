@@ -31,7 +31,7 @@ export function AnnouncementBar() {
             <Sparkles size={12} aria-hidden="true" />
             {site.announcement.badge || 'Notice'}
           </span>
-          <span className="font-medium text-blue-50">
+          <span className="font-medium text-blue-100">
             {site.announcement.text}
           </span>
           {site.announcement.cta && (
@@ -111,7 +111,7 @@ export function ScrollToTop() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className="fixed bottom-24 right-5 z-40 grid h-11 w-11 place-items-center rounded-full bg-white text-navy shadow-lg ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:bg-navy hover:text-white focus:outline-none focus:ring-2 focus:ring-accent"
+      className="btn-icon fixed bottom-24 right-5 z-40 bg-white text-navy shadow-lg ring-1 ring-slate-200 hover:bg-navy hover:text-white"
     >
       <ArrowUp size={20} aria-hidden="true" />
     </button>
