@@ -35,9 +35,9 @@ const backgrounds = [
     title: 'Beginner / Fresh Learner',
     desc: 'No prior computer experience needed',
     icon: GraduationCap,
-    accent: '#0968DE',
+    accent: '#0B5ED7',
     iconBg: '#EAF4FF',
-    iconColor: '#0968DE',
+    iconColor: '#0B5ED7',
   },
   {
     id: 'student',
@@ -286,7 +286,7 @@ export function CourseFinder() {
                   Not sure which course is<br />
                   <span className="text-[#0B5ED7]">right for you?</span>
                 </h2>
-                <p className="mt-2 text-xs sm:text-sm text-[#7186A3] leading-relaxed max-w-2xl">
+                <p className="mt-2 text-xs sm:text-sm text-[#64748B] leading-relaxed max-w-2xl">
                   Answer a few simple questions and we'll suggest the best course based on your interests, goals and background.
                 </p>
               </div>
@@ -296,7 +296,7 @@ export function CourseFinder() {
                 <div className="mt-6 pt-5 border-t border-slate-100">
                   <div className="flex items-center justify-between text-xs font-bold">
                     <span className="text-navy">Question {currentStep + 1} of 3</span>
-                    <span className="text-[#7186A3]">{progressPercent}% Complete</span>
+                    <span className="text-[#64748B]">{progressPercent}% Complete</span>
                   </div>
                   <div className="mt-2 h-2 w-full rounded-full bg-[#EAEFF6] overflow-hidden" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100}>
                     <div
@@ -317,7 +317,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">Who are you?</h3>
-                      <p className="text-xs text-[#7186A3]">Select your current background to get tailored recommendations.</p>
+                      <p className="text-xs text-[#64748B]">Select your current background to get tailored recommendations.</p>
                     </div>
                   </div>
 
@@ -329,11 +329,7 @@ export function CourseFinder() {
                         const isSelected = selectedBg === item.id;
                         const IconComponent = item.icon;
                         return (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => setSelectedBg(item.id)}
-                            className={`group relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
+                          <div role="radio" tabIndex={0} key={item.id} onClick={() => setSelectedBg(item.id)} onKeyDown={(e) => (e.key === " " || e.key === "Enter") && setSelectedBg(item.id)} aria-checked={isSelected} className={`group relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
                               isSelected
                                 ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
                                 : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
@@ -358,7 +354,7 @@ export function CourseFinder() {
                                 <p className="mt-1 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                               </div>
                             </div>
-                          </button>
+                          </div>
                         );
                       })}
                     </div>
@@ -371,10 +367,7 @@ export function CourseFinder() {
                           const isSelected = selectedBg === item.id;
                           const IconComponent = item.icon;
                           return (
-                            <button
-                              type="button"
-                              onClick={() => setSelectedBg(item.id)}
-                              className={`group relative w-full flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
+                            <div role="radio" tabIndex={0} onClick={() => setSelectedBg(item.id)} onKeyDown={(e) => (e.key === " " || e.key === "Enter") && setSelectedBg(item.id)} aria-checked={isSelected} className={`group relative w-full flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
                                 isSelected
                                 ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
                                 : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
@@ -397,7 +390,7 @@ export function CourseFinder() {
                                   <p className="mt-1 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                                 </div>
                               </div>
-                            </button>
+                            </div>
                           );
                         })()}
                       </div>
@@ -427,7 +420,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">What would you like to achieve?</h3>
-                      <p className="text-xs text-[#7186A3]">Choose the learning focus that best matches your target goal.</p>
+                      <p className="text-xs text-[#64748B]">Choose the learning focus that best matches your target goal.</p>
                     </div>
                   </div>
 
@@ -451,7 +444,7 @@ export function CourseFinder() {
                             </span>
                           )}
                           <h4 className="text-sm font-bold text-navy pr-6">{g.title}</h4>
-                          <p className="mt-1.5 text-xs text-[#7186A3] leading-relaxed">{g.desc}</p>
+                          <p className="mt-1.5 text-xs text-[#64748B] leading-relaxed">{g.desc}</p>
                         </button>
                       );
                     })}
@@ -470,7 +463,7 @@ export function CourseFinder() {
                       type="button"
                       onClick={handleNext}
                       disabled={!selectedGoal}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#0968DE] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-500/25 transition hover:bg-[#085bc3] hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#0B5ED7] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-500/25 transition hover:bg-[#085bc3] hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       Continue <ArrowRight size={15} />
                     </button>
@@ -487,7 +480,7 @@ export function CourseFinder() {
                     </div>
                     <div>
                       <h3 className="text-base sm:text-lg font-bold text-navy">What is your current skill level?</h3>
-                      <p className="text-xs text-[#7186A3]">This helps us recommend the right batch pace and practical support.</p>
+                      <p className="text-xs text-[#64748B]">This helps us recommend the right batch pace and practical support.</p>
                     </div>
                   </div>
 
@@ -515,7 +508,7 @@ export function CourseFinder() {
                               {lvl.tag}
                             </span>
                             <h4 className="mt-2 text-sm font-bold text-navy">{lvl.title}</h4>
-                            <p className="mt-1 text-xs text-[#7186A3] leading-relaxed">{lvl.desc}</p>
+                            <p className="mt-1 text-xs text-[#64748B] leading-relaxed">{lvl.desc}</p>
                           </div>
                         </button>
                       );
@@ -549,7 +542,7 @@ export function CourseFinder() {
                   {/* Results Header */}
                   <div className="rounded-2xl bg-gradient-to-br from-[#EAF4FF] to-white p-5 border border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#0968DE] text-white shadow-md">
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[#0B5ED7] text-white shadow-md">
                         <Award size={24} />
                       </span>
                       <div>
@@ -562,7 +555,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 hover:text-[#0B5ED7] hover:border-[#0968DE] transition"
+                      className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 hover:text-[#0B5ED7] hover:border-[#0B5ED7] transition"
                     >
                       <RotateCcw size={13} /> Retake Quiz
                     </button>
@@ -612,7 +605,7 @@ export function CourseFinder() {
                       </a>
                       <Link
                         to={`/courses/${matchedCourse.id}`}
-                        className="text-center rounded-full bg-[#0968DE] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#085bc3] transition"
+                        className="text-center rounded-full bg-[#0B5ED7] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-[#085bc3] transition"
                       >
                         View Syllabus Details →
                       </Link>
@@ -635,7 +628,7 @@ export function CourseFinder() {
                         <Link
                           key={c.id}
                           to={`/courses/${c.id}`}
-                          className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-[#F9FBFE] p-3.5 hover:border-[#0968DE]/50 hover:bg-white transition"
+                          className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-[#F9FBFE] p-3.5 hover:border-[#0B5ED7]/50 hover:bg-white transition"
                         >
                           <div className="min-w-0 pr-3">
                             <h5 className="text-xs font-bold text-navy">{c.title}</h5>

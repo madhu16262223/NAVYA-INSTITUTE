@@ -131,14 +131,14 @@ export function PrivacyManager() {
               <button
                 type="button"
                 onClick={handleAcceptAll}
-                className="flex-1 sm:flex-none rounded-full bg-[#0B5ED7] px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#0A4FB4]"
+                className="btn-brand text-xs !py-2 !px-5"
               >
                 Accept All
               </button>
               <button
                 type="button"
                 onClick={handleEssentialOnly}
-                className="flex-1 sm:flex-none rounded-full border border-slate-300 bg-white px-4 py-2.5 text-xs font-bold text-slate-700 transition hover:bg-slate-50"
+                className="btn-outline text-xs !py-2 !px-4"
               >
                 Essential Only
               </button>
@@ -291,14 +291,14 @@ export function PrivacyManager() {
                 <button
                   type="button"
                   onClick={handleEssentialOnly}
-                  className="flex-1 sm:flex-none rounded-full border border-slate-200 px-4 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 transition"
+                  className="btn-outline text-xs !py-2 !px-4"
                 >
                   Reject Optional
                 </button>
                 <button
                   type="button"
                   onClick={handleSaveCustom}
-                  className="flex-1 sm:flex-none rounded-full bg-[#0B5ED7] px-5 py-2 text-xs font-bold text-white shadow-sm hover:bg-[#0A4FB4] transition"
+                  className="btn-brand text-xs !py-2 !px-5"
                 >
                   Save Choices
                 </button>
