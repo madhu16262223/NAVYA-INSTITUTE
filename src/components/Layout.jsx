@@ -11,7 +11,7 @@ import { useDemoModal } from '../context/DemoModalContext';
 import { AnnouncementBar, ScrollToTop } from './Enhancements';
 
 const lk = ({ isActive }) =>
-  `border-b-2 py-1 text-[15px] font-semibold transition-colors ${
+  `border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold transition-colors whitespace-nowrap ${
     isActive ? 'border-[#0B5ED7] text-[#0B5ED7]' : 'border-transparent text-navy hover:text-[#0B5ED7]'
   }`;
 
@@ -54,20 +54,20 @@ export function Navbar() {
         <span aria-hidden="true" className="pointer-events-none absolute left-0 top-0 hidden h-full w-14 -skew-x-[30deg] bg-gradient-to-b from-sky-300/60 to-transparent sm:block" />
         <span aria-hidden="true" className="pointer-events-none absolute left-10 top-0 hidden h-full w-1.5 -skew-x-[30deg] bg-accent sm:block" />
         
-        <div className={`container-x flex items-center justify-between transition-[height] duration-300 ${s ? 'h-16' : 'h-[72px] xl:h-20'}`}>
+        <div className={`container-x flex items-center justify-between gap-4 transition-[height] duration-300 ${s ? 'h-16' : 'h-[72px] xl:h-20'}`}>
           {/* Logo */}
-          <Link to="/" aria-label="Navya Techno home" className="sm:ml-6">
+          <Link to="/" aria-label="Navya Techno home" className="shrink-0 mr-4 sm:mr-6 2xl:mr-8 sm:ml-2 2xl:ml-4">
             <img
               src={images.logo.horizontal}
               alt="Navya Techno – Institute of Computer Education Training Center"
               width="1100"
               height="353"
-              className={`w-auto transition-[height] duration-300 ${s ? 'h-11 sm:h-12' : 'h-12 sm:h-14 xl:h-[60px]'}`}
+              className={`w-auto transition-[height] duration-300 ${s ? 'h-10 sm:h-11' : 'h-11 sm:h-12 xl:h-[52px]'}`}
             />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav aria-label="Main" className="hidden items-center gap-6 xl:flex">
+          <nav aria-label="Main" className="hidden items-center gap-3.5 2xl:gap-5 xl:flex shrink-0">
             <NavLink to="/" end className={lk}>{t('home')}</NavLink>
             <NavLink to="/about" className={lk}>{t('about')}</NavLink>
             <NavLink to="/courses" className={lk}>{t('courses')}</NavLink>
@@ -81,7 +81,7 @@ export function Navbar() {
                 aria-expanded={m}
                 aria-haspopup="true"
                 onClick={() => setM(!m)}
-                className={`flex items-center gap-1 border-b-2 py-1 text-[15px] font-semibold ${
+                className={`flex items-center gap-1 border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold whitespace-nowrap ${
                   moreActive ? 'border-[#0B5ED7] text-[#0B5ED7]' : 'border-transparent text-navy hover:text-[#0B5ED7]'
                 }`}
               >
@@ -112,13 +112,13 @@ export function Navbar() {
           </nav>
 
           {/* Right Header Actions: Call Pill, Language Toggle & CTA */}
-          <div className="hidden items-center gap-3 xl:flex">
+          <div className="hidden items-center gap-2.5 2xl:gap-3 xl:flex shrink-0">
             {/* Quick Call Button */}
             <a
               href="tel:+919849638258"
-              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/80 px-3.5 py-1.5 text-xs font-bold text-[#0B5ED7] transition hover:bg-[#0B5ED7] hover:text-white"
+              className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50/80 px-3 2xl:px-3.5 py-1.5 text-xs font-bold text-[#0B5ED7] transition hover:bg-[#0B5ED7] hover:text-white"
             >
-              <Phone size={13} className="text-[#FF850A]" />
+              <Phone size={13} className="text-[#FF850A] shrink-0" />
               <span>Call: 98496 38258</span>
             </a>
 
@@ -127,18 +127,18 @@ export function Navbar() {
               onClick={toggleLang}
               title="Switch language between English and Telugu"
               aria-label="Switch language between English and Telugu"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-mist/80 px-3.5 py-1.5 text-xs font-bold text-navy transition hover:border-[#0B5ED7] hover:bg-white"
+              className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-mist/80 px-3 py-1.5 text-xs font-bold text-navy transition hover:border-[#0B5ED7] hover:bg-white"
             >
-              <Globe size={14} className="text-[#0B5ED7]" aria-hidden="true" />
+              <Globe size={14} className="text-[#0B5ED7] shrink-0" aria-hidden="true" />
               <span>{lang === 'en' ? 'తెలుగు' : 'English'}</span>
             </button>
 
             {/* Join Now */}
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-[#0B5ED7] px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0A4FB4]"
+              className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 rounded-full bg-[#0B5ED7] px-4 2xl:px-5 py-2 text-xs 2xl:text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0A4FB4]"
             >
-              {t('joinNow')} <ArrowRight size={16} />
+              {t('joinNow')} <ArrowRight size={15} className="shrink-0" />
             </Link>
           </div>
 
