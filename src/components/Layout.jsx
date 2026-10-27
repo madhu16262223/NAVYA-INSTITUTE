@@ -9,6 +9,7 @@ import { Icon, links, wa } from './ui';
 import { useLanguage } from '../context/LanguageContext';
 import { useDemoModal } from '../context/DemoModalContext';
 import { AnnouncementBar, ScrollToTop } from './Enhancements';
+import { PrivacyManager } from './PrivacyManager';
 
 const lk = ({ isActive }) =>
   `border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold transition-colors whitespace-nowrap ${
@@ -439,6 +440,14 @@ export function Footer() {
             <Link to="/privacy" className="hover:text-white underline">
               {t('privacyPolicy')}
             </Link>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={() => window.openPrivacyPreferences && window.openPrivacyPreferences()}
+              className="hover:text-white underline"
+            >
+              Cookie Settings
+            </button>
           </div>
         </div>
       </div>
@@ -530,6 +539,7 @@ export default function Layout() {
       >
         <MessageCircle aria-hidden="true" size={28} />
       </a>
+      <PrivacyManager />
       <MobileBar />
     </>
   );
