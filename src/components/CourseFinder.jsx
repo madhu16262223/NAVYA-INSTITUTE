@@ -282,9 +282,9 @@ export function CourseFinder() {
                   <span className="h-[2.5px] w-5 rounded-full bg-[#FF850A]" aria-hidden="true" />
                   COURSE FINDER
                 </p>
-                <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#092B55] leading-tight tracking-tight">
+                <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy leading-tight tracking-tight">
                   Not sure which course is<br />
-                  <span className="text-[#0968DE]">right for you?</span>
+                  <span className="text-[#0B5ED7]">right for you?</span>
                 </h2>
                 <p className="mt-2 text-xs sm:text-sm text-[#7186A3] leading-relaxed max-w-2xl">
                   Answer a few simple questions and we'll suggest the best course based on your interests, goals and background.
@@ -295,7 +295,7 @@ export function CourseFinder() {
               {currentStep < 3 && (
                 <div className="mt-6 pt-5 border-t border-slate-100">
                   <div className="flex items-center justify-between text-xs font-bold">
-                    <span className="text-[#092B55]">Question {currentStep + 1} of 3</span>
+                    <span className="text-navy">Question {currentStep + 1} of 3</span>
                     <span className="text-[#7186A3]">{progressPercent}% Complete</span>
                   </div>
                   <div className="mt-2 h-2 w-full rounded-full bg-[#EAEFF6] overflow-hidden" role="progressbar" aria-valuenow={progressPercent} aria-valuemin={0} aria-valuemax={100}>
@@ -312,11 +312,11 @@ export function CourseFinder() {
                 <div className="mt-6">
                   {/* Question Title Header with Person Icon */}
                   <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0968DE] shrink-0">
+                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0B5ED7] shrink-0">
                       <User size={22} strokeWidth={2.4} />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#092B55]">Who are you?</h3>
+                      <h3 className="text-base sm:text-lg font-bold text-navy">Who are you?</h3>
                       <p className="text-xs text-[#7186A3]">Select your current background to get tailored recommendations.</p>
                     </div>
                   </div>
@@ -336,7 +336,7 @@ export function CourseFinder() {
                             className={`group relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
                               isSelected
                                 ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
-                                : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0968DE]/40 hover:bg-white hover:shadow-sm'
+                                : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
                             }`}
                           >
                             {/* Selected Checkmark Badge */}
@@ -354,8 +354,8 @@ export function CourseFinder() {
                                 <IconComponent size={20} strokeWidth={2.2} />
                               </span>
                               <div className="min-w-0 pr-4">
-                                <h4 className="text-sm font-bold text-[#092B55] leading-snug">{item.title}</h4>
-                                <p className="mt-1 text-[11.5px] text-[#7186A3] leading-relaxed">{item.desc}</p>
+                                <h4 className="text-sm font-bold text-navy leading-snug">{item.title}</h4>
+                                <p className="mt-1 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                               </div>
                             </div>
                           </button>
@@ -377,7 +377,7 @@ export function CourseFinder() {
                               className={`group relative w-full flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
                                 isSelected
                                 ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
-                                : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0968DE]/40 hover:bg-white hover:shadow-sm'
+                                : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
                               }`}
                             >
                               {isSelected && (
@@ -393,8 +393,8 @@ export function CourseFinder() {
                                   <IconComponent size={20} strokeWidth={2.2} />
                                 </span>
                                 <div className="min-w-0 pr-4">
-                                  <h4 className="text-sm font-bold text-[#092B55] leading-snug">{item.title}</h4>
-                                  <p className="mt-1 text-[11.5px] text-[#7186A3] leading-relaxed">{item.desc}</p>
+                                  <h4 className="text-sm font-bold text-navy leading-snug">{item.title}</h4>
+                                  <p className="mt-1 text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                                 </div>
                               </div>
                             </button>
@@ -408,7 +408,7 @@ export function CourseFinder() {
                           type="button"
                           onClick={handleNext}
                           disabled={!selectedBg}
-                          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0968DE] px-7 py-4 text-xs sm:text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-[#085bc3] hover:shadow-xl hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:bg-[#0968DE]"
+                          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-full btn-brand"
                         >
                           Get Personalized Recommendation <ArrowRight size={16} />
                         </button>
@@ -422,11 +422,11 @@ export function CourseFinder() {
               {currentStep === 1 && (
                 <div className="mt-6">
                   <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0968DE] shrink-0">
+                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0B5ED7] shrink-0">
                       <Target size={22} strokeWidth={2.4} />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#092B55]">What would you like to achieve?</h3>
+                      <h3 className="text-base sm:text-lg font-bold text-navy">What would you like to achieve?</h3>
                       <p className="text-xs text-[#7186A3]">Choose the learning focus that best matches your target goal.</p>
                     </div>
                   </div>
@@ -442,7 +442,7 @@ export function CourseFinder() {
                           className={`relative flex flex-col text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
                             isSelected
                               ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
-                              : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0968DE]/40 hover:bg-white hover:shadow-sm'
+                              : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
                           }`}
                         >
                           {isSelected && (
@@ -450,7 +450,7 @@ export function CourseFinder() {
                               <Check size={12} strokeWidth={3} />
                             </span>
                           )}
-                          <h4 className="text-sm font-bold text-[#092B55] pr-6">{g.title}</h4>
+                          <h4 className="text-sm font-bold text-navy pr-6">{g.title}</h4>
                           <p className="mt-1.5 text-xs text-[#7186A3] leading-relaxed">{g.desc}</p>
                         </button>
                       );
@@ -462,7 +462,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-[#092B55] hover:bg-slate-50 transition"
+                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-50 transition"
                     >
                       <ArrowLeft size={14} /> Back
                     </button>
@@ -482,11 +482,11 @@ export function CourseFinder() {
               {currentStep === 2 && (
                 <div className="mt-6">
                   <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0968DE] shrink-0">
+                    <div className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-[#EAF4FF] text-[#0B5ED7] shrink-0">
                       <TrendingUp size={22} strokeWidth={2.4} />
                     </div>
                     <div>
-                      <h3 className="text-base sm:text-lg font-bold text-[#092B55]">What is your current skill level?</h3>
+                      <h3 className="text-base sm:text-lg font-bold text-navy">What is your current skill level?</h3>
                       <p className="text-xs text-[#7186A3]">This helps us recommend the right batch pace and practical support.</p>
                     </div>
                   </div>
@@ -502,7 +502,7 @@ export function CourseFinder() {
                           className={`relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
                             isSelected
                               ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
-                              : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0968DE]/40 hover:bg-white hover:shadow-sm'
+                              : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
                           }`}
                         >
                           {isSelected && (
@@ -511,10 +511,10 @@ export function CourseFinder() {
                             </span>
                           )}
                           <div>
-                            <span className="inline-block rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-[#0968DE] uppercase">
+                            <span className="inline-block rounded-md bg-slate-100 px-2 py-0.5 text-xs font-bold text-[#0B5ED7] uppercase">
                               {lvl.tag}
                             </span>
-                            <h4 className="mt-2 text-sm font-bold text-[#092B55]">{lvl.title}</h4>
+                            <h4 className="mt-2 text-sm font-bold text-navy">{lvl.title}</h4>
                             <p className="mt-1 text-xs text-[#7186A3] leading-relaxed">{lvl.desc}</p>
                           </div>
                         </button>
@@ -527,7 +527,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-[#092B55] hover:bg-slate-50 transition"
+                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-50 transition"
                     >
                       <ArrowLeft size={14} /> Back
                     </button>
@@ -553,16 +553,16 @@ export function CourseFinder() {
                         <Award size={24} />
                       </span>
                       <div>
-                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#0968DE]">
+                        <span className="text-xs font-extrabold uppercase tracking-wider text-[#0B5ED7]">
                           Top Recommended Match
                         </span>
-                        <h3 className="text-xl sm:text-2xl font-extrabold text-[#092B55]">{matchedCourse.title}</h3>
+                        <h3 className="text-xl sm:text-2xl font-extrabold text-navy">{matchedCourse.title}</h3>
                       </div>
                     </div>
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 hover:text-[#0968DE] hover:border-[#0968DE] transition"
+                      className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 hover:text-[#0B5ED7] hover:border-[#0968DE] transition"
                     >
                       <RotateCcw size={13} /> Retake Quiz
                     </button>
@@ -573,7 +573,7 @@ export function CourseFinder() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <span
-                          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-wider"
+                          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wider"
                           style={{ backgroundColor: matchedCourse.accent + '15', color: matchedCourse.accent }}
                         >
                           {matchedCourse.badge}
@@ -587,13 +587,13 @@ export function CourseFinder() {
                       </p>
                       
                       <div className="mt-4 flex flex-wrap gap-4 text-xs text-slate-500">
-                        <span className="flex items-center gap-1.5 font-semibold text-[#092B55]">
-                          <Calendar size={13} className="text-[#0968DE]" /> {matchedCourse.duration}
+                        <span className="flex items-center gap-1.5 font-semibold text-navy">
+                          <Calendar size={13} className="text-[#0B5ED7]" /> {matchedCourse.duration}
                         </span>
-                        <span className="flex items-center gap-1.5 font-semibold text-[#092B55]">
+                        <span className="flex items-center gap-1.5 font-semibold text-navy">
                           <CheckCircle2 size={13} className="text-[#31C48D]" /> Hands-on Practical Lab
                         </span>
-                        <span className="flex items-center gap-1.5 font-semibold text-[#092B55]">
+                        <span className="flex items-center gap-1.5 font-semibold text-navy">
                           <Award size={13} className="text-[#FF850A]" /> Course Certificate
                         </span>
                       </div>
@@ -618,7 +618,7 @@ export function CourseFinder() {
                       </Link>
                       <Link
                         to="/contact"
-                        className="text-center rounded-full border border-slate-200 bg-white px-6 py-2 text-xs font-bold text-[#092B55] hover:bg-slate-50 transition"
+                        className="text-center rounded-full border border-slate-200 bg-white px-6 py-2 text-xs font-bold text-navy hover:bg-slate-50 transition"
                       >
                         Enquire at Institute
                       </Link>
@@ -638,10 +638,10 @@ export function CourseFinder() {
                           className="flex items-center justify-between rounded-xl border border-slate-200/80 bg-[#F9FBFE] p-3.5 hover:border-[#0968DE]/50 hover:bg-white transition"
                         >
                           <div className="min-w-0 pr-3">
-                            <h5 className="text-xs font-bold text-[#092B55]">{c.title}</h5>
+                            <h5 className="text-xs font-bold text-navy">{c.title}</h5>
                             <p className="text-xs text-slate-500 truncate">{c.desc}</p>
                           </div>
-                          <ArrowRight size={14} className="text-[#0968DE] shrink-0" />
+                          <ArrowRight size={14} className="text-[#0B5ED7] shrink-0" />
                         </Link>
                       ))}
                     </div>

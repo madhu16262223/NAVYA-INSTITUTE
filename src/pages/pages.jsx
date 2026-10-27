@@ -246,22 +246,22 @@ export function Home(){
   <div className="grid grid-cols-2 gap-6 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
    <div className="text-center">
     <p className="text-3xl sm:text-4xl font-black text-[#0B5ED7]">1,500+</p>
-    <p className="mt-1 text-xs sm:text-sm font-bold text-navy uppercase tracking-wider">Students Certified</p>
+    <p className="mt-1 text-xs sm:text-sm font-bold text-navy">Students Certified</p>
     <p className="text-xs text-slate-500">Practical Computer Skills</p>
    </div>
    <div className="text-center lg:pl-6">
     <p className="text-3xl sm:text-4xl font-black text-[#FF850A]">10+ Years</p>
-    <p className="mt-1 text-xs sm:text-sm font-bold text-navy uppercase tracking-wider">Teaching in Porumamilla</p>
+    <p className="mt-1 text-xs sm:text-sm font-bold text-navy">Teaching in Porumamilla</p>
     <p className="text-xs text-slate-500">Trusted Local Center</p>
    </div>
    <div className="text-center lg:pl-6">
     <p className="text-3xl sm:text-4xl font-black text-emerald-600">100%</p>
-    <p className="mt-1 text-xs sm:text-sm font-bold text-navy uppercase tracking-wider">Practical Lab Focus</p>
+    <p className="mt-1 text-xs sm:text-sm font-bold text-navy">Practical Lab Focus</p>
     <p className="text-xs text-slate-500">Individual Hands-on Desktops</p>
    </div>
    <div className="text-center lg:pl-6">
-    <p className="text-3xl sm:text-4xl font-black text-[#0B2A5B]">4.8 ★</p>
-    <p className="mt-1 text-xs sm:text-sm font-bold text-navy uppercase tracking-wider">Google Rating</p>
+    <p className="text-3xl sm:text-4xl font-black text-navy">4.8 ★</p>
+     <p className="mt-1 text-xs sm:text-sm font-bold text-navy">Google Rating</p>
     <p className="text-xs text-slate-500">83+ Verified Reviews</p>
    </div>
   </div>
@@ -275,7 +275,7 @@ export function Home(){
  
  <div className="pointer-events-none absolute right-6 top-8 hidden sm:grid grid-cols-6 gap-2.5 opacity-25" aria-hidden="true">
   {Array.from({length: 30}).map((_, i) => (
-   <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#168DFF]"/>
+   <span key={i} className="h-1.5 w-1.5 rounded-full bg-[#0B5ED7]"/>
   ))}
  </div>
 
@@ -286,9 +286,9 @@ export function Home(){
      <span className="h-[2px] w-5 rounded-full bg-[#FF850A]" aria-hidden="true"/>
      OUR COURSES
     </p>
-    <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-[#082252] sm:text-4xl lg:text-5xl leading-[1.18]">
+    <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl lg:text-5xl leading-[1.18]">
      Build Skills for a<br/>
-     <span className="text-[#0D6EFD]">Better</span> <span className="text-[#FF850A]">Tomorrow</span>
+     <span className="text-[#0B5ED7]">Better</span> <span className="text-[#FF850A]">Tomorrow</span>
     </h2>
     <p className="mt-3.5 max-w-xl text-sm sm:text-base text-slate-600 leading-relaxed">
      Practical, industry-relevant courses designed to help you learn, grow and achieve your career goals.
@@ -296,7 +296,7 @@ export function Home(){
    </div>
 
    <div className="flex items-center gap-6 lg:gap-10 self-start md:self-end">
-    <Link to="/courses" className="inline-flex items-center gap-2 rounded-full bg-[#0D6EFD] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:bg-[#0B5ED7] hover:shadow-xl hover:scale-105 shrink-0">
+    <Link to="/courses" className="btn-brand shrink-0">
      View All Courses <ArrowRight size={16} aria-hidden="true"/>
     </Link>
    </div>
@@ -322,7 +322,7 @@ export function Home(){
       <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#FF850A]">
        <GraduationCap size={32} strokeWidth={2.4}/>
       </div>
-      <h3 className="mt-4 text-2xl font-extrabold text-[#082252] leading-tight">
+      <h3 className="mt-4 text-2xl font-extrabold text-navy leading-tight">
        Your Future<br/>Starts Here
       </h3>
       <p className="mt-2 text-sm text-slate-600 leading-relaxed max-w-[260px]">
@@ -336,7 +336,7 @@ export function Home(){
      </div>
 
      <div className="mt-6 pt-3.5 border-t border-slate-100/90 flex items-center justify-between">
-      <Link to="/courses" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0D6EFD] hover:underline">
+      <Link to="/courses" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0B5ED7] hover:underline">
        Explore All Offerings <ArrowRight size={13}/>
       </Link>
       <Link to="/contact" aria-label="Start enquiry" className="grid h-8 w-8 place-items-center rounded-full bg-[#FF850A] text-white shadow-sm hover:scale-105 transition-transform">
@@ -352,7 +352,7 @@ export function Home(){
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="WHY CHOOSE NAVYA?" title="Learn With Purpose. Grow With Confidence." sub="Dedicated mentors, lab facilities, and supportive atmosphere in Porumamilla."/><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">{why.map(([i,t,d])=><Reveal key={t}><FeatureCard icon={i} title={t} text={d}/></Reveal>)}</div></div></section>
 <section className="section bg-gradient-to-br from-[#082256] to-[#0B3A85]"><div className="container-x"><SectionHeading light eyebrow="LEARNING PROCESS" title="Understand. Practise. Improve. Progress." sub="A simple four-stage path from fundamentals to real-world use."/><Timeline dark items={steps}/></div></section>
 <section className="section bg-white"><div className="container-x"><SectionHeading eyebrow="OUR TEAM" title="Meet Our Dedicated Trainers" sub="Learn from experienced mentors committed to your individual growth."/><Grid cols="lg:grid-cols-4">{faculty.map((f,i)=><Reveal key={i}><FacultyCard f={f}/></Reveal>)}</Grid><div className="mt-8 text-center"><LinkBtn to="/faculty" cls="btn-outline">View All Faculty</LinkBtn></div></div></section>
-<section className="section bg-mist"><div className="container-x grid items-center gap-10 lg:grid-cols-2"><Reveal><CertificateImage/></Reveal><div><Eyebrow>CERTIFICATES</Eyebrow><h2 className="text-3xl sm:text-4xl">Learn. Complete. Get Certified.</h2><p className="mt-3 text-lg text-slate-600">Receive official course completion certificates upon successful completion of your training modules and practical tests.</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{certBenefits.map(([i,t])=><li key={t} className="flex items-center gap-3 font-semibold text-navy"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-accent shadow-sm"><Icon name={i} size={20}/></span>{t}</li>)}</ul><div className="mt-8 flex flex-wrap items-center gap-3"><LinkBtn to="/certificates">View Certificate Details</LinkBtn><Link to="/verify-certificate" className="inline-flex items-center gap-2 rounded-full border-2 border-[#0B5ED7] bg-white px-6 py-2.5 text-sm font-bold text-[#0B5ED7] shadow-sm hover:bg-[#0B5ED7] hover:text-white transition">📜 Verify Certificate Online →</Link></div></div></div></section>
+<section className="section bg-mist"><div className="container-x grid items-center gap-10 lg:grid-cols-2"><Reveal><CertificateImage/></Reveal><div><Eyebrow>CERTIFICATES</Eyebrow><h2 className="text-3xl sm:text-4xl">Learn. Complete. Get Certified.</h2><p className="mt-3 text-lg text-slate-600">Receive official course completion certificates upon successful completion of your training modules and practical tests.</p><ul className="mt-6 grid gap-3 sm:grid-cols-2">{certBenefits.map(([i,t])=><li key={t} className="flex items-center gap-3 font-semibold text-navy"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-accent shadow-sm"><Icon name={i} size={20}/></span>{t}</li>)}</ul><div className="mt-8 flex flex-wrap items-center gap-3"><LinkBtn to="/certificates">View Certificate Details</LinkBtn><Link to="/verify-certificate" className="btn-outline text-xs !py-2.5 !px-5">📜 Verify Certificate Online →</Link></div></div></div></section>
 <section className="section bg-white"><div className="container-x grid items-stretch gap-8 lg:grid-cols-2"><Reveal className="flex flex-col justify-center rounded-3xl border border-slate-200 bg-[#F4F9FE] p-8 shadow-card sm:p-10">
  <Eyebrow>FIND US</Eyebrow><h2 className="text-3xl font-extrabold text-navy">Visit Navya Techno in Porumamilla</h2><div className="mt-4"><RatingLine/></div>
  <address className="mt-5 space-y-2.5 not-italic text-slate-700"><p className="font-bold text-navy text-base">{site.fullName}</p><p lang="te" className="text-sm text-slate-500">{site.telugu}</p><p className="flex gap-2 text-sm pt-1"><MapPin size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/>{site.address}</p><p className="flex gap-2 text-sm"><Phone size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true"/><a href={links.call} className="font-bold text-[#0B5ED7] hover:underline">{site.phone}</a></p></address>
