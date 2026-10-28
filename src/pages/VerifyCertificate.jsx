@@ -120,7 +120,7 @@ export function VerifyCertificate() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-2xl bg-[#0B5ED7] px-7 py-3.5 font-bold text-white shadow-md hover:bg-[#0A4FB4] transition shrink-0"
+                  className="btn-brand shrink-0"
                 >
                   <Search size={18} /> Verify Now
                 </button>
@@ -252,8 +252,9 @@ export function VerifyCertificate() {
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100 pt-6">
                 <div className="flex flex-wrap gap-3 w-full sm:w-auto">
                   <button
+                    type="button"
                     onClick={handlePrint}
-                    className="inline-flex flex-1 sm:flex-none items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-navy shadow-sm hover:bg-slate-50 transition"
+                    className="btn-outline flex-1 sm:flex-none"
                   >
                     <Printer size={16} /> Print Verification Slip
                   </button>
@@ -269,12 +270,13 @@ export function VerifyCertificate() {
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => {
                     setCertId('');
                     setSearchResult(null);
                     setHasSearched(false);
                   }}
-                  className="text-xs font-bold text-[#0B5ED7] hover:underline"
+                  className="btn-outline !py-2 !px-4 text-xs font-bold"
                 >
                   Verify Another ID →
                 </button>

@@ -99,7 +99,7 @@ export function PrivacyManager() {
         onClick={() => setShowModal(true)}
         aria-label="Manage Privacy & Cookie Preferences"
         title="Privacy Preferences"
-        className="btn-outline fixed bottom-5 left-5 z-40 hidden sm:flex !h-9 !py-1.5 !px-3 text-xs !bg-white/95 backdrop-blur-md shadow-md"
+        className="btn-outline fixed bottom-5 left-5 z-40 hidden sm:flex !py-2 !px-3.5 text-xs !bg-white/95 backdrop-blur-md shadow-md"
       >
         <Shield size={15} className="text-[#0B5ED7]" aria-hidden="true" />
         <span className="hidden md:inline">Privacy</span>
@@ -131,27 +131,28 @@ export function PrivacyManager() {
               <button
                 type="button"
                 onClick={handleAcceptAll}
-                className="btn-brand text-xs !py-2 !px-5"
+                className="btn-brand !py-2 !px-5 text-xs"
               >
                 Accept All
               </button>
               <button
                 type="button"
                 onClick={handleEssentialOnly}
-                className="btn-outline text-xs !py-2 !px-4"
+                className="btn-outline !py-2 !px-4 text-xs"
               >
                 Essential Only
               </button>
-              <button
-                type="button"
-                onClick={() => {
+              <a
+                href="#privacy-preferences"
+                onClick={(e) => {
+                  e.preventDefault();
                   setShowBanner(false);
                   setShowModal(true);
                 }}
-                className="btn-ghost !text-brand !border-transparent !bg-transparent text-xs hover:underline"
+                className="text-xs font-semibold text-[#0B5ED7] hover:underline px-2 py-1"
               >
                 Customize
-              </button>
+              </a>
             </div>
           </div>
         </aside>
@@ -184,7 +185,7 @@ export function PrivacyManager() {
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="btn-icon !h-8 !w-8 text-slate-500 hover:bg-slate-100 hover:text-navy"
+                className="btn-icon text-slate-500 hover:text-navy"
                 aria-label="Close privacy preferences modal"
               >
                 <X size={18} />
@@ -271,7 +272,7 @@ export function PrivacyManager() {
                 <button
                   type="button"
                   onClick={handleResetData}
-                  className="rounded-lg border border-amber-300 bg-white px-3 py-1 text-xs font-bold text-accent hover:bg-amber-100 transition"
+                  className="btn-outline !py-1 !px-3 text-xs"
                 >
                   Reset Cache
                 </button>
@@ -291,14 +292,14 @@ export function PrivacyManager() {
                 <button
                   type="button"
                   onClick={handleEssentialOnly}
-                  className="btn-outline text-xs !py-2 !px-4"
+                  className="btn-outline !py-2 !px-4 text-xs"
                 >
                   Reject Optional
                 </button>
                 <button
                   type="button"
                   onClick={handleSaveCustom}
-                  className="btn-brand text-xs !py-2 !px-5"
+                  className="btn-brand !py-2 !px-5 text-xs"
                 >
                   Save Choices
                 </button>

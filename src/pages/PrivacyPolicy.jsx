@@ -48,7 +48,7 @@ export function PrivacyPolicy() {
               <button
                 type="button"
                 onClick={handleOpenPreferences}
-                className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-5 py-2.5 text-xs font-bold text-[#0B5ED7] shadow-sm hover:bg-[#0B5ED7] hover:text-white transition shrink-0"
+                className="btn-outline shrink-0"
               >
                 <Sliders size={14} /> Cookie Preferences
               </button>

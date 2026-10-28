@@ -82,14 +82,17 @@ export function Home(){
   <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-black/25 via-40% to-transparent pointer-events-none" />
 
  {/* 4. Bottom-Right Slide Dots (Exact Image 1 Position) */}
- <div className="absolute bottom-4 sm:bottom-5 right-20 sm:right-28 lg:right-32 z-30 flex items-center gap-2">
+ <div role="tablist" aria-label="Slide indicators" className="absolute bottom-4 sm:bottom-5 right-20 sm:right-28 lg:right-32 z-30 flex items-center gap-2">
   {heroSlides.map((_, idx) => (
-   <button
+   <span
     key={idx}
-    type="button"
+    role="tab"
+    tabIndex={0}
+    aria-selected={slideIndex === idx}
     onClick={() => setSlideIndex(idx)}
+    onKeyDown={(e) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), setSlideIndex(idx))}
     aria-label={`Go to slide ${idx + 1}`}
-    className={`h-2 rounded-full transition-all duration-300 ${
+    className={`h-2 rounded-full cursor-pointer transition-all duration-300 ${
      slideIndex === idx
       ? 'w-7 bg-[#FF850A] shadow-md shadow-orange-500/60'
       : 'w-2 bg-white/70 hover:bg-white'
@@ -104,17 +107,17 @@ export function Home(){
    type="button"
    onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
    aria-label="Previous slide"
-   className="btn-icon !h-8 !w-8 bg-black/40 hover:bg-accent text-white backdrop-blur-md border border-white/20"
+   className="btn-icon !bg-black/40 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
   >
-   <ChevronLeft size={14} />
+   <ChevronLeft size={16} />
   </button>
   <button
    type="button"
    onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
    aria-label="Next slide"
-   className="btn-icon !h-8 !w-8 bg-black/40 hover:bg-accent text-white backdrop-blur-md border border-white/20"
+   className="btn-icon !bg-black/40 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
   >
-   <ChevronRight size={14} />
+   <ChevronRight size={16} />
   </button>
  </div>
 
@@ -397,14 +400,14 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
  useEffect(()=>{ref.current?.focus();document.body.style.overflow='hidden';
   const k=e=>{if(e.key==='Escape')onClose();else if(e.key==='ArrowRight')onNav(1);else if(e.key==='ArrowLeft')onNav(-1);else if(e.key==='Tab'){const b=[...document.querySelectorAll('[data-lb]')];const a=document.activeElement;const n=b.indexOf(a);e.preventDefault();b[(n+(e.shiftKey?-1:1)+b.length)%b.length].focus()}};
   window.addEventListener('keydown',k);return()=>{window.removeEventListener('keydown',k);document.body.style.overflow=''}},[onClose,onNav]);
- const bt='grid h-11 w-11 place-items-center rounded-full bg-white/15 text-white hover:bg-white/30';
+ const bt='btn-icon !bg-white/15 text-white hover:!bg-white/30';
  return <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] flex flex-col items-center justify-center bg-navy-900/95 p-4"><button ref={ref} data-lb onClick={onClose} aria-label="Close" className={`${bt} absolute right-4 top-4`}><X aria-hidden="true"/></button>
  <div className="flex w-full max-w-5xl items-center gap-3"><button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft aria-hidden="true"/></button><div className="min-w-0 flex-1"><Photo src={it.src} label={it.alt} ratio="aspect-[4/3] max-h-[75vh]" className="mx-auto w-full"/></div><button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight aria-hidden="true"/></button></div><p className="mt-3 text-center text-sm text-blue-100">{it.alt} · {i+1} / {items.length}</p></div>}
 export function Gallery(){const [cat,setCat]=useState('All');const [open,setOpen]=useState(null);const opener=useRef(null);const list=gallery.filter(g=>cat==='All'||g.cat===cat);
  const close=()=>{setOpen(null);opener.current?.focus()};const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
  return <><Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training and events."/><PageHeader title="Our Gallery" sub="Moments That Inspire"/>
 <section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter gallery">{['All',...galleryCats].map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`btn-pill ${cat===c?'bg-navy text-white':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div>
-{list.length?<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{list.map((g,i)=><li key={g.src}><button onClick={e=>{opener.current=e.currentTarget;setOpen(i)}} aria-label={`Open image: ${g.alt}`} className="block w-full overflow-hidden rounded-2xl transition-transform hover:scale-[1.02]"><Photo src={g.src} label={g.alt} ratio="aspect-square"/></button></li>)}</ul>:<Empty>No photos in this category yet.</Empty>}</div></section>
+{list.length?<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{list.map((g,i)=><li key={g.src}><div role="button" tabIndex={0} onClick={e=>{opener.current=e.currentTarget;setOpen(i)}} onKeyDown={e=>(e.key===' '||e.key==='Enter')&&(e.preventDefault(),opener.current=e.currentTarget,setOpen(i))} aria-label={`Open image: ${g.alt}`} className="block w-full overflow-hidden rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]"><Photo src={g.src} label={g.alt} ratio="aspect-square"/></div></li>)}</ul>:<Empty>No photos in this category yet.</Empty>}</div></section>
 {open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}</>}
 
 export function Contact(){const [f,setF]=useState({name:'',phone:'',email:'',course:'',msg:''});

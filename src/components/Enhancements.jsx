@@ -35,18 +35,23 @@ export function AnnouncementBar() {
             {site.announcement.text}
           </span>
           {site.announcement.cta && (
-            <button
-              onClick={() => openDemoModal()}
-              className="btn-ghost !text-accent hover:!text-white !py-1 !px-2.5 text-xs font-bold"
+            <a
+              href="#book-demo"
+              onClick={(e) => {
+                e.preventDefault();
+                openDemoModal();
+              }}
+              className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-xs font-bold text-white shadow-sm hover:bg-accent-600 transition"
             >
               {site.announcement.cta} <ArrowRight size={13} aria-hidden="true" />
-            </button>
+            </a>
           )}
         </div>
         <button
+          type="button"
           onClick={handleDismiss}
           aria-label="Dismiss announcement"
-          className="btn-icon !h-6 !w-6 text-blue-100 hover:bg-white/20 hover:text-white shrink-0"
+          className="btn-icon !bg-transparent text-blue-100 hover:!bg-white/20 hover:text-white shrink-0"
         >
           <X size={14} aria-hidden="true" />
         </button>
@@ -109,9 +114,10 @@ export function ScrollToTop() {
 
   return (
     <button
+      type="button"
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className="btn-icon fixed bottom-24 right-5 z-40 bg-white text-navy shadow-lg ring-1 ring-slate-200 hover:bg-navy hover:text-white"
+      className="btn-icon fixed bottom-24 right-5 z-40 !bg-white text-navy shadow-lg ring-1 ring-slate-200 hover:!bg-navy hover:text-white"
     >
       <ArrowUp size={20} aria-hidden="true" />
     </button>

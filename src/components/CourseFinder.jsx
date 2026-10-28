@@ -401,7 +401,7 @@ export function CourseFinder() {
                           type="button"
                           onClick={handleNext}
                           disabled={!selectedBg}
-                          className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-full btn-brand"
+                          className="btn-brand"
                         >
                           Get Personalized Recommendation <ArrowRight size={16} />
                         </button>
@@ -428,11 +428,14 @@ export function CourseFinder() {
                     {(goalsByBackground[selectedBg] || goalsByBackground.beginner).map((g) => {
                       const isSelected = selectedGoal === g.id;
                       return (
-                        <button
+                        <div
+                          role="radio"
+                          tabIndex={0}
+                          aria-checked={isSelected}
                           key={g.id}
-                          type="button"
                           onClick={() => setSelectedGoal(g.id)}
-                          className={`relative flex flex-col text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
+                          onKeyDown={(e) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), setSelectedGoal(g.id))}
+                          className={`relative flex flex-col text-left rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
                             isSelected
                               ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
                               : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
@@ -445,7 +448,7 @@ export function CourseFinder() {
                           )}
                           <h4 className="text-sm font-bold text-navy pr-6">{g.title}</h4>
                           <p className="mt-1.5 text-xs text-slate-500 leading-relaxed">{g.desc}</p>
-                        </button>
+                        </div>
                       );
                     })}
                   </div>
@@ -455,7 +458,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-50 transition"
+                      className="btn-outline"
                     >
                       <ArrowLeft size={14} /> Back
                     </button>
@@ -463,7 +466,7 @@ export function CourseFinder() {
                       type="button"
                       onClick={handleNext}
                       disabled={!selectedGoal}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#0B5ED7] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-blue-500/25 transition hover:bg-[#085bc3] hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="btn-brand disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       Continue <ArrowRight size={15} />
                     </button>
@@ -488,11 +491,14 @@ export function CourseFinder() {
                     {skillLevels.map((lvl) => {
                       const isSelected = selectedLevel === lvl.id;
                       return (
-                        <button
+                        <div
+                          role="radio"
+                          tabIndex={0}
+                          aria-checked={isSelected}
                           key={lvl.id}
-                          type="button"
                           onClick={() => setSelectedLevel(lvl.id)}
-                          className={`relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 transition-all duration-200 border ${
+                          onKeyDown={(e) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), setSelectedLevel(lvl.id))}
+                          className={`relative flex flex-col justify-between text-left rounded-2xl p-4 sm:p-5 cursor-pointer transition-all duration-200 border ${
                             isSelected
                               ? 'border-2 border-[#FF850A] bg-white shadow-md shadow-orange-500/10'
                               : 'border-slate-200/90 bg-gradient-to-br from-white to-[#F8FAFD] hover:border-[#0B5ED7]/40 hover:bg-white hover:shadow-sm'
@@ -510,7 +516,7 @@ export function CourseFinder() {
                             <h4 className="mt-2 text-sm font-bold text-navy">{lvl.title}</h4>
                             <p className="mt-1 text-xs text-slate-500 leading-relaxed">{lvl.desc}</p>
                           </div>
-                        </button>
+                        </div>
                       );
                     })}
                   </div>
@@ -520,7 +526,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-5 py-2.5 text-xs font-bold text-navy hover:bg-slate-50 transition"
+                      className="btn-outline"
                     >
                       <ArrowLeft size={14} /> Back
                     </button>
@@ -528,7 +534,7 @@ export function CourseFinder() {
                       type="button"
                       onClick={handleNext}
                       disabled={!selectedLevel}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#FF850A] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md shadow-orange-500/25 transition hover:bg-[#e07204] hover:scale-105 disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="btn-primary disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       View Personalized Recommendation <Sparkles size={15} />
                     </button>
@@ -555,7 +561,7 @@ export function CourseFinder() {
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="self-start sm:self-auto inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600 hover:text-[#0B5ED7] hover:border-[#0B5ED7] transition"
+                      className="btn-outline self-start sm:self-auto !py-2 !px-4 text-xs font-bold"
                     >
                       <RotateCcw size={13} /> Retake Quiz
                     </button>

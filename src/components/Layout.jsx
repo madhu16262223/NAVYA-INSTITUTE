@@ -78,16 +78,19 @@ export function Navbar() {
 
             {/* More Dropdown */}
             <div ref={ref} className="relative">
-              <button
+              <div
+                role="button"
+                tabIndex={0}
                 aria-expanded={m}
                 aria-haspopup="true"
                 onClick={() => setM(!m)}
-                className={`flex items-center gap-1 border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold whitespace-nowrap ${
+                onKeyDown={(e) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), setM(!m))}
+                className={`flex items-center gap-1 border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold whitespace-nowrap cursor-pointer select-none ${
                   moreActive ? 'border-[#0B5ED7] text-[#0B5ED7]' : 'border-transparent text-navy hover:text-[#0B5ED7]'
                 }`}
               >
                 {t('more')} <ChevronDown size={16} className={`transition-transform duration-200 ${m ? 'rotate-180' : ''}`} />
-              </button>
+              </div>
               {m && (
                 <ul className="absolute right-0 top-full mt-3 w-52 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
                   <li>
@@ -125,10 +128,11 @@ export function Navbar() {
 
             {/* Language Switcher */}
             <button
+              type="button"
               onClick={toggleLang}
               title="Switch language between English and Telugu"
               aria-label="Switch language between English and Telugu"
-              className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-mist/80 px-3 py-1.5 text-xs font-bold text-navy transition hover:border-[#0B5ED7] hover:bg-white"
+              className="btn-outline !py-1.5 !px-3.5 text-xs shrink-0 whitespace-nowrap"
             >
               <Globe size={14} className="text-[#0B5ED7] shrink-0" aria-hidden="true" />
               <span>{lang === 'en' ? 'తెలుగు' : 'English'}</span>
@@ -137,7 +141,7 @@ export function Navbar() {
             {/* Join Now */}
             <Link
               to="/contact"
-              className="whitespace-nowrap shrink-0 inline-flex items-center gap-1.5 rounded-full bg-[#0B5ED7] px-4 2xl:px-5 py-2 text-xs 2xl:text-sm font-semibold text-white shadow-md transition-colors hover:bg-[#0A4FB4]"
+              className="btn-brand !py-2 !px-5 text-xs 2xl:text-sm whitespace-nowrap shrink-0"
             >
               {t('joinNow')} <ArrowRight size={15} className="shrink-0" />
             </Link>
@@ -146,20 +150,22 @@ export function Navbar() {
           {/* Mobile Right Controls: Lang + Hamburger */}
           <div className="flex items-center gap-2 xl:hidden">
             <button
+              type="button"
               onClick={toggleLang}
               aria-label="Switch language"
-              className="rounded-full border border-slate-200 bg-mist px-2.5 py-1 text-xs font-bold text-navy"
+              className="btn-outline !py-1 !px-2.5 text-xs font-bold"
             >
               {lang === 'en' ? 'తెలుగు' : 'EN'}
             </button>
             <button
-              className="p-2 text-navy"
+              type="button"
+              className="btn-icon"
               aria-label={o ? 'Close menu' : 'Open menu'}
               aria-expanded={o}
               aria-controls="mobile-nav"
               onClick={() => setO(!o)}
             >
-              {o ? <X /> : <Menu />}
+              {o ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
@@ -440,14 +446,16 @@ export function Footer() {
             <Link to="/privacy" className="hover:text-white underline">
               {t('privacyPolicy')}
             </Link>
-            <span>•</span>
-            <button
-              type="button"
-              onClick={() => window.openPrivacyPreferences && window.openPrivacyPreferences()}
-              className="hover:text-white underline"
+            <a
+              href="#cookie-settings"
+              onClick={(e) => {
+                e.preventDefault();
+                window.openPrivacyPreferences && window.openPrivacyPreferences();
+              }}
+              className="hover:text-white underline cursor-pointer"
             >
               Cookie Settings
-            </button>
+            </a>
           </div>
         </div>
       </div>

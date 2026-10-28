@@ -166,9 +166,10 @@ export function DemoModalProvider({ children }) {
               <span aria-hidden="true" className="absolute -right-4 -top-6 h-24 w-24 rotate-12 bg-accent/40 rounded-full blur-xl" />
               <button
                 ref={firstFocusableRef}
+                type="button"
                 onClick={closeDemoModal}
                 aria-label="Close dialog"
-                className="btn-icon absolute right-4 top-4 !h-9 !w-9 bg-white/15 text-white hover:bg-white/30"
+                className="btn-icon absolute right-4 top-4 !bg-white/15 text-white hover:!bg-white/30"
               >
                 <X size={18} aria-hidden="true" />
               </button>
