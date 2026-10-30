@@ -1,17 +1,8 @@
-import { useState } from 'react';
-import { Seo, PageHeader } from '../components/ui';
+import { Seo, PageHeader, links } from '../components/ui';
 import { site } from '../data/site';
-import { ShieldCheck, Lock, Mail, Phone, MapPin, Sliders, CheckCircle, FileText, UserCheck, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Lock, Phone, MapPin, CheckCircle, UserCheck } from 'lucide-react';
 
 export function PrivacyPolicy() {
-  const [activeTab, setActiveTab] = useState('overview');
-
-  const handleOpenPreferences = () => {
-    if (typeof window !== 'undefined' && window.openPrivacyPreferences) {
-      window.openPrivacyPreferences();
-    }
-  };
-
   return (
     <>
       <Seo
@@ -45,13 +36,6 @@ export function PrivacyPolicy() {
                   </p>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={handleOpenPreferences}
-                className="btn-outline shrink-0"
-              >
-                <Sliders size={14} /> Cookie Preferences
-              </button>
             </div>
           </div>
 
@@ -114,9 +98,9 @@ export function PrivacyPolicy() {
                     <td className="p-3 sm:p-4">Employer verification registry & permanent academic proof.</td>
                   </tr>
                   <tr>
-                    <td className="p-3 sm:p-4 font-semibold text-navy">Technical & Cookies</td>
-                    <td className="p-3 sm:p-4">Local storage preferences, language setting (English/Telugu), anonymous device type</td>
-                    <td className="p-3 sm:p-4">Responsive user experience and offline caching.</td>
+                    <td className="p-3 sm:p-4 font-semibold text-navy">Browser Storage</td>
+                    <td className="p-3 sm:p-4">Language setting (English/Telugu) and whether the announcement bar was dismissed, stored only in your browser</td>
+                    <td className="p-3 sm:p-4">Remembering your preferences. No tracking cookies are set.</td>
                   </tr>
                 </tbody>
               </table>
@@ -205,7 +189,7 @@ export function PrivacyPolicy() {
               </p>
               <p className="flex items-center gap-2 text-slate-600">
                 <Phone size={16} className="text-accent shrink-0" />
-                <a href={site.phoneTel} className="font-semibold text-[#0B5ED7] hover:underline">
+                <a href={links.call} className="font-semibold text-[#0B5ED7] hover:underline">
                   {site.phone}
                 </a>
               </p>

@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, ChevronDown, MapPin, Phone, MessageCircle, Globe } from 'lucide-react';
-import { site, nav, navMain, navMore } from '../data/site';
+import { Menu, X, ArrowRight, ChevronDown, MapPin, Phone, MessageCircle, Globe, Instagram } from 'lucide-react';
+import { site, navMain, navMore } from '../data/site';
 import { images } from '../data/images';
 import { courses } from '../data/courses';
-import { Icon, links, wa } from './ui';
+import { links, wa } from './ui';
 import { useLanguage } from '../context/LanguageContext';
-import { useDemoModal } from '../context/DemoModalContext';
 import { AnnouncementBar, ScrollToTop } from './Enhancements';
-import { PrivacyManager } from './PrivacyManager';
+
+// Translation key for a nav label (multi-word labels need an explicit key)
+const navKey = (label) => ({ 'Verify Certificate': 'verifyCertificate' })[label] || label.toLowerCase();
 
 const lk = ({ isActive }) =>
   `border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold transition-colors whitespace-nowrap ${
@@ -23,7 +24,6 @@ export function Navbar() {
   const { pathname } = useLocation();
   const ref = useRef(null);
   const { lang, toggleLang, t } = useLanguage();
-  const { openDemoModal } = useDemoModal();
 
   useEffect(() => {
     setO(false);
@@ -37,7 +37,12 @@ export function Navbar() {
     const out = (e) => {
       if (ref.current && !ref.current.contains(e.target)) setM(false);
     };
-    const esc = (e) => e.key === 'Escape' && setM(false);
+    const esc = (e) => {
+      if (e.key === 'Escape') {
+        setM(false);
+        setO(false);
+      }
+    };
     document.addEventListener('mousedown', out);
     document.addEventListener('keydown', esc);
     return () => {
@@ -47,10 +52,17 @@ export function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = o ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [o]);
+
   const moreActive = navMore.some(([, target]) => pathname.startsWith(target));
 
   return (
-    <header className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${s ? 'shadow-md' : 'shadow-[0_1px_0_#e6edf6]'}`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${s ? 'bg-white/85 backdrop-blur-md shadow-md' : 'bg-white shadow-[0_1px_0_#e6edf6]'}`}>
       <div className="relative">
         <span aria-hidden="true" className="pointer-events-none absolute left-0 top-0 hidden h-full w-14 -skew-x-[30deg] bg-gradient-to-b from-sky-300/60 to-transparent sm:block" />
         <span aria-hidden="true" className="pointer-events-none absolute left-10 top-0 hidden h-full w-1.5 -skew-x-[30deg] bg-accent sm:block" />
@@ -95,7 +107,7 @@ export function Navbar() {
                 <ul className="absolute right-0 top-full mt-3 w-52 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
                   <li>
                     <NavLink to="/verify-certificate" className="block rounded-lg px-3 py-2 text-sm font-semibold text-navy hover:bg-mist">
-                      📜 Verify Certificate
+                      📜 {t('verifyCertificate')}
                     </NavLink>
                   </li>
                   <li>
@@ -171,69 +183,91 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      {o && (
-        <nav
-          id="mobile-nav"
-          aria-label="Mobile"
-          className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t bg-white p-5 xl:hidden shadow-xl"
-        >
-          <ul className="grid gap-1 sm:grid-cols-2">
-            {[
-              ['Home', '/'],
-              ['About', '/about'],
-              ['Courses', '/courses'],
-              ['Placements', '/placements'],
-              ['Faculty', '/faculty'],
-              ['Certificates', '/certificates'],
-              ['Verify Certificate', '/verify-certificate'],
-              ['Facilities', '/facilities'],
-              ['Gallery', '/gallery'],
-              ['Contact', '/contact'],
-            ].map(([l, target]) => (
-              <li key={target}>
-                <NavLink
-                  to={target}
-                  end={target === '/'}
-                  className={({ isActive }) =>
-                    `block rounded-lg px-3 py-2.5 font-semibold transition ${
-                      isActive ? 'bg-mist text-[#0B5ED7]' : 'text-navy hover:bg-mist'
-                    }`
-                  }
-                >
-                  {t(l.toLowerCase()) || l}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-5 border-t border-slate-100 pt-4 flex flex-col gap-3 sm:flex-row">
-            <Link
-              to="/contact"
+      {/* Mobile Drawer: slides in from the right */}
+      <AnimatePresence>
+        {o && (
+          <>
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setO(false)}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-white shadow-md"
+              aria-hidden="true"
+              className="fixed inset-0 z-[55] bg-navy-900/60 backdrop-blur-sm xl:hidden"
+            />
+            <motion.nav
+              key="drawer"
+              id="mobile-nav"
+              aria-label="Mobile"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 320, damping: 34 }}
+              className="fixed inset-y-0 right-0 z-[60] flex w-[86%] max-w-sm flex-col bg-white shadow-2xl xl:hidden"
             >
-              {t('joinNow')} <ArrowRight size={16} />
-            </Link>
-            <a
-              href={links.call}
-              className="flex flex-1 items-center justify-center gap-2 rounded-full border-2 border-navy px-6 py-3 font-semibold text-navy"
-            >
-              <Phone size={16} /> {t('callNow')}
-            </a>
-          </div>
-        </nav>
-      )}
+              <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+                <img src={images.logo.horizontal} alt="Navya Techno" width="1100" height="353" className="h-10 w-auto" />
+                <button type="button" onClick={() => setO(false)} aria-label="Close menu" className="btn-icon">
+                  <X size={18} />
+                </button>
+              </div>
+              <ul className="flex-1 overflow-y-auto px-3 py-4">
+                {[...navMain.slice(0, 6), ...navMore, navMain[6]].map(([l, target], i) => (
+                  <motion.li
+                    key={target}
+                    initial={{ opacity: 0, x: 24 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.04, duration: 0.3 }}
+                  >
+                    <NavLink
+                      to={target}
+                      end={target === '/'}
+                      className={({ isActive }) =>
+                        `flex items-center justify-between rounded-xl px-4 py-3 font-semibold transition ${
+                          isActive ? 'bg-mist text-[#0B5ED7]' : 'text-navy hover:bg-mist'
+                        }`
+                      }
+                    >
+                      {t(navKey(l))}
+                      <ArrowRight size={16} className="text-slate-300" aria-hidden="true" />
+                    </NavLink>
+                  </motion.li>
+                ))}
+              </ul>
+              <div className="border-t border-slate-100 p-5 space-y-3">
+                <Link to="/contact" onClick={() => setO(false)} className="btn-primary w-full">
+                  {t('joinNow')} <ArrowRight size={16} />
+                </Link>
+                <div className="grid grid-cols-2 gap-3">
+                  <a href={links.call} className="btn-outline !w-full text-sm">
+                    <Phone size={16} /> {t('callNow')}
+                  </a>
+                  <a
+                    href={wa('Hi Navya Techno, I would like to know about admissions.')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn !w-full bg-[#25D366] text-white text-sm hover:bg-[#1ebe5b]"
+                  >
+                    <MessageCircle size={16} /> WhatsApp
+                  </a>
+                </div>
+                <p className="text-center text-xs text-slate-500">{site.phone}</p>
+              </div>
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
 
 export function Footer() {
   const { t } = useLanguage();
-  const { openDemoModal } = useDemoModal();
 
   return (
-    <footer className="relative overflow-hidden pb-16 lg:pb-0 bg-gradient-to-b from-[#061838] via-[#082256] to-[#040e24] text-white">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-[#061838] via-[#082256] to-[#040e24] text-white">
       {/* Decorative accent geometry */}
       <span aria-hidden="true" className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
       <span aria-hidden="true" className="pointer-events-none absolute top-0 left-1/4 h-32 w-96 bg-brand/10 blur-3xl" />
@@ -245,7 +279,7 @@ export function Footer() {
           <span aria-hidden="true" className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent/30 blur-2xl" />
           <div className="relative flex flex-col items-center justify-between gap-5 text-center lg:flex-row lg:text-left">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-accent/25 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-accent-400">
+              <div className="inline-flex items-center gap-2 rounded-full bg-accent/25 px-3 py-1 text-xs font-extrabold uppercase tracking-widest text-accent">
                 <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
                 ADMISSIONS OPEN
               </div>
@@ -339,7 +373,7 @@ export function Footer() {
                 <li key={c.id}>
                   <Link
                     to={`/courses/${c.id}`}
-                    className="group flex items-center gap-2 transition hover:text-blue-100"
+                    className="group flex items-center gap-2 transition hover:text-white"
                   >
                     <span className="text-accent text-xs transition-transform group-hover:translate-x-1">▸</span>
                     <span>{c.title}</span>
@@ -438,7 +472,7 @@ export function Footer() {
       <div className="border-t border-white/10 bg-black/20 py-5">
         <div className="container-x flex flex-col items-center justify-between gap-3 text-xs text-blue-100 sm:flex-row text-center sm:text-left">
           <p>
-            © 2026 {site.fullName}. {t('allRightsReserved')}
+            © {new Date().getFullYear()} {site.fullName}. {t('allRightsReserved')}
           </p>
           <div className="flex items-center gap-4">
             <span className="hidden sm:inline">Porumamilla, Andhra Pradesh 516193</span>
@@ -446,16 +480,6 @@ export function Footer() {
             <Link to="/privacy" className="hover:text-white underline">
               {t('privacyPolicy')}
             </Link>
-            <a
-              href="#cookie-settings"
-              onClick={(e) => {
-                e.preventDefault();
-                window.openPrivacyPreferences && window.openPrivacyPreferences();
-              }}
-              className="hover:text-white underline cursor-pointer"
-            >
-              Cookie Settings
-            </a>
           </div>
         </div>
       </div>
@@ -481,31 +505,56 @@ function ScrollProgress() {
   );
 }
 
-function MobileBar() {
-  const { t } = useLanguage();
-  const c = 'flex flex-col items-center gap-1 py-2.5 text-xs font-semibold text-navy';
+function FloatingContacts() {
+  const items = [
+    {
+      label: 'Instagram',
+      href: site.instagram,
+      icon: <Instagram size={22} aria-hidden="true" />,
+      cls: 'bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] shadow-pink-500/30',
+      external: true,
+    },
+    {
+      label: 'WhatsApp',
+      href: wa('Hi Navya Techno, I would like to know about admissions.'),
+      icon: <MessageCircle size={22} aria-hidden="true" />,
+      cls: 'bg-[#25D366] shadow-emerald-500/30',
+      external: true,
+      pulse: true,
+    },
+    {
+      label: 'Call Now',
+      href: links.call,
+      icon: <Phone size={22} aria-hidden="true" />,
+      cls: 'bg-gradient-to-br from-brand to-navy shadow-blue-500/30',
+    },
+  ].filter((i) => i.href);
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-slate-200 bg-white shadow-[0_-4px_16px_rgba(11,42,91,.12)] lg:hidden"
+      className="fixed right-4 bottom-5 z-40 flex flex-col items-end gap-3 sm:right-5"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <a href={links.call} className={c}>
-        <Phone size={20} className="text-[#0B5ED7]" aria-hidden="true" />
-        {t('callNow')}
-      </a>
-      <a
-        href={wa('Hi Navya Techno, I would like to know about admissions.')}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={c}
-      >
-        <MessageCircle size={20} className="text-[#25D366]" aria-hidden="true" />
-        WhatsApp
-      </a>
-      <a href={links.directions} target="_blank" rel="noopener noreferrer" className={c}>
-        <MapPin size={20} className="text-accent" aria-hidden="true" />
-        {t('getDirections')}
-      </a>
+      {items.map((i, k) => (
+        <motion.a
+          key={i.label}
+          href={i.href}
+          target={i.external ? '_blank' : undefined}
+          rel={i.external ? 'noopener noreferrer' : undefined}
+          aria-label={i.label}
+          initial={{ opacity: 0, x: 24 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4 + k * 0.1, duration: 0.4 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+          className={`group relative grid h-12 w-12 place-items-center rounded-full text-white shadow-lg ${i.cls}`}
+        >
+          {i.pulse && <span aria-hidden="true" className="absolute inset-0 rounded-full bg-[#25D366] opacity-60 animate-ping [animation-duration:2.2s]" />}
+          <span className="relative">{i.icon}</span>
+          <span className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-navy px-3 py-1.5 text-xs font-bold text-white opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 sm:block">
+            {i.label}
+          </span>
+        </motion.a>
+      ))}
     </div>
   );
 }
@@ -528,9 +577,9 @@ export default function Layout() {
       <motion.main
         key={pathname}
         id="main"
-        initial={r ? false : { opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        initial={r ? false : { opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
         <Outlet />
       </motion.main>
@@ -538,17 +587,7 @@ export default function Layout() {
 
       {/* Floating Action Buttons */}
       <ScrollToTop />
-      <a
-        href={wa('Hi Navya Techno, I would like to know about admissions.')}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-5 right-5 z-40 hidden h-14 w-14 lg:grid place-items-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105"
-      >
-        <MessageCircle aria-hidden="true" size={28} />
-      </a>
-      <PrivacyManager />
-      <MobileBar />
+      <FloatingContacts />
     </>
   );
 }

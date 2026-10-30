@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Seo } from '../components/ui';
-import { Home, BookOpen, Phone, ArrowRight } from 'lucide-react';
+import { Home, BookOpen } from 'lucide-react';
 
 export function NotFound() {
   return (

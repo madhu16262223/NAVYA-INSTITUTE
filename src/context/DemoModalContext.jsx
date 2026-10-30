@@ -1,8 +1,7 @@
 import { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { courses } from '../data/courses';
-import { site } from '../data/site';
 import { wa } from '../components/ui';
-import { X, CheckCircle2, Calendar, Phone, User, BookOpen, Clock, ArrowRight } from 'lucide-react';
+import { X, CheckCircle2, Phone, User, BookOpen, Clock, ArrowRight } from 'lucide-react';
 
 const DemoModalContext = createContext({
   isOpen: false,
@@ -14,7 +13,6 @@ export const useDemoModal = () => useContext(DemoModalContext);
 
 export function DemoModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [preselectedCourse, setPreselectedCourse] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +26,6 @@ export function DemoModalProvider({ children }) {
 
   const openDemoModal = useCallback((courseTitle = '') => {
     if (courseTitle) {
-      setPreselectedCourse(courseTitle);
       setFormData(prev => ({ ...prev, course: courseTitle }));
     }
     setSubmitted(false);
@@ -152,7 +149,7 @@ export function DemoModalProvider({ children }) {
           role="dialog"
           aria-modal="true"
           aria-labelledby="demo-modal-title"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy-900/70 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy-900/70 backdrop-blur-sm animate-fade-in"
           onClick={(e) => {
             if (e.target === e.currentTarget) closeDemoModal();
           }}

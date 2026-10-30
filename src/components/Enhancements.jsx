@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowUp, X, Sparkles, ArrowRight } from 'lucide-react';
 import { site } from '../data/site';
 import { useDemoModal } from '../context/DemoModalContext';
 
 export function AnnouncementBar() {
   const [dismissed, setDismissed] = useState(() => {
-    return sessionStorage.getItem('navya_announcement_dismissed') === 'true';
+    try {
+      return sessionStorage.getItem('navya_announcement_dismissed') === 'true';
+    } catch {
+      return false;
+    }
   });
   const { openDemoModal } = useDemoModal();
 
@@ -16,7 +19,11 @@ export function AnnouncementBar() {
 
   const handleDismiss = () => {
     setDismissed(true);
-    sessionStorage.setItem('navya_announcement_dismissed', 'true');
+    try {
+      sessionStorage.setItem('navya_announcement_dismissed', 'true');
+    } catch {
+      // storage unavailable: bar stays dismissed for this render only
+    }
   };
 
   return (
@@ -117,7 +124,7 @@ export function ScrollToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Scroll back to top"
-      className="btn-icon fixed bottom-24 right-5 z-40 !bg-white text-navy shadow-lg ring-1 ring-slate-200 hover:!bg-navy hover:text-white"
+      className="btn-icon fixed bottom-5 left-4 sm:left-5 z-40 !h-11 !w-11 !bg-white text-navy shadow-lg ring-1 ring-slate-200 hover:!bg-navy hover:text-white"
     >
       <ArrowUp size={20} aria-hidden="true" />
     </button>

@@ -345,14 +345,16 @@ export function CourseDetail() {
   const course = courses.find((c) => c.id === id);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [id]);
 
   if (!course) {
     return <Navigate to="/courses" replace />;
   }
 
-  const related = courses.filter((c) => c.id !== course.id).slice(0, 3);
+  // Prefer courses from the same category, then fill with others
+  const others = courses.filter((c) => c.id !== course.id);
+  const related = [...others.filter((c) => c.cat === course.cat), ...others.filter((c) => c.cat !== course.cat)].slice(0, 3);
   const whatsappMessage = `Hi Navya Techno, I am interested in the ${course.title} course.\nPlease share the latest batch timings, fee details, and admission process.`;
 
   const config = COURSE_SKILLS[course.id] || {
@@ -515,7 +517,7 @@ export function CourseDetail() {
       </header>
 
       {/* Main Content & Right Sticky Sidebar */}
-      <main className="py-10 sm:py-14 bg-[#F4F9FE]">
+      <div className="py-10 sm:py-14 bg-[#F4F9FE]">
         <div className="container-x grid gap-8 lg:grid-cols-[1.9fr_1fr] items-start">
           {/* Left Column (Scrolls smoothly with full comprehensive course content) */}
           <div className="space-y-8">
@@ -960,7 +962,7 @@ export function CourseDetail() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       {/* Related Courses Section */}
       {related.length > 0 && (

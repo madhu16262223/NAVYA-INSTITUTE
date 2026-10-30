@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ShieldCheck, Search, Award, CheckCircle2, QrCode, Printer, MessageCircle, ArrowRight, Calendar, User, FileText, School, AlertCircle } from 'lucide-react';
+import { ShieldCheck, Search, Award, CheckCircle2, Printer, MessageCircle, Calendar, User, FileText, School, AlertCircle } from 'lucide-react';
 import { Seo, PageHeader, links, wa } from '../components/ui';
 import { site } from '../data/site';
 
@@ -41,9 +41,9 @@ const verifiedRecords = {
 };
 
 export function VerifyCertificate() {
-  const [certId, setCertId] = useState('NT-2024-108');
-  const [searchResult, setSearchResult] = useState(verifiedRecords['NT-2024-108']);
-  const [hasSearched, setHasSearched] = useState(true);
+  const [certId, setCertId] = useState('');
+  const [searchResult, setSearchResult] = useState(null);
+  const [notFoundId, setNotFoundId] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   const handleSearch = (e) => {
@@ -52,26 +52,18 @@ export function VerifyCertificate() {
     if (!cleanId) {
       setErrorMsg('Please enter a Certificate ID or Roll Number.');
       setSearchResult(null);
+      setNotFoundId('');
       return;
     }
     setErrorMsg('');
-    setHasSearched(true);
 
     if (verifiedRecords[cleanId]) {
       setSearchResult(verifiedRecords[cleanId]);
+      setNotFoundId('');
     } else {
-      // Allow custom ID search simulation for testing
-      setSearchResult({
-        id: cleanId,
-        studentName: 'Registered Student (' + cleanId + ')',
-        course: 'Advanced Computer Applications & Practical Lab',
-        duration: '45 Days Completed Module',
-        grade: 'A (Verified Successful Completion)',
-        issueDate: 'Verified on Official Registry',
-        center: 'Navya Techno Computer Education, Porumamilla (AP)',
-        status: 'Valid & Verified',
-        skills: ['Computer Fundamentals', 'Practical Lab Modules', 'Assessment Certified'],
-      });
+      // Only IDs present in the registry are ever shown as verified
+      setSearchResult(null);
+      setNotFoundId(cleanId);
     }
   };
 
@@ -114,6 +106,8 @@ export function VerifyCertificate() {
                     type="text"
                     value={certId}
                     onChange={(e) => setCertId(e.target.value)}
+                    aria-label="Certificate ID"
+                    aria-invalid={Boolean(errorMsg)}
                     placeholder="e.g. NT-2024-108 or Roll No"
                     className="w-full rounded-2xl border border-slate-300 py-3.5 pl-11 pr-4 font-mono font-bold tracking-wider text-navy uppercase placeholder:normal-case placeholder:font-sans focus:border-[#0B5ED7] focus:outline-none focus:ring-2 focus:ring-blue-100 transition shadow-sm"
                   />
@@ -125,6 +119,11 @@ export function VerifyCertificate() {
                   <Search size={18} /> Verify Now
                 </button>
               </div>
+              {errorMsg && (
+                <p role="alert" className="mt-3 flex items-center justify-center gap-1.5 text-xs font-semibold text-red-600">
+                  <AlertCircle size={14} aria-hidden="true" /> {errorMsg}
+                </p>
+              )}
 
               {/* Sample IDs Quick Bar */}
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
@@ -135,8 +134,9 @@ export function VerifyCertificate() {
                     type="button"
                     onClick={() => {
                       setCertId(id);
+                      setErrorMsg('');
+                      setNotFoundId('');
                       setSearchResult(verifiedRecords[id]);
-                      setHasSearched(true);
                     }}
                     className="rounded-lg bg-blue-50 px-2.5 py-1 font-mono font-bold text-[#0B5ED7] hover:bg-[#0B5ED7] hover:text-white transition"
                   >
@@ -147,8 +147,36 @@ export function VerifyCertificate() {
             </form>
           </div>
 
+          {/* No matching record */}
+          {notFoundId && (
+            <div role="status" className="rounded-3xl border-2 border-amber-300/70 bg-white p-6 sm:p-8 shadow-card">
+              <div className="flex items-start gap-4">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-amber-100 text-amber-600">
+                  <AlertCircle size={26} aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="text-xl font-extrabold text-navy">No record found for <span className="font-mono text-[#0B5ED7]">{notFoundId}</span></h3>
+                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                    This ID is not in the institute registry. Please check the Certificate ID printed on the certificate (format NT-YYYY-NNN) and try again, or contact the institute to confirm the record.
+                  </p>
+                  <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href={wa(`Hi Navya Techno, I could not verify certificate ID ${notFoundId} online. Please confirm whether it is genuine.`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                    >
+                      <MessageCircle size={16} aria-hidden="true" /> Ask on WhatsApp
+                    </a>
+                    <a href={links.call} className="btn-outline">Call {site.phone}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Verification Results Display */}
-          {hasSearched && searchResult && (
+          {searchResult && (
             <div className="relative overflow-hidden rounded-3xl border-2 border-emerald-500/40 bg-white p-6 sm:p-10 shadow-xl transition-all">
               {/* Top Verified Header Ribbon */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
@@ -242,8 +270,8 @@ export function VerifyCertificate() {
 
                 <div className="flex items-center gap-2 shrink-0">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-600">
-                    Blockchain/DB Registry Verified
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+                    Institute Registry Record
                   </span>
                 </div>
               </div>
@@ -274,7 +302,7 @@ export function VerifyCertificate() {
                   onClick={() => {
                     setCertId('');
                     setSearchResult(null);
-                    setHasSearched(false);
+                    setNotFoundId('');
                   }}
                   className="btn-outline !py-2 !px-4 text-xs font-bold"
                 >

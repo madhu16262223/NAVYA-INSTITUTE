@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { courses } from '../data/courses';
-import { useDemoModal } from '../context/DemoModalContext';
+import { wa } from './ui';
 import {
   User,
   GraduationCap,
@@ -14,18 +14,11 @@ import {
   RotateCcw,
   Target,
   Sparkles,
-  Compass,
-  Lightbulb,
-  BookOpen,
   TrendingUp,
   CheckCircle2,
   Award,
   Calendar,
-  Layers,
-  Code2,
-  Calculator,
   MessageSquare,
-  Bot
 } from 'lucide-react';
 
 // Step 1: User Backgrounds (Exactly matching reference design)
@@ -199,7 +192,6 @@ const skillLevels = [
 ];
 
 export function CourseFinder() {
-  const { openDemoModal } = useDemoModal();
   const [currentStep, setCurrentStep] = useState(0); // 0 = Background, 1 = Goal, 2 = Level, 3 = Results
   const [selectedBg, setSelectedBg] = useState(null);
   const [selectedGoal, setSelectedGoal] = useState(null);
@@ -600,9 +592,9 @@ export function CourseFinder() {
 
                     <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 w-full sm:w-auto shrink-0">
                       <a
-                        href={`https://wa.me/919849638258?text=${encodeURIComponent(
-                          `Hi Navya Techno! I completed the online Course Finder quiz.\nMy Profile: ${backgrounds.find(b => b.id === selectedBackground)?.title || 'Learner'}\nRecommended Course: ${matchedCourse.title}\n\nPlease share upcoming batch timings, fees, and admission details!`
-                        )}`}
+                        href={wa(
+                          `Hi Navya Techno! I completed the online Course Finder quiz.\nMy Profile: ${backgrounds.find(b => b.id === selectedBg)?.title || 'Learner'}\nRecommended Course: ${matchedCourse.title}\n\nPlease share upcoming batch timings, fees, and admission details!`
+                        )}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-center inline-flex items-center justify-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-md hover:bg-emerald-700 transition"

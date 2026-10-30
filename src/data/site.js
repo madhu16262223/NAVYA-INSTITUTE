@@ -10,6 +10,7 @@ export const site={
   email:'[Email Address]', hours:'[Working Hours]',
   rating:{score:'4.8',count:'83'}, plusCode:'2X2R+82 Porumamilla, Andhra Pradesh',
   mapQuery:'Navya Techno Institute of Computer Education Training Center, SH 54, Near APSRTC Busstand, Reddy Nagar, Porumamilla, Andhra Pradesh 516193',
+  instagram:'https://www.instagram.com/', // REPLACE with the institute's Instagram profile URL (used by the floating side buttons)
   social:[], // only real profiles, e.g. [{label:'Instagram',icon:'Instagram',href:'https://...'}]
   announcement:{
     enabled:true,
@@ -20,7 +21,6 @@ export const site={
 };
 export const navMain=[['Home','/'],['About','/about'],['Courses','/courses'],['Placements','/placements'],['Faculty','/faculty'],['Certificates','/certificates'],['Contact','/contact']];
 export const navMore=[['Verify Certificate','/verify-certificate'],['Facilities','/facilities'],['Gallery','/gallery']];
-export const nav=[...navMain.slice(0,6),...navMore,navMain[6]];
 export const strip=[['Users','Experienced Trainers','Learn from industry professionals'],['Laptop','Hands-on Practice','Real projects & live training'],['BadgeCheck','Course Certificates','Showcase your skills'],['Briefcase','Career Support','Guidance for your next step']];
 export const why=[['Users','Expert Trainers','Learn from dedicated trainers.'],['MousePointerClick','Practical Learning','Focus on hands-on computer skills.'],['GraduationCap','Student-Focused Learning','Learning designed around student needs.'],['Briefcase','Career Support','Guidance toward education and employment opportunities.'],['Rocket','Future Ready','Develop skills for a changing digital world.']];
 export const steps=[['Understand','Learn concepts clearly.'],['Practise','Apply what you learn.'],['Improve','Strengthen your skills through practice.'],['Progress','Use your skills for education and career growth.']];

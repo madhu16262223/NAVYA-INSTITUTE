@@ -12,12 +12,21 @@ export const useLanguage = () => useContext(LanguageContext);
 
 export function LanguageProvider({ children }) {
   const [lang, setLangState] = useState(() => {
-    return localStorage.getItem('navya_lang') || 'en';
+    try {
+      const stored = localStorage.getItem('navya_lang');
+      return stored === 'te' ? 'te' : 'en';
+    } catch {
+      return 'en';
+    }
   });
 
   const setLang = useCallback((newLang) => {
     setLangState(newLang);
-    localStorage.setItem('navya_lang', newLang);
+    try {
+      localStorage.setItem('navya_lang', newLang);
+    } catch {
+      // storage unavailable: language still switches for this visit
+    }
     document.documentElement.lang = newLang;
   }, []);
 
