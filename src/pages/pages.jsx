@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,Award,Phone,MapPin,Mail,Clock,MessageCircle,Navigation,ChevronLeft,ChevronRight,X,Play,GraduationCap,Sparkles} from 'lucide-react';
+import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,ArrowLeft,Award,Phone,MapPin,Mail,Clock,MessageCircle,Navigation,ChevronLeft,ChevronRight,X,Play,GraduationCap} from 'lucide-react';
 import {site,strip,why,steps,audience,principles,commitments,missionPoints,facilities,certBenefits,admissionSteps,placementSupport,placementStats,hiringPartners,pathSteps,faqs} from '../data/site';
 import {courses,courseCats} from '../data/courses';import {faculty,leadership} from '../data/faculty';import {gallery,galleryCats} from '../data/gallery';import {images} from '../data/images';
 import {Seo,Timeline,Reveal,Eyebrow,SectionHeading,Photo,FeatureCard,CourseCard,FacultyCard,CertificateImage,Reviews,RatingLine,Stars,PageHeader,CTA,Icon,links,wa} from '../components/ui';
@@ -18,16 +18,12 @@ const MapEmbed=({h='h-80'})=><iframe title="Navya Techno location on Google Maps
 
 const heroSlides = [
  {
-  src: '/images/gallery/computer-lab-4k-1.jpg',
-  alt: 'State-of-the-art 4K computer education lab with students practicing coding and software at Navya Techno',
- },
- {
   src: '/images/hero/hero-mentor-hd.jpg',
   alt: 'Dedicated instructor mentoring student in modern computer education lab at Navya Techno',
  },
  {
-  src: '/images/gallery/classroom-4k-1.jpg',
-  alt: 'Interactive modern classroom with digital smartboard and engaged students at Navya Techno',
+  src: '/images/hero/hero-coding-hd.jpg',
+  alt: 'Students actively practicing software programming and digital skills on desktop computers',
  },
  {
   src: '/images/hero/hero-accounting-hd.jpg',
@@ -404,31 +400,37 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
  useEffect(()=>{ref.current?.focus();document.body.style.overflow='hidden';
   const k=e=>{if(e.key==='Escape')onClose();else if(e.key==='ArrowRight')onNav(1);else if(e.key==='ArrowLeft')onNav(-1);else if(e.key==='Tab'){const b=[...document.querySelectorAll('[data-lb]')];const a=document.activeElement;const n=b.indexOf(a);e.preventDefault();b[(n+(e.shiftKey?-1:1)+b.length)%b.length].focus()}};
   window.addEventListener('keydown',k);return()=>{window.removeEventListener('keydown',k);document.body.style.overflow=''}},[onClose,onNav]);
- const bt='inline-flex items-center justify-center h-11 w-11 rounded-full bg-white/15 text-white hover:bg-white/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0';
+ const bt='inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/20 text-white hover:bg-white/40 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0 shadow-lg';
  return(
-  <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] flex flex-col items-center justify-center bg-[#000d1f]/96 p-4 backdrop-blur-sm">
-   <button ref={ref} data-lb onClick={onClose} aria-label="Close lightbox" className="absolute right-4 top-4 h-10 w-10 rounded-full bg-white/15 text-white hover:bg-white/30 transition-colors flex items-center justify-center"><X size={20} aria-hidden="true"/></button>
-   {/* counter pill */}
-   <span className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-white/15 px-4 py-1 text-xs font-semibold text-white backdrop-blur-sm">{i+1} / {items.length}</span>
-   <div className="flex w-full max-w-5xl items-center gap-3 mt-8">
-    <button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft size={22} aria-hidden="true"/></button>
-    <div className="min-w-0 flex-1">
-     <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-      <img src={it.src} alt={it.alt} className="mx-auto max-h-[70vh] w-auto object-contain" loading="lazy" decoding="async" style={{imageRendering:'auto',WebkitFontSmoothing:'antialiased'}}/>
+  <div role="dialog" aria-modal="true" aria-label="Image viewer" onClick={e=>{if(e.target===e.currentTarget)onClose()}} className="fixed inset-0 z-[70] flex flex-col items-center justify-between bg-black/92 p-4 sm:p-6 backdrop-blur-md transition-opacity">
+   {/* ── Top Bar with "Back to Gallery" and "Close X" ─────────────────────── */}
+   <div className="w-full max-w-6xl flex items-center justify-between gap-4 py-2 z-10">
+    <button ref={ref} data-lb onClick={onClose} aria-label="Back to gallery" className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-white/30 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-md active:scale-95">
+     <ArrowLeft size={16} aria-hidden="true"/>
+     <span>Back to Gallery</span>
+    </button>
+    <span className="rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold text-white backdrop-blur-sm shadow-sm">{i+1} / {items.length}</span>
+    <button data-lb onClick={onClose} aria-label="Close image viewer" className="inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-red-500/80 px-3.5 py-2 text-xs sm:text-sm font-bold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-md active:scale-95">
+     <X size={18} aria-hidden="true"/>
+     <span className="hidden sm:inline">Close</span>
+    </button>
+   </div>
+
+   {/* ── Image & Nav Controls ────────────────────────────────────────────── */}
+   <div className="flex w-full max-w-6xl items-center justify-between gap-2 sm:gap-4 my-auto">
+    <button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft size={24} aria-hidden="true"/></button>
+    <div className="min-w-0 flex-1 flex items-center justify-center p-2">
+     <div onClick={e=>e.stopPropagation()} className="relative max-h-[72vh] max-w-full overflow-hidden rounded-2xl bg-black/40 shadow-2xl ring-1 ring-white/15">
+      <img src={it.src} alt={it.alt} className="max-h-[72vh] w-auto max-w-full object-contain mx-auto transition-transform duration-200" style={{filter:'contrast(1.05) saturate(1.08) brightness(1.02)',imageRendering:'auto',WebkitFontSmoothing:'antialiased'}}/>
      </div>
     </div>
-    <button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight size={22} aria-hidden="true"/></button>
+    <button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight size={24} aria-hidden="true"/></button>
    </div>
-   <div className="mt-4 flex flex-col items-center gap-1.5">
-    <p className="text-center text-sm font-medium text-white/90 max-w-xl px-2">{it.alt}</p>
-    <div className="flex items-center gap-2">
-     <span className="rounded-full bg-accent/90 px-3 py-0.5 text-xs font-semibold text-white">{it.cat}</span>
-     {it.is4k && (
-      <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-0.5 text-xs font-bold text-white shadow-md">
-       <Sparkles size={12} aria-hidden="true"/> 4K Ultra HD
-      </span>
-     )}
-    </div>
+
+   {/* ── Caption & Category ──────────────────────────────────────────────── */}
+   <div className="w-full max-w-2xl flex flex-col items-center gap-1.5 py-2 z-10 text-center">
+    <p className="text-sm font-medium text-white/95 px-4 drop-shadow-md">{it.alt}</p>
+    <span className="rounded-full bg-accent px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm">{it.cat}</span>
    </div>
   </div>
  );
@@ -445,7 +447,7 @@ export function Gallery(){
  const catCounts=galleryCats.reduce((acc,c)=>({...acc,[c]:gallery.filter(g=>g.cat===c).length}),{});
  return(
   <>
-  <Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training, events and student activities in Porumamilla."/>
+  <Seo title="Gallery" desc="Authentic photos from Navya Techno: institute, labs, classrooms, training, events and student activities in Porumamilla."/>
   <PageHeader title="Our Gallery" sub="Real moments from our institute – classes, labs, events and celebrations."/>
   <section className="section">
    <div className="container-x">
@@ -453,9 +455,9 @@ export function Gallery(){
     <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
      <div className="flex items-center gap-2 text-sm text-slate-500">
       <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-navy text-white font-bold text-xs">{gallery.length}</span>
-      <span>photos from Navya Techno Institute</span>
+      <span>authentic photos from Navya Techno Institute</span>
      </div>
-     <p className="text-xs text-slate-400 italic">Click any photo to view full size · Use arrow keys to navigate</p>
+     <p className="text-xs text-slate-400 italic">Click any photo to view full size · Press Esc or X to return to gallery</p>
     </div>
     {/* ── Category filter pills ─────────────────────────────────────────── */}
     <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter gallery by category">
@@ -480,18 +482,12 @@ export function Gallery(){
          aria-label={`View photo: ${g.alt}`}
          className="group relative block w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl hover:ring-2 hover:ring-[#0B5ED7]/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5ED7]"
         >
-         {/* 4K Ultra HD Badge */}
-         {g.is4k && (
-          <span className="absolute top-2.5 left-2.5 z-20 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-[#FF850A] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-lg ring-1 ring-white/30 backdrop-blur-sm">
-           <Sparkles size={10} className="shrink-0" aria-hidden="true" /> 4K Ultra HD
-          </span>
-         )}
-         {/* HD quality image */}
+         {/* Real photo with color & contrast enhancement */}
          <div className="aspect-square overflow-hidden bg-slate-900/10">
           <img
            src={g.src} alt={g.alt} loading="lazy" decoding="async"
-           className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
-           style={{imageRendering:'auto'}}
+           className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+           style={{filter:'contrast(1.04) saturate(1.08) brightness(1.01)',imageRendering:'auto'}}
           />
          </div>
          {/* Hover overlay with caption */}
@@ -499,7 +495,7 @@ export function Gallery(){
           <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">{g.cat}</span>
           <p className="text-center text-xs font-medium text-white/95 line-clamp-2 leading-tight drop-shadow-sm">{g.alt}</p>
          </div>
-         {/* Play/zoom icon in centre */}
+         {/* Zoom indicator icon */}
          <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none z-10">
           <div className="rounded-full bg-white/25 p-3 backdrop-blur-sm ring-1 ring-white/30">
            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
