@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,Award,Phone,MapPin,Mail,Clock,MessageCircle,Navigation,ChevronLeft,ChevronRight,X,Play,GraduationCap} from 'lucide-react';
+import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,Award,Phone,MapPin,Mail,Clock,MessageCircle,Navigation,ChevronLeft,ChevronRight,X,Play,GraduationCap,Sparkles} from 'lucide-react';
 import {site,strip,why,steps,audience,principles,commitments,missionPoints,facilities,certBenefits,admissionSteps,placementSupport,placementStats,hiringPartners,pathSteps,faqs} from '../data/site';
 import {courses,courseCats} from '../data/courses';import {faculty,leadership} from '../data/faculty';import {gallery,galleryCats} from '../data/gallery';import {images} from '../data/images';
 import {Seo,Timeline,Reveal,Eyebrow,SectionHeading,Photo,FeatureCard,CourseCard,FacultyCard,CertificateImage,Reviews,RatingLine,Stars,PageHeader,CTA,Icon,links,wa} from '../components/ui';
@@ -18,12 +18,16 @@ const MapEmbed=({h='h-80'})=><iframe title="Navya Techno location on Google Maps
 
 const heroSlides = [
  {
+  src: '/images/gallery/computer-lab-4k-1.jpg',
+  alt: 'State-of-the-art 4K computer education lab with students practicing coding and software at Navya Techno',
+ },
+ {
   src: '/images/hero/hero-mentor-hd.jpg',
   alt: 'Dedicated instructor mentoring student in modern computer education lab at Navya Techno',
  },
  {
-  src: '/images/hero/hero-coding-hd.jpg',
-  alt: 'Students actively practicing software programming and digital skills on desktop computers',
+  src: '/images/gallery/classroom-4k-1.jpg',
+  alt: 'Interactive modern classroom with digital smartboard and engaged students at Navya Techno',
  },
  {
   src: '/images/hero/hero-accounting-hd.jpg',
@@ -415,9 +419,16 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
     </div>
     <button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight size={22} aria-hidden="true"/></button>
    </div>
-   <div className="mt-4 flex flex-col items-center gap-1">
+   <div className="mt-4 flex flex-col items-center gap-1.5">
     <p className="text-center text-sm font-medium text-white/90 max-w-xl px-2">{it.alt}</p>
-    <span className="rounded-full bg-accent/80 px-3 py-0.5 text-xs font-semibold text-white">{it.cat}</span>
+    <div className="flex items-center gap-2">
+     <span className="rounded-full bg-accent/90 px-3 py-0.5 text-xs font-semibold text-white">{it.cat}</span>
+     {it.is4k && (
+      <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-0.5 text-xs font-bold text-white shadow-md">
+       <Sparkles size={12} aria-hidden="true"/> 4K Ultra HD
+      </span>
+     )}
+    </div>
    </div>
   </div>
  );
@@ -469,8 +480,14 @@ export function Gallery(){
          aria-label={`View photo: ${g.alt}`}
          className="group relative block w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl hover:ring-2 hover:ring-[#0B5ED7]/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5ED7]"
         >
+         {/* 4K Ultra HD Badge */}
+         {g.is4k && (
+          <span className="absolute top-2.5 left-2.5 z-20 inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-500 to-[#FF850A] px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white shadow-lg ring-1 ring-white/30 backdrop-blur-sm">
+           <Sparkles size={10} className="shrink-0" aria-hidden="true" /> 4K Ultra HD
+          </span>
+         )}
          {/* HD quality image */}
-         <div className="aspect-square overflow-hidden">
+         <div className="aspect-square overflow-hidden bg-slate-900/10">
           <img
            src={g.src} alt={g.alt} loading="lazy" decoding="async"
            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
@@ -478,12 +495,12 @@ export function Gallery(){
           />
          </div>
          {/* Hover overlay with caption */}
-         <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-[#021333]/80 via-[#021333]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-3">
+         <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-[#021333]/90 via-[#021333]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-3 z-10">
           <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">{g.cat}</span>
-          <p className="text-center text-xs font-medium text-white/90 line-clamp-2 leading-tight">{g.alt}</p>
+          <p className="text-center text-xs font-medium text-white/95 line-clamp-2 leading-tight drop-shadow-sm">{g.alt}</p>
          </div>
          {/* Play/zoom icon in centre */}
-         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none z-10">
           <div className="rounded-full bg-white/25 p-3 backdrop-blur-sm ring-1 ring-white/30">
            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
           </div>
