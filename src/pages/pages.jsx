@@ -400,15 +400,105 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
  useEffect(()=>{ref.current?.focus();document.body.style.overflow='hidden';
   const k=e=>{if(e.key==='Escape')onClose();else if(e.key==='ArrowRight')onNav(1);else if(e.key==='ArrowLeft')onNav(-1);else if(e.key==='Tab'){const b=[...document.querySelectorAll('[data-lb]')];const a=document.activeElement;const n=b.indexOf(a);e.preventDefault();b[(n+(e.shiftKey?-1:1)+b.length)%b.length].focus()}};
   window.addEventListener('keydown',k);return()=>{window.removeEventListener('keydown',k);document.body.style.overflow=''}},[onClose,onNav]);
- const bt='btn-icon !bg-white/15 text-white hover:!bg-white/30';
- return <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] flex flex-col items-center justify-center bg-navy-900/95 p-4"><button ref={ref} data-lb onClick={onClose} aria-label="Close" className={`${bt} absolute right-4 top-4`}><X aria-hidden="true"/></button>
- <div className="flex w-full max-w-5xl items-center gap-3"><button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft aria-hidden="true"/></button><div className="min-w-0 flex-1"><Photo src={it.src} label={it.alt} ratio="aspect-[4/3] max-h-[75vh]" className="mx-auto w-full"/></div><button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight aria-hidden="true"/></button></div><p className="mt-3 text-center text-sm text-blue-100">{it.alt} · {i+1} / {items.length}</p></div>}
-export function Gallery(){const [cat,setCat]=useState('All');const [open,setOpen]=useState(null);const opener=useRef(null);const list=gallery.filter(g=>cat==='All'||g.cat===cat);
- const close=()=>{setOpen(null);opener.current?.focus()};const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
- return <><Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training and events."/><PageHeader title="Our Gallery" sub="Moments That Inspire"/>
-<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter gallery">{['All',...galleryCats].map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`btn-pill ${cat===c?'bg-navy text-white':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div>
-{list.length?<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{list.map((g,i)=><li key={g.src}><div role="button" tabIndex={0} onClick={e=>{opener.current=e.currentTarget;setOpen(i)}} onKeyDown={e=>(e.key===' '||e.key==='Enter')&&(e.preventDefault(),opener.current=e.currentTarget,setOpen(i))} aria-label={`Open image: ${g.alt}`} className="block w-full overflow-hidden rounded-2xl cursor-pointer transition-transform hover:scale-[1.02]"><Photo src={g.src} label={g.alt} ratio="aspect-square"/></div></li>)}</ul>:<Empty>No photos in this category yet.</Empty>}</div></section>
-{open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}</>}
+ const bt='inline-flex items-center justify-center h-11 w-11 rounded-full bg-white/15 text-white hover:bg-white/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0';
+ return(
+  <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] flex flex-col items-center justify-center bg-[#000d1f]/96 p-4 backdrop-blur-sm">
+   <button ref={ref} data-lb onClick={onClose} aria-label="Close lightbox" className="absolute right-4 top-4 h-10 w-10 rounded-full bg-white/15 text-white hover:bg-white/30 transition-colors flex items-center justify-center"><X size={20} aria-hidden="true"/></button>
+   {/* counter pill */}
+   <span className="absolute left-1/2 top-4 -translate-x-1/2 rounded-full bg-white/15 px-4 py-1 text-xs font-semibold text-white backdrop-blur-sm">{i+1} / {items.length}</span>
+   <div className="flex w-full max-w-5xl items-center gap-3 mt-8">
+    <button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft size={22} aria-hidden="true"/></button>
+    <div className="min-w-0 flex-1">
+     <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
+      <img src={it.src} alt={it.alt} className="mx-auto max-h-[70vh] w-auto object-contain" loading="lazy" decoding="async" style={{imageRendering:'auto',WebkitFontSmoothing:'antialiased'}}/>
+     </div>
+    </div>
+    <button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight size={22} aria-hidden="true"/></button>
+   </div>
+   <div className="mt-4 flex flex-col items-center gap-1">
+    <p className="text-center text-sm font-medium text-white/90 max-w-xl px-2">{it.alt}</p>
+    <span className="rounded-full bg-accent/80 px-3 py-0.5 text-xs font-semibold text-white">{it.cat}</span>
+   </div>
+  </div>
+ );
+}
+
+export function Gallery(){
+ const [cat,setCat]=useState('All');
+ const [open,setOpen]=useState(null);
+ const opener=useRef(null);
+ const prefMotion=useReducedMotion();
+ const list=gallery.filter(g=>cat==='All'||g.cat===cat);
+ const close=()=>{setOpen(null);opener.current?.focus()};
+ const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
+ const catCounts=galleryCats.reduce((acc,c)=>({...acc,[c]:gallery.filter(g=>g.cat===c).length}),{});
+ return(
+  <>
+  <Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training, events and student activities in Porumamilla."/>
+  <PageHeader title="Our Gallery" sub="Real moments from our institute – classes, labs, events and celebrations."/>
+  <section className="section">
+   <div className="container-x">
+    {/* ── Stats row ─────────────────────────────────────────────────────── */}
+    <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+     <div className="flex items-center gap-2 text-sm text-slate-500">
+      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-navy text-white font-bold text-xs">{gallery.length}</span>
+      <span>photos from Navya Techno Institute</span>
+     </div>
+     <p className="text-xs text-slate-400 italic">Click any photo to view full size · Use arrow keys to navigate</p>
+    </div>
+    {/* ── Category filter pills ─────────────────────────────────────────── */}
+    <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter gallery by category">
+     {['All',...galleryCats].map(c=>(
+      <button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)}
+       className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold transition-all ${cat===c?'bg-navy text-white shadow-md scale-105':'bg-mist text-navy hover:bg-blue-100'}`}>
+       {c}
+       {c!=='All'&&catCounts[c]&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat===c?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{catCounts[c]}</span>}
+       {c==='All'&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat==='All'?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{gallery.length}</span>}
+      </button>
+     ))}
+    </div>
+    {/* ── Photo grid ───────────────────────────────────────────────────── */}
+    {list.length?(
+     <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {list.map((g,i)=>(
+       <li key={g.src}>
+        <div
+         role="button" tabIndex={0}
+         onClick={e=>{opener.current=e.currentTarget;setOpen(i)}}
+         onKeyDown={e=>(e.key===' '||e.key==='Enter')&&(e.preventDefault(),opener.current=e.currentTarget,setOpen(i))}
+         aria-label={`View photo: ${g.alt}`}
+         className="group relative block w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl hover:ring-2 hover:ring-[#0B5ED7]/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5ED7]"
+        >
+         {/* HD quality image */}
+         <div className="aspect-square overflow-hidden">
+          <img
+           src={g.src} alt={g.alt} loading="lazy" decoding="async"
+           className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+           style={{imageRendering:'auto'}}
+          />
+         </div>
+         {/* Hover overlay with caption */}
+         <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-[#021333]/80 via-[#021333]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-3">
+          <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">{g.cat}</span>
+          <p className="text-center text-xs font-medium text-white/90 line-clamp-2 leading-tight">{g.alt}</p>
+         </div>
+         {/* Play/zoom icon in centre */}
+         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
+          <div className="rounded-full bg-white/25 p-3 backdrop-blur-sm ring-1 ring-white/30">
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+         </div>
+        </div>
+       </li>
+      ))}
+     </ul>
+    ):<Empty>No photos in this category yet.</Empty>}
+   </div>
+  </section>
+  {open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}
+  </>
+ );
+}
 
 export function Contact(){const [f,setF]=useState({name:'',phone:'',email:'',course:'',msg:''});
  const [errors,setErrors]=useState({});const [sent,setSent]=useState(false);const [submitting,setSubmitting]=useState(false);
