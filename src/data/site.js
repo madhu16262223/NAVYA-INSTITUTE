@@ -7,7 +7,7 @@ export const site={
   address:'SH 54, Near APSRTC Busstand, Reddy Nagar, Porumamilla, Andhra Pradesh 516193, India',
   phone:'+91 98496 38258', phoneTel:'+919849638258',
   whatsapp:'919849638258', // assumed same as the phone number: change if the WhatsApp number differs
-  email:'[Email Address]', hours:'[Working Hours]',
+  email:'navyatechnopmr@gmail.com', hours:'Mon – Sat: 8:00 AM – 8:00 PM (Sun: 9:00 AM – 1:00 PM)',
   rating:{score:'4.8',count:'83'}, plusCode:'2X2R+82 Porumamilla, Andhra Pradesh',
   mapQuery:'Navya Techno Institute of Computer Education Training Center, SH 54, Near APSRTC Busstand, Reddy Nagar, Porumamilla, Andhra Pradesh 516193',
   instagram:'https://www.instagram.com/', // REPLACE with the institute's Instagram profile URL (used by the floating side buttons)

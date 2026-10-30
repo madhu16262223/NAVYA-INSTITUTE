@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,Award,Phone,MapPin,MessageCircle,Navigation,ChevronLeft,ChevronRight,ChevronDown,X,Calendar,GraduationCap,ZoomIn} from 'lucide-react';
+import {useEffect,useRef,useState} from 'react';import {useReducedMotion,motion,AnimatePresence} from 'framer-motion';import {Link} from 'react-router-dom';import {ArrowRight,ArrowLeft,Award,Phone,MapPin,MessageCircle,Navigation,ChevronLeft,ChevronRight,ChevronDown,X,Calendar,GraduationCap} from 'lucide-react';
 import {site,why,steps,audience,principles,commitments,missionPoints,facilities,certBenefits,admissionSteps,placementSupport,placementStats,hiringPartners,pathSteps,faqs} from '../data/site';
 import {courses,courseCats} from '../data/courses';import {faculty,leadership} from '../data/faculty';import {gallery,galleryCats} from '../data/gallery';import {images,srcSetFor} from '../data/images';
 import {Seo,Timeline,Reveal,Stagger,CountUp,Eyebrow,SectionHeading,Photo,FeatureCard,CourseCard,FacultyCard,CertificateImage,Reviews,RatingLine,Stars,PageHeader,CTA,Icon,links,wa} from '../components/ui';
@@ -260,12 +260,12 @@ export function Placements(){return <><Seo title="Placements" desc="Career prepa
 {hiringPartners.length>0&&<ul className="mt-8 flex flex-wrap justify-center gap-4">{hiringPartners.map(p=><li key={p} className="rounded-xl bg-white px-5 py-3 font-semibold shadow-card">{p}</li>)}</ul>}</div></section>
 <section className="section"><div className="container-x"><SectionHeading eyebrow="Career Journey" title="Possible Career Paths" sub="Your journey, step by step. Outcomes depend on your effort and opportunities; employment is not guaranteed."/><ol className="grid gap-4 md:grid-cols-5">{pathSteps.map((s,i)=><li key={s} className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-card"><span className="mx-auto mb-2 grid h-9 w-9 place-items-center rounded-full bg-navy font-bold text-white">{i+1}</span><span className="font-semibold text-navy">{s}</span></li>)}</ol></div></section><CTA/></>}
 
-export function Faculty(){const [md,...rest]=faculty;return <><Seo title="Faculty" desc="Meet the leadership and trainers of Navya Techno."/><PageHeader title="Faculty & Trainers" sub="The people behind your learning." image="/images/facilities/practical-training-1920.jpg"/>
-<section className="section"><div className="container-x"><div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#082256] to-[#0B4FA8] p-8 text-white sm:p-12"><span aria-hidden="true" className="absolute -bottom-8 right-24 h-40 w-3 rotate-[30deg] bg-accent"/><div className="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]"><div><Eyebrow>LEADERSHIP</Eyebrow><h2 className="!text-white text-3xl sm:text-4xl">Leadership That Inspires Learning</h2><p className="mt-5 text-lg text-blue-100">{leadership.paragraph}</p><p className="mt-2 text-sm text-blue-100">{leadership.note}</p><div className="mt-6 border-l-4 border-accent pl-4"><p className="text-xl font-bold">{md.name}</p><p className="text-blue-100">{md.role}</p></div></div><Photo src={md.photo} label="Managing Director" ratio="aspect-[4/5]" className="mx-auto w-full max-w-sm"/></div></div></div></section>
-<section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="OUR TRAINERS" title="Meet Our Trainers" sub="Dedicated trainers committed to your growth."/><Grid cols="lg:grid-cols-3">{rest.map((f,i)=><FacultyCard key={i} f={f}/>)}</Grid></div></section><CTA/></>}
+export function Faculty(){const [md,...rest]=faculty;return <><Seo title="Faculty & Trainers" desc="Meet the leadership and trainers of Navya Techno Institute: Veeraiah Raga, B. Balakondaiah, and Gurumadhu Kakarla."/><PageHeader title="Faculty & Trainers" sub="The people behind your learning." image="/images/facilities/practical-training-1920.jpg"/>
+<section className="section"><div className="container-x"><div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#082256] to-[#0B4FA8] p-8 text-white sm:p-12"><span aria-hidden="true" className="absolute -bottom-8 right-24 h-40 w-3 rotate-[30deg] bg-accent"/><div className="relative grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]"><div><Eyebrow>LEADERSHIP</Eyebrow><h2 className="!text-white text-3xl sm:text-4xl">Leadership That Inspires Learning</h2><p className="mt-5 text-lg text-blue-100">{leadership.paragraph}</p><p className="mt-2 text-sm text-blue-100">{leadership.note}</p><div className="mt-6 border-l-4 border-accent pl-4"><p className="text-xl font-bold">{md.name} <span className="text-sm font-normal text-blue-200">({md.qualification})</span></p><p className="text-blue-100 font-semibold">{md.role}</p><p className="text-xs text-blue-200 mt-1 font-medium">{md.spec}</p></div></div><Photo src={md.photo} label={`${md.name} - Head of Institute`} ratio="aspect-[4/5]" className="mx-auto w-full max-w-sm rounded-2xl shadow-2xl"/></div></div></div></section>
+<section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="OUR TRAINERS" title="Meet Our Trainers" sub="Dedicated mentors committed to your individual technical growth and career readiness."/><Grid cols="lg:grid-cols-3">{rest.map((f,i)=><Reveal key={f.id||i}><FacultyCard f={f}/></Reveal>)}</Grid></div></section><CTA/></>}
 
 export function Certificates(){const cc=courses.filter(c=>c.certificate);return <><Seo title="Certificates" desc="Course completion certificates from Navya Techno."/><PageHeader title="Certificates" sub="Learn. Complete. Get Certified." image="/images/gallery/certificate-1-1920.jpg"/>
-<section className="section"><div className="container-x grid items-center gap-10 lg:grid-cols-2"><Reveal><CertificateImage/></Reveal><div><Eyebrow>WHY IT MATTERS</Eyebrow><h2 className="text-3xl sm:text-4xl">Why Our Certificates Matter</h2><ul className="mt-6 space-y-4">{[['Award','Course completion recognition','Formal recognition when you complete a course.'],['BadgeCheck','Demonstrates learning','Shows the skills you have built.'],['Heart','Builds confidence','A milestone that motivates you forward.'],['FileText','Portfolio support','Add it to your resume and portfolio.']].map(([i,t,d])=><li key={t} className="flex gap-4"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-mist text-accent"><Icon name={i} size={22}/></span><div><p className="font-bold text-navy">{t}</p><p className="text-slate-600">{d}</p></div></li>)}</ul></div></div></section>
+<section className="section"><div className="container-x grid items-center gap-10 lg:grid-cols-2"><Reveal><CertificateImage/></Reveal><div><Eyebrow>WHY IT MATTERS</Eyebrow><h2 className="text-3xl sm:text-4xl">Why Our Certificates Matter</h2><ul className="mt-6 space-y-4">{[['Award','Course completion recognition','Formal recognition when you complete a course.'],['BadgeCheck','Demonstrates learning','Shows the skills you have built.'],['Heart','Builds confidence','A milestone that motivates you forward.'],['FileText','Portfolio support','Add it to your resume and portfolio.']].map(([i,t,d])=><li key={t} className="flex gap-4"><span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-mist text-accent"><Icon name={i} size={22}/></span><div><p className="font-bold text-navy">{t}</p><p className="text-slate-600">{d}</p></div></li>)}</ul><p className="mt-5 text-sm text-slate-500">Authorized Course Completion Certificate issued directly by Navya Techno Institute of Computer Education, Porumamilla.</p></div></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="COURSES" title="Courses With Certificates"/><Grid cols="lg:grid-cols-3 xl:grid-cols-4">{cc.map(c=><CourseCard key={c.id} c={c}/>)}</Grid></div></section><CTA/></>}
 
 export function Facilities(){return <><Seo title="Facilities" desc="Computer lab, hardware lab, classrooms and training equipment at Navya Techno."/><PageHeader title="Our Facilities" sub="Learn in a Practical Environment" image="/images/facilities/learning-environment-1920.jpg"/>
@@ -275,15 +275,118 @@ function Lightbox({items,i,onClose,onNav}){const ref=useRef(null);const it=items
  useEffect(()=>{ref.current?.focus();document.body.style.overflow='hidden';
   const k=e=>{if(e.key==='Escape')onClose();else if(e.key==='ArrowRight')onNav(1);else if(e.key==='ArrowLeft')onNav(-1);else if(e.key==='Tab'){const b=[...document.querySelectorAll('[data-lb]')];const a=document.activeElement;const n=b.indexOf(a);e.preventDefault();b[(n+(e.shiftKey?-1:1)+b.length)%b.length].focus()}};
   window.addEventListener('keydown',k);return()=>{window.removeEventListener('keydown',k);document.body.style.overflow=''}},[onClose,onNav]);
- const bt='btn-icon !bg-white/15 text-white hover:!bg-white/30';
- return <div role="dialog" aria-modal="true" aria-label="Image viewer" className="fixed inset-0 z-[70] flex flex-col items-center justify-center bg-navy-900/95 p-4"><button ref={ref} data-lb onClick={onClose} aria-label="Close" className={`${bt} absolute right-4 top-4`}><X aria-hidden="true"/></button>
- <div className="flex w-full max-w-5xl items-center gap-3"><button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft aria-hidden="true"/></button><div className="min-w-0 flex-1"><Photo src={it.src} srcSet={srcSetFor(it.src)} sizes="100vw" label={it.alt} ratio="aspect-[4/3] max-h-[75vh]" className="mx-auto w-full" eager/></div><button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight aria-hidden="true"/></button></div><p className="mt-3 text-center text-sm text-blue-100">{it.alt} · {i+1} / {items.length}</p></div>}
-export function Gallery(){const [cat,setCat]=useState('All');const [open,setOpen]=useState(null);const opener=useRef(null);const list=gallery.filter(g=>cat==='All'||g.cat===cat);
- const close=()=>{setOpen(null);opener.current?.focus()};const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
- return <><Seo title="Gallery" desc="Moments from Navya Techno: institute, labs, classrooms, training and events."/><PageHeader title="Our Gallery" sub="Moments That Inspire" image="/images/gallery/activity-1-1920.jpg"/>
-<section className="section"><div className="container-x"><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter gallery">{['All',...galleryCats].map(c=><button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)} className={`btn-pill ${cat===c?'bg-navy text-white':'bg-mist text-navy hover:bg-blue-100'}`}>{c}</button>)}</div>
-{list.length?<ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">{list.map((g,i)=><Reveal key={g.src} delay={(i%4)*.06}><li><div role="button" tabIndex={0} onClick={e=>{opener.current=e.currentTarget;setOpen(i)}} onKeyDown={e=>(e.key===' '||e.key==='Enter')&&(e.preventDefault(),opener.current=e.currentTarget,setOpen(i))} aria-label={`Open image: ${g.alt}`} className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:[&_img]:scale-110"><Photo src={g.src} srcSet={srcSetFor(g.src)} sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 50vw" label={g.alt} ratio="aspect-square"/><span aria-hidden="true" className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-navy/80 via-navy/10 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"><span className="text-xs font-bold text-white">{g.alt}</span><span className="mt-1 text-[10px] font-semibold uppercase tracking-wider text-blue-100">{g.cat}</span></span><span aria-hidden="true" className="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-navy opacity-0 shadow-md transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 scale-75"><ZoomIn size={16}/></span></div></li></Reveal>)}</ul>:<Empty>No photos in this category yet.</Empty>}</div></section>
-{open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}</>}
+ const bt='inline-flex items-center justify-center h-12 w-12 rounded-full bg-white/20 text-white hover:bg-white/40 active:scale-95 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shrink-0 shadow-lg';
+ return(
+  <div role="dialog" aria-modal="true" aria-label="Image viewer" onClick={e=>{if(e.target===e.currentTarget)onClose()}} className="fixed inset-0 z-[70] flex flex-col items-center justify-between bg-black/92 p-4 sm:p-6 backdrop-blur-md transition-opacity">
+   {/* ── Top Bar with "Back to Gallery" and "Close X" ─────────────────────── */}
+   <div className="w-full max-w-6xl flex items-center justify-between gap-4 py-2 z-10">
+    <button ref={ref} data-lb onClick={onClose} aria-label="Back to gallery" className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-white/30 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-md active:scale-95">
+     <ArrowLeft size={16} aria-hidden="true"/>
+     <span>Back to Gallery</span>
+    </button>
+    <span className="rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold text-white backdrop-blur-sm shadow-sm">{i+1} / {items.length}</span>
+    <button data-lb onClick={onClose} aria-label="Close image viewer" className="inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-red-500/80 px-3.5 py-2 text-xs sm:text-sm font-bold text-white transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white shadow-md active:scale-95">
+     <X size={18} aria-hidden="true"/>
+     <span className="hidden sm:inline">Close</span>
+    </button>
+   </div>
+
+   {/* ── Image & Nav Controls ────────────────────────────────────────────── */}
+   <div className="flex w-full max-w-6xl items-center justify-between gap-2 sm:gap-4 my-auto">
+    <button data-lb onClick={()=>onNav(-1)} aria-label="Previous image" className={bt}><ChevronLeft size={24} aria-hidden="true"/></button>
+    <div className="min-w-0 flex-1 flex items-center justify-center p-2">
+     <div onClick={e=>e.stopPropagation()} className="relative max-h-[72vh] max-w-full overflow-hidden rounded-2xl bg-black/40 shadow-2xl ring-1 ring-white/15">
+      <img src={it.src} alt={it.alt} className="max-h-[72vh] w-auto max-w-full object-contain mx-auto transition-transform duration-200" style={{filter:'contrast(1.05) saturate(1.08) brightness(1.02)',imageRendering:'auto',WebkitFontSmoothing:'antialiased'}}/>
+     </div>
+    </div>
+    <button data-lb onClick={()=>onNav(1)} aria-label="Next image" className={bt}><ChevronRight size={24} aria-hidden="true"/></button>
+   </div>
+
+   {/* ── Caption & Category ──────────────────────────────────────────────── */}
+   <div className="w-full max-w-2xl flex flex-col items-center gap-1.5 py-2 z-10 text-center">
+    <p className="text-sm font-medium text-white/95 px-4 drop-shadow-md">{it.alt}</p>
+    <span className="rounded-full bg-accent px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm">{it.cat}</span>
+   </div>
+  </div>
+ );
+}
+
+export function Gallery(){
+ const [cat,setCat]=useState('All');
+ const [open,setOpen]=useState(null);
+ const opener=useRef(null);
+ const prefMotion=useReducedMotion();
+ const list=gallery.filter(g=>cat==='All'||g.cat===cat);
+ const close=()=>{setOpen(null);opener.current?.focus()};
+ const nav=d=>setOpen(o=>(o+d+list.length)%list.length);
+ const catCounts=galleryCats.reduce((acc,c)=>({...acc,[c]:gallery.filter(g=>g.cat===c).length}),{});
+ return(
+  <>
+  <Seo title="Gallery" desc="Authentic photos from Navya Techno: institute, labs, classrooms, training, events and student activities in Porumamilla."/>
+  <PageHeader title="Our Gallery" sub="Real moments from our institute – classes, labs, events and celebrations." image="/images/gallery/activity-1-1920.jpg"/>
+  <section className="section">
+   <div className="container-x">
+    {/* ── Stats row ─────────────────────────────────────────────────────── */}
+    <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+     <div className="flex items-center gap-2 text-sm text-slate-500">
+      <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-navy text-white font-bold text-xs">{gallery.length}</span>
+      <span>authentic photos from Navya Techno Institute</span>
+     </div>
+     <p className="text-xs text-slate-400 italic">Click any photo to view full size · Press Esc or X to return to gallery</p>
+    </div>
+    {/* ── Category filter pills ─────────────────────────────────────────── */}
+    <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter gallery by category">
+     {['All',...galleryCats].map(c=>(
+      <button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)}
+       className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold transition-all ${cat===c?'bg-navy text-white shadow-md scale-105':'bg-mist text-navy hover:bg-blue-100'}`}>
+       {c}
+       {c!=='All'&&catCounts[c]&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat===c?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{catCounts[c]}</span>}
+       {c==='All'&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat==='All'?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{gallery.length}</span>}
+      </button>
+     ))}
+    </div>
+    {/* ── Photo grid ───────────────────────────────────────────────────── */}
+    {list.length?(
+     <ul className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
+      {list.map((g,i)=>(
+       <li key={g.src}>
+        <div
+         role="button" tabIndex={0}
+         onClick={e=>{opener.current=e.currentTarget;setOpen(i)}}
+         onKeyDown={e=>(e.key===' '||e.key==='Enter')&&(e.preventDefault(),opener.current=e.currentTarget,setOpen(i))}
+         aria-label={`View photo: ${g.alt}`}
+         className="group relative block w-full overflow-hidden rounded-2xl cursor-pointer bg-slate-100 shadow-sm ring-1 ring-slate-200 transition-all duration-300 hover:shadow-xl hover:ring-2 hover:ring-[#0B5ED7]/40 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B5ED7]"
+        >
+         {/* Real photo with color & contrast enhancement */}
+         <div className="aspect-square overflow-hidden bg-slate-900/10">
+          <img
+           src={g.src} alt={g.alt} loading="lazy" decoding="async"
+           className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+           style={{filter:'contrast(1.04) saturate(1.08) brightness(1.01)',imageRendering:'auto'}}
+          />
+         </div>
+         {/* Hover overlay with caption */}
+         <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-[#021333]/90 via-[#021333]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-3 z-10">
+          <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">{g.cat}</span>
+          <p className="text-center text-xs font-medium text-white/95 line-clamp-2 leading-tight drop-shadow-sm">{g.alt}</p>
+         </div>
+         {/* Zoom indicator icon */}
+         <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none z-10">
+          <div className="rounded-full bg-white/25 p-3 backdrop-blur-sm ring-1 ring-white/30">
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+         </div>
+        </div>
+       </li>
+      ))}
+     </ul>
+    ):<Empty>No photos in this category yet.</Empty>}
+   </div>
+  </section>
+  {open!==null&&<Lightbox items={list} i={open} onClose={close} onNav={nav}/>}
+  </>
+ );
+}
 
 export function Contact(){const [f,setF]=useState({name:'',phone:'',email:'',course:'',msg:''});
  const [errors,setErrors]=useState({});const [sent,setSent]=useState(false);const [submitting,setSubmitting]=useState(false);

@@ -11,7 +11,11 @@ for dir in public/images/hero public/images/facilities public/images/gallery pub
     case "$f" in *-1920.jpg) continue;; esac
     out="${f%.jpg}-1920.jpg"
     w=$(sips -g pixelWidth "$f" 2>/dev/null | awk '/pixelWidth/{print $2}')
-    if [ "${w:-0}" -le 1920 ]; then echo "skip $f (${w:-?}px wide, not a 4K master)"; continue; fi
+    if [ "${w:-0}" -le 1920 ]; then
+      # Not a 4K master. If a stale -1920 variant exists (e.g. a placeholder replaced by a real photo), keep srcset in sync by copying.
+      if [ -e "$out" ] && ! cmp -s "$f" "$out"; then cp "$f" "$out"; echo "copied $f -> $out (${w}px wide)"; else echo "skip $f (${w:-?}px wide, not a 4K master)"; fi
+      continue
+    fi
     if [ ! -e "$out" ] || [ "$f" -nt "$out" ]; then
       sips --resampleWidth 1920 -s format jpeg -s formatOptions 82 "$f" --out "$out" >/dev/null
       echo "made $out"
