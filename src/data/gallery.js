@@ -66,7 +66,8 @@ export const gallery = [
   { src: '/images/gallery/students-3.jpg',          cat: 'Students',      alt: 'Students collaborating and practicing together' },
   { src: '/images/gallery/students-4.jpg',          cat: 'Students',      alt: 'Student cohort at Navya Techno Computer Education' },
 
-  // ── Certificates (Real Course Completion Recognition) ─────────────────────
+  // ── Certificates (Course Completion Recognition & Sample Credential) ──────
+  { src: '/images/gallery/certificate-sample.jpg',  cat: 'Certificates',  alt: 'Official Navya Techno Course Completion Certificate – sample credential' },
   { src: '/images/gallery/certificate-1.jpg',       cat: 'Certificates',  alt: 'Course completion certificate award ceremony at Navya Techno' },
 
   // ── Activities (Real Student Projects & Activities) ───────────────────────

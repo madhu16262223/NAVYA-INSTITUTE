@@ -14,7 +14,7 @@ export function Reveal({children,className=''}){const r=useReducedMotion();
  return <motion.div className={className} initial={r?false:{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-60px'}} transition={{duration:.5,ease:'easeOut'}}>{children}</motion.div>}
 export const Eyebrow=({children,center,light})=><p className={`mb-2 flex items-center gap-3 text-xs font-bold tracking-[.22em] ${light?'text-blue-100':'text-[#0B5ED7]'} ${center?'justify-center':''}`}><span className="h-0.5 w-6 bg-accent"/>{children}</p>;
 export const SectionHeading=({eyebrow,title,sub,center=true,light})=><div className={`mb-10 max-w-2xl ${center?'mx-auto text-center':''}`}>{eyebrow&&<Eyebrow center={center} light={light}>{eyebrow}</Eyebrow>}<h2 className={`text-3xl sm:text-4xl ${light?'!text-white':''}`}>{title}</h2>{sub&&<p className={`mt-3 text-lg ${light?'text-blue-100':'text-slate-600'}`}>{sub}</p>}</div>;
-export function Photo({src,label='[Photo]',className='',ratio='aspect-[4/3]',eager}){const [bad,setBad]=useState(!src);
+export function Photo({src,label='Navya Techno photo',className='',ratio='aspect-[4/3]',eager}){const [bad,setBad]=useState(!src);
  return <div className={`${ratio} ${className} overflow-hidden rounded-2xl bg-gradient-to-br from-mist to-blue-100 ring-1 ring-slate-200`}>
  {!bad?<img src={src} alt={label} loading={eager?'eager':'lazy'} decoding="async" onError={()=>setBad(true)} className="h-full w-full object-cover"/>:
  <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-4 text-center text-sm font-medium text-brand"><ImageIcon size={28} aria-hidden="true"/>{label}</div>}</div>}
