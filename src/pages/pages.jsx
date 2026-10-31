@@ -153,7 +153,7 @@ export function Home(){
      type="button"
      onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
      aria-label="Previous slide"
-     className="btn-icon !h-8 !w-8 !bg-black/45 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
+     className="btn-icon text-white hover:!bg-accent border border-white/20"
     >
      <ChevronLeft size={15} />
     </button>
@@ -195,7 +195,7 @@ export function Home(){
  <div className="container-x relative">
   <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
    <div className="max-w-2xl">
-    <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.22em] text-[#FF850A]">
+    <p className="flex items-center gap-2 text-xs font-bold tracking-wider text-[#FF850A]">
      <span className="h-[2px] w-5 rounded-full bg-[#FF850A]" aria-hidden="true"/>
      Our Courses
     </p>
@@ -375,8 +375,8 @@ export function Gallery(){
       <button key={c} aria-pressed={cat===c} onClick={()=>setCat(c)}
        className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold transition-all ${cat===c?'bg-navy text-white shadow-md scale-105':'bg-mist text-navy hover:bg-blue-100'}`}>
        {c}
-       {c!=='All'&&catCounts[c]&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat===c?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{catCounts[c]}</span>}
-       {c==='All'&&<span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${cat==='All'?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{gallery.length}</span>}
+       {c!=='All'&&catCounts[c]&&<span className={`rounded-full px-1.5 py-0.5 text-xs font-bold ${cat===c?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{catCounts[c]}</span>}
+       {c==='All'&&<span className={`rounded-full px-1.5 py-0.5 text-xs font-bold ${cat==='All'?'bg-white/20 text-white':'bg-slate-200 text-slate-600'}`}>{gallery.length}</span>}
       </button>
      ))}
     </div>
@@ -402,7 +402,7 @@ export function Gallery(){
          </div>
          {/* Hover overlay with caption */}
          <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-t from-[#021333]/90 via-[#021333]/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 p-3 z-10">
-          <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">{g.cat}</span>
+          <span className="mb-1 rounded-full bg-accent px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-white">{g.cat}</span>
           <p className="text-center text-xs font-medium text-white/95 line-clamp-2 leading-tight drop-shadow-sm">{g.alt}</p>
          </div>
          {/* Zoom indicator icon */}

@@ -427,7 +427,7 @@ export function CourseDetail() {
         <div className="container-x grid gap-8 lg:grid-cols-[1.25fr_1fr] items-center">
           {/* Left Column Hero Content */}
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0866F5] px-3.5 py-1 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm mb-4">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0866F5] px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider text-white shadow-sm mb-4">
               <Sparkles size={12} strokeWidth={2.4} />
               {course.cat ? course.cat.toUpperCase() : 'PROFESSIONAL COURSE'}
             </span>
@@ -448,7 +448,7 @@ export function CourseDetail() {
                 </span>
                 <div>
                   <p className="text-xs font-bold text-navy">Learn</p>
-                  <p className="text-[11px] text-slate-500 font-medium">Cutting-Edge Skills</p>
+                  <p className="text-xs text-slate-500 font-medium">Cutting-Edge Skills</p>
                 </div>
               </div>
 
@@ -458,7 +458,7 @@ export function CourseDetail() {
                 </span>
                 <div>
                   <p className="text-xs font-bold text-navy">Build</p>
-                  <p className="text-[11px] text-slate-500 font-medium">Real Projects</p>
+                  <p className="text-xs text-slate-500 font-medium">Real Projects</p>
                 </div>
               </div>
 
@@ -468,7 +468,7 @@ export function CourseDetail() {
                 </span>
                 <div>
                   <p className="text-xs font-bold text-navy">Grow</p>
-                  <p className="text-[11px] text-slate-500 font-medium">Your Career</p>
+                  <p className="text-xs text-slate-500 font-medium">Your Career</p>
                 </div>
               </div>
             </div>
@@ -622,7 +622,7 @@ export function CourseDetail() {
                             <ModIcon size={22} strokeWidth={2.2} />
                           </span>
                         </div>
-                        <h3 className="text-xs sm:text-[13px] font-bold text-navy leading-snug">
+                        <h3 className="text-xs sm:text-sm font-bold text-navy leading-snug">
                           {m.title}
                         </h3>
                       </div>
@@ -720,7 +720,7 @@ export function CourseDetail() {
                   </div>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-blue-200/60 flex items-center gap-2 text-[11px] text-slate-600">
+                <div className="mt-5 pt-3 border-t border-blue-200/60 flex items-center gap-2 text-xs text-slate-600">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
                   <span>Current batch availability: <strong className="text-navy font-bold">{course.batchTimings || 'Special Batches Available'}</strong></span>
                 </div>
@@ -800,7 +800,7 @@ export function CourseDetail() {
                           />
                         </button>
                         {isOpen && (
-                          <div className="px-4 pb-4 pt-1 text-xs sm:text-[13px] text-slate-600 leading-relaxed border-t border-slate-100 bg-[#FBFDFF]">
+                          <div className="px-4 pb-4 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-[#FBFDFF]">
                             {faq.a}
                           </div>
                         )}
@@ -835,7 +835,7 @@ export function CourseDetail() {
                 </div>
 
                 {/* Details Rows */}
-                <dl className="mt-1.5 divide-y divide-slate-100 text-xs sm:text-[13px]">
+                <dl className="mt-1.5 divide-y divide-slate-100 text-xs sm:text-sm">
                   <div className="py-2 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-slate-500 font-medium">
                       <span className="grid h-6 w-6 place-items-center rounded-full bg-blue-50 text-[#0B5ED7]">
@@ -929,7 +929,7 @@ export function CourseDetail() {
                     <Phone size={12} className="text-[#0B5ED7]" />
                     Call Institute: {site.phone}
                   </a>
-                  <p className="mt-1 text-[11px] text-slate-500 font-medium">
+                  <p className="mt-1 text-xs text-slate-500 font-medium">
                     ⭐ Google Rating: <strong className="text-slate-600">{site.rating.score} / 5</strong> ({site.rating.count} reviews)
                   </p>
                 </div>
@@ -944,7 +944,7 @@ export function CourseDetail() {
                 </span>
                 <div>
                   <h4 className="text-xs sm:text-sm font-bold text-navy">Have questions?</h4>
-                  <p className="mt-0.5 text-[11px] text-slate-500 leading-snug">
+                  <p className="mt-0.5 text-xs text-slate-500 leading-snug">
                     Visit near APSRTC Busstand or talk to our trainers.
                   </p>
                 </div>
@@ -970,7 +970,7 @@ export function CourseDetail() {
           <div className="container-x">
             <div className="flex items-end justify-between mb-8">
               <div>
-                <p className="text-xs font-bold tracking-[.22em] text-[#0B5ED7] uppercase">Explore More</p>
+                <p className="text-xs font-bold tracking-wider text-[#0B5ED7]">Explore More</p>
                 <h2 className="text-2xl sm:text-3xl font-bold text-navy mt-1">Related Courses</h2>
               </div>
               <Link

@@ -20,10 +20,15 @@ export default {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
-        marquee: 'marquee 25s linear infinite',
+        marquee: 'marquee 30s linear infinite',
+        'marquee-reverse': 'marquee-reverse 30s linear infinite',
       },
       boxShadow: {
         card: '0 1px 2px rgba(11,42,91,.06), 0 8px 24px -12px rgba(11,42,91,.18)',

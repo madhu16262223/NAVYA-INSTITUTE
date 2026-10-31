@@ -13,7 +13,7 @@ import { AnnouncementBar, ScrollToTop } from './Enhancements';
 const navKey = (label) => ({ 'Verify Certificate': 'verifyCertificate' })[label] || label.toLowerCase();
 
 const lk = ({ isActive }) =>
-  `border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold transition-colors whitespace-nowrap ${
+  `border-b-2 py-1 text-sm font-semibold transition-colors whitespace-nowrap ${
     isActive ? 'border-[#0B5ED7] text-[#0B5ED7]' : 'border-transparent text-navy hover:text-[#0B5ED7]'
   }`;
 
@@ -97,7 +97,7 @@ export function Navbar() {
                 aria-haspopup="true"
                 onClick={() => setM(!m)}
                 onKeyDown={(e) => (e.key === ' ' || e.key === 'Enter') && (e.preventDefault(), setM(!m))}
-                className={`flex items-center gap-1 border-b-2 py-1 text-[13.5px] 2xl:text-[14.5px] font-semibold whitespace-nowrap cursor-pointer select-none ${
+                className={`flex items-center gap-1 border-b-2 py-1 text-sm font-semibold whitespace-nowrap cursor-pointer select-none ${
                   moreActive ? 'border-[#0B5ED7] text-[#0B5ED7]' : 'border-transparent text-navy hover:text-[#0B5ED7]'
                 }`}
               >
@@ -144,7 +144,7 @@ export function Navbar() {
               onClick={toggleLang}
               title="Switch language between English and Telugu"
               aria-label="Switch language between English and Telugu"
-              className="btn-outline !py-1.5 !px-3.5 text-xs shrink-0 whitespace-nowrap"
+              className="btn-sm btn-outline shrink-0 whitespace-nowrap"
             >
               <Globe size={14} className="text-[#0B5ED7] shrink-0" aria-hidden="true" />
               <span>{lang === 'en' ? 'తెలుగు' : 'English'}</span>
@@ -153,7 +153,7 @@ export function Navbar() {
             {/* Join Now */}
             <Link
               to="/contact"
-              className="btn-brand !py-2 !px-5 text-xs 2xl:text-sm whitespace-nowrap shrink-0"
+              className="btn-sm btn-brand whitespace-nowrap shrink-0"
             >
               {t('joinNow')} <ArrowRight size={15} className="shrink-0" />
             </Link>
@@ -453,13 +453,13 @@ export function Footer() {
                 href={links.directions}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline text-xs !py-2 !px-4 !text-white !border-white/30 hover:!bg-white/20"
+                className="btn-sm btn-outline !border-white/30 !text-white hover:!bg-white/15"
               >
                 <MapPin size={14} /> Get Directions
               </a>
               <a
                 href={links.call}
-                className="btn-brand text-xs !py-2 !px-4"
+                className="btn-sm btn-brand"
               >
                 <Phone size={14} /> Call Now
               </a>
