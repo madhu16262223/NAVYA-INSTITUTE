@@ -18,11 +18,48 @@ const MapEmbed=({h='h-80'})=><iframe title="Navya Techno location on Google Maps
 
 const heroSlides = images.heroSlides;
 
+const slideVariants = {
+ enter: (dir) => ({
+  x: dir > 0 ? '100%' : '-100%',
+  opacity: 0,
+  scale: 1.05,
+ }),
+ center: {
+  x: 0,
+  opacity: 1,
+  scale: 1,
+  transition: {
+   x: { duration: 0.65, ease: [0.25, 1, 0.5, 1] },
+   opacity: { duration: 0.4 },
+   scale: { duration: 4, ease: 'easeOut' },
+  },
+ },
+ exit: (dir) => ({
+  x: dir < 0 ? '100%' : '-100%',
+  opacity: 0,
+  transition: {
+   x: { duration: 0.65, ease: [0.25, 1, 0.5, 1] },
+   opacity: { duration: 0.4 },
+  },
+ }),
+};
+
 export function Home(){
  const {openDemoModal}=useDemoModal();
- const [slideIndex, setSlideIndex] = useState(0);
+ const [[slideIndex, direction], setSlide] = useState([0, 1]);
  const reduceMotion = useReducedMotion();
  const touchStartX = useRef(null);
+
+ const paginate = (newDirection) => {
+  setSlide(([prev]) => [
+   (prev + newDirection + heroSlides.length) % heroSlides.length,
+   newDirection,
+  ]);
+ };
+
+ const goToSlide = (targetIndex) => {
+  setSlide(([prev]) => [targetIndex, targetIndex >= prev ? 1 : -1]);
+ };
 
  useEffect(() => {
   heroSlides.forEach((slide) => {
@@ -34,8 +71,8 @@ export function Home(){
  useEffect(() => {
   if (reduceMotion) return undefined;
   const timer = setInterval(() => {
-   setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-  }, 4500);
+   paginate(1);
+  }, 3800);
   return () => clearInterval(timer);
  }, [slideIndex, reduceMotion]);
 
@@ -47,45 +84,48 @@ export function Home(){
   if (touchStartX.current === null) return;
   const diff = touchStartX.current - e.changedTouches[0].clientX;
   if (diff > 45) {
-   setSlideIndex((prev) => (prev + 1) % heroSlides.length);
+   paginate(1);
   } else if (diff < -45) {
-   setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+   paginate(-1);
   }
   touchStartX.current = null;
  };
 
  return <>
 <Seo desc="Navya Techno Institute of Computer Education Training Center, Porumamilla: practical computer courses, certificates and career support. 4.8 on Google."/>
-{/* HERO: Horizontal sliding carousel with high contrast overlay & tactile slide controls */}
+{/* HERO: Continuous seamless forward-sliding carousel with cinematic depth */}
 <section
  aria-label="Welcome"
  onTouchStart={handleTouchStart}
  onTouchEnd={handleTouchEnd}
  className="relative overflow-hidden min-h-[560px] sm:min-h-[620px] lg:min-h-[72vh] lg:max-h-[820px] flex items-end bg-[#021333] select-none"
 >
- {/* 1. Pure Horizontal Sliding Carousel Track */}
+ {/* 1. Infinite Forward Sliding Track with AnimatePresence */}
  <div className="absolute inset-0 z-0 overflow-hidden">
-  <div
-   className="flex h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform"
-   style={{ transform: `translateX(-${slideIndex * 100}%)` }}
-  >
-   {heroSlides.map((slide, idx) => (
-    <div key={idx} className="relative h-full w-full shrink-0 overflow-hidden">
-     <img
-      src={slide.src}
-      srcSet={srcSetFor(slide.src)}
-      sizes="100vw"
-      alt={slide.alt}
-      width="3840"
-      height="2160"
-      className="h-full w-full object-cover object-center pointer-events-none select-none"
-      loading={idx === 0 ? 'eager' : 'lazy'}
-      fetchpriority={idx === 0 ? 'high' : 'auto'}
-      decoding="async"
-     />
-    </div>
-   ))}
-  </div>
+  <AnimatePresence initial={false} custom={direction}>
+   <motion.div
+    key={slideIndex}
+    custom={direction}
+    variants={slideVariants}
+    initial="enter"
+    animate="center"
+    exit="exit"
+    className="absolute inset-0 h-full w-full overflow-hidden"
+   >
+    <img
+     src={heroSlides[slideIndex].src}
+     srcSet={srcSetFor(heroSlides[slideIndex].src)}
+     sizes="100vw"
+     alt={heroSlides[slideIndex].alt}
+     width="3840"
+     height="2160"
+     className="h-full w-full object-cover object-center pointer-events-none select-none"
+     loading={slideIndex === 0 ? 'eager' : 'lazy'}
+     fetchpriority={slideIndex === 0 ? 'high' : 'auto'}
+     decoding="async"
+    />
+   </motion.div>
+  </AnimatePresence>
  </div>
 
  {/* Soft bottom & left ambient shade for text contrast */}
@@ -116,13 +156,13 @@ export function Home(){
   </motion.div>
  </div>
 
-  {/* Automatic slide timer progress bar */}
+ {/* Automatic slide timer progress bar */}
  <div className="absolute bottom-0 left-0 right-0 z-30 h-1 bg-white/20 overflow-hidden" aria-hidden="true">
   <motion.div
-   key={slideIndex}
+   key={`progress-${slideIndex}`}
    initial={{ width: '0%' }}
    animate={{ width: '100%' }}
-   transition={{ duration: 4.5, ease: 'linear' }}
+   transition={{ duration: 3.8, ease: 'linear' }}
    className="h-full bg-gradient-to-r from-accent to-[#FFB366]"
   />
  </div>
@@ -146,18 +186,28 @@ export function Home(){
       type="button"
       role="tab"
       aria-selected={slideIndex === idx}
-      onClick={() => setSlideIndex(idx)}
+      onClick={() => goToSlide(idx)}
       aria-label={`Go to slide ${idx + 1}`}
-      className={`h-2 rounded-full transition-all duration-300 ${
-       slideIndex === idx ? 'w-7 bg-[#FF850A]' : 'w-2 bg-white/70 hover:bg-white'
+      className={`relative h-2 rounded-full overflow-hidden transition-all duration-300 ${
+       slideIndex === idx ? 'w-8 bg-white/30' : 'w-2 bg-white/60 hover:bg-white'
       }`}
-     />
+     >
+      {slideIndex === idx && (
+       <motion.span
+        key={`dot-${slideIndex}`}
+        initial={{ width: '0%' }}
+        animate={{ width: '100%' }}
+        transition={{ duration: 3.8, ease: 'linear' }}
+        className="absolute inset-0 bg-[#FF850A] rounded-full"
+       />
+      )}
+     </button>
     ))}
    </div>
    <div className="flex items-center gap-1.5">
     <button
      type="button"
-     onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+     onClick={() => paginate(-1)}
      aria-label="Previous slide"
      className="btn-icon text-white hover:!bg-accent border border-white/20"
     >
@@ -165,7 +215,7 @@ export function Home(){
     </button>
     <button
      type="button"
-     onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
+     onClick={() => paginate(1)}
      aria-label="Next slide"
      className="btn-icon text-white hover:!bg-accent border border-white/20"
     >
