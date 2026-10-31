@@ -1,4 +1,4 @@
-// Verified business details + editable site content. Anything in [brackets] is not yet supplied.
+// Verified business details & official site configuration for Navya Techno Institute
 export const site={
   name:'NAVYA TECHNO',
   fullName:'Navya Techno Institute of Computer Education Training Center',
@@ -21,6 +21,7 @@ export const site={
 };
 export const navMain=[['Home','/'],['About','/about'],['Courses','/courses'],['Placements','/placements'],['Faculty','/faculty'],['Certificates','/certificates'],['Contact','/contact']];
 export const navMore=[['Verify Certificate','/verify-certificate'],['Facilities','/facilities'],['Gallery','/gallery']];
+export const nav=[...navMain.slice(0,6),...navMore,navMain[6]];
 export const strip=[['Users','Experienced Trainers','Learn from industry professionals'],['Laptop','Hands-on Practice','Real projects & live training'],['BadgeCheck','Course Certificates','Showcase your skills'],['Briefcase','Career Support','Guidance for your next step']];
 export const why=[['Users','Expert Trainers','Learn from dedicated trainers.'],['MousePointerClick','Practical Learning','Focus on hands-on computer skills.'],['GraduationCap','Student-Focused Learning','Learning designed around student needs.'],['Briefcase','Career Support','Guidance toward education and employment opportunities.'],['Rocket','Future Ready','Develop skills for a changing digital world.']];
 export const steps=[['Understand','Learn concepts clearly.'],['Practise','Apply what you learn.'],['Improve','Strengthen your skills through practice.'],['Progress','Use your skills for education and career growth.']];

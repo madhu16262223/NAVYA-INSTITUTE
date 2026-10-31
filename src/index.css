@@ -22,3 +22,26 @@
 @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
 .animate-fade-in { animation: fade-in .2s ease-out both; }
 }
+
+/* ── Hardware-Accelerated Infinite Marquee (Left & Right) ─────────────────── */
+@keyframes marquee-scroll-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes marquee-scroll-right {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.animate-marquee-left {
+  animation: marquee-scroll-left 32s linear infinite;
+  will-change: transform;
+}
+.animate-marquee-right {
+  animation: marquee-scroll-right 32s linear infinite;
+  will-change: transform;
+}
+.marquee-container:hover .animate-marquee-left,
+.marquee-container:hover .animate-marquee-right,
+.animate-paused {
+  animation-play-state: paused !important;
+}

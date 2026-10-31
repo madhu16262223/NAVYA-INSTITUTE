@@ -23,12 +23,12 @@ export function Home(){
  const [slideIndex, setSlideIndex] = useState(0);
  const [paused, setPaused] = useState(false);
  const reduceMotion = useReducedMotion();
+ const touchStartX = useRef(null);
 
  useEffect(() => {
-  // Preload the 1920px variants so crossfades never show a blank frame
   heroSlides.forEach((slide) => {
    const img = new Image();
-   img.src = slide.src.replace(/\.jpg$/, '-1920.jpg');
+   img.src = slide.src;
   });
  }, []);
 
@@ -36,25 +36,46 @@ export function Home(){
   if (paused || reduceMotion) return undefined;
   const timer = setInterval(() => {
    setSlideIndex((prev) => (prev + 1) % heroSlides.length);
-  }, 4000);
+  }, 4500);
   return () => clearInterval(timer);
  }, [slideIndex, paused, reduceMotion]);
 
+ const handleTouchStart = (e) => {
+  touchStartX.current = e.touches[0].clientX;
+ };
+
+ const handleTouchEnd = (e) => {
+  if (touchStartX.current === null) return;
+  const diff = touchStartX.current - e.changedTouches[0].clientX;
+  if (diff > 45) {
+   setSlideIndex((prev) => (prev + 1) % heroSlides.length);
+  } else if (diff < -45) {
+   setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }
+  touchStartX.current = null;
+ };
+
  return <>
 <Seo desc="Navya Techno Institute of Computer Education Training Center, Porumamilla: practical computer courses, certificates and career support. 4.8 on Google."/>
-{/* HERO: full-bleed photo slider with minimal overlaid copy */}
-<section aria-label="Welcome" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} className="relative overflow-hidden min-h-[560px] sm:min-h-[620px] lg:min-h-[72vh] lg:max-h-[820px] flex items-end bg-[#021333]">
- {/* Slides */}
+{/* HERO: Horizontal sliding carousel with high contrast overlay & tactile slide controls */}
+<section
+ aria-label="Welcome"
+ onMouseEnter={() => setPaused(true)}
+ onMouseLeave={() => setPaused(false)}
+ onFocus={() => setPaused(true)}
+ onBlur={() => setPaused(false)}
+ onTouchStart={handleTouchStart}
+ onTouchEnd={handleTouchEnd}
+ className="relative overflow-hidden min-h-[560px] sm:min-h-[620px] lg:min-h-[72vh] lg:max-h-[820px] flex items-end bg-[#021333] select-none"
+>
+ {/* 1. Pure Horizontal Sliding Carousel Track */}
  <div className="absolute inset-0 z-0 overflow-hidden">
-  {heroSlides.map((slide, idx) => {
-   const isActive = slideIndex === idx;
-   return (
-    <div
-     key={idx}
-     className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-      isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-     }`}
-    >
+  <div
+   className="flex h-full w-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform"
+   style={{ transform: `translateX(-${slideIndex * 100}%)` }}
+  >
+   {heroSlides.map((slide, idx) => (
+    <div key={idx} className="relative h-full w-full shrink-0 overflow-hidden">
      <img
       src={slide.src}
       srcSet={srcSetFor(slide.src)}
@@ -62,23 +83,26 @@ export function Home(){
       alt={slide.alt}
       width="3840"
       height="2160"
-      className={`h-full w-full object-cover object-center pointer-events-none transition-transform duration-[4500ms] ease-out ${
-       isActive ? 'scale-[1.06]' : 'scale-100'
-      }`}
+      className="h-full w-full object-cover object-center pointer-events-none select-none"
       loading={idx === 0 ? 'eager' : 'lazy'}
       fetchpriority={idx === 0 ? 'high' : 'auto'}
       decoding="async"
      />
     </div>
-   );
-  })}
+   ))}
+  </div>
  </div>
- {/* Soft bottom shade only where the text sits, so the photo stays the focus */}
- <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-10 h-[70%] bg-gradient-to-t from-black/75 via-black/35 to-transparent pointer-events-none" />
+
+ {/* Soft bottom & left ambient shade for text contrast */}
+ <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-t from-black/85 via-black/40 via-50% to-transparent pointer-events-none" />
 
  {/* Copy */}
  <div className="container-x relative z-20 w-full pb-16 sm:pb-20 lg:pb-24 pt-24">
   <motion.div className="max-w-2xl" initial={reduceMotion?false:{opacity:0,y:28}} animate={{opacity:1,y:0}} transition={{duration:.8,ease:[.22,1,.36,1]}}>
+   <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-blue-100 shadow-md mb-4">
+    <span className="h-2 w-2 rounded-full bg-[#FF850A] animate-pulse" />
+    <span>Navya Techno Computer Education Training Center</span>
+   </div>
    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight drop-shadow-[0_2px_12px_rgba(0,10,30,0.8)]">
     Build Your Skills.<br />
     <span className="text-[#FF850A]">Shape Your Future.</span>
@@ -98,39 +122,50 @@ export function Home(){
  </div>
 
  {/* Slide controls */}
- <div className="absolute bottom-5 sm:bottom-7 right-5 sm:right-8 z-30 flex items-center gap-3">
-  <div role="tablist" aria-label="Slide indicators" className="flex items-center gap-2">
-   {heroSlides.map((_, idx) => (
+ <div className="absolute bottom-5 sm:bottom-7 right-5 sm:right-8 z-30 flex flex-col items-end gap-2.5">
+  {heroSlides[slideIndex]?.tag && (
+   <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/55 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-white shadow-lg">
+    <span className="text-[#FF850A] font-extrabold">{`0${slideIndex + 1}`}</span>
+    <span className="text-white/40">/</span>
+    <span className="text-white/70">{`0${heroSlides.length}`}</span>
+    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+    <span className="text-blue-100 hidden sm:inline">{heroSlides[slideIndex].tag}</span>
+   </div>
+  )}
+  <div className="flex items-center gap-3">
+   <div role="tablist" aria-label="Slide indicators" className="flex items-center gap-2">
+    {heroSlides.map((_, idx) => (
+     <button
+      key={idx}
+      type="button"
+      role="tab"
+      aria-selected={slideIndex === idx}
+      onClick={() => setSlideIndex(idx)}
+      aria-label={`Go to slide ${idx + 1}`}
+      className={`h-2 rounded-full transition-all duration-300 ${
+       slideIndex === idx ? 'w-7 bg-[#FF850A]' : 'w-2 bg-white/70 hover:bg-white'
+      }`}
+     />
+    ))}
+   </div>
+   <div className="flex items-center gap-1.5">
     <button
-     key={idx}
      type="button"
-     role="tab"
-     aria-selected={slideIndex === idx}
-     onClick={() => setSlideIndex(idx)}
-     aria-label={`Go to slide ${idx + 1}`}
-     className={`h-2 rounded-full transition-all duration-300 ${
-      slideIndex === idx ? 'w-7 bg-[#FF850A]' : 'w-2 bg-white/70 hover:bg-white'
-     }`}
-    />
-   ))}
-  </div>
-  <div className="hidden sm:flex items-center gap-1.5">
-   <button
-    type="button"
-    onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
-    aria-label="Previous slide"
-    className="btn-icon !bg-black/40 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
-   >
-    <ChevronLeft size={16} />
-   </button>
-   <button
-    type="button"
-    onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
-    aria-label="Next slide"
-    className="btn-icon !bg-black/40 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
-   >
-    <ChevronRight size={16} />
-   </button>
+     onClick={() => setSlideIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)}
+     aria-label="Previous slide"
+     className="btn-icon !h-8 !w-8 !bg-black/45 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
+    >
+     <ChevronLeft size={15} />
+    </button>
+    <button
+     type="button"
+     onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
+     aria-label="Next slide"
+     className="btn-icon !h-8 !w-8 !bg-black/45 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
+    >
+     <ChevronRight size={15} />
+    </button>
+   </div>
   </div>
  </div>
 </section>
@@ -246,7 +281,7 @@ export function About(){return <><Seo title="About" desc="About Navya Techno: ou
 <section className="section"><div className="container-x grid gap-6 lg:grid-cols-2"><Reveal><div className="relative h-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#082256] via-navy to-[#0B4FA8] p-8 text-white shadow-xl shadow-blue-900/20 sm:p-10"><span aria-hidden="true" className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/30 blur-3xl"/><Eyebrow>Our Vision</Eyebrow><h2 className="!text-white text-2xl">A Digitally Empowered Generation</h2><p className="mt-3 text-blue-100">To become a trusted centre for computer education and digital skill development, where students explore technology, discover their potential and pursue their ambitions with confidence.</p></div></Reveal>
  <Reveal delay={.1}><div className="h-full rounded-3xl border-2 border-accent/70 bg-gradient-to-br from-white to-orange-50/40 p-8 shadow-card sm:p-10"><Eyebrow>Our Mission</Eyebrow><h2 className="text-2xl">Transforming Learning into Practical Skills</h2><ul className="mt-3 space-y-2">{missionPoints.map(x=><li key={x} className="flex gap-2"><Award size={18} className="mt-1 shrink-0 text-accent" aria-hidden="true"/>{x}</li>)}</ul></div></Reveal></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="OUR COMMITMENT" title="Every Learner Deserves an Opportunity to Grow" sub="Whatever the starting point, we want students to approach learning with confidence and a willingness to grow."/><Grid>{commitments.map(([i,t,d])=><FeatureCard key={t} icon={i} title={t} text={d}/>)}</Grid></div></section>
-<section className="section"><div className="container-x"><SectionHeading eyebrow="Why Navya" title="Learn With Purpose. Grow With Confidence."/><Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{why.map(([i,t,d])=><FeatureCard key={t} icon={i} title={t} text={d}/>)}</Stagger></div></section>
+
 <section className="section bg-mist"><div className="container-x max-w-3xl"><SectionHeading eyebrow="FAQ" title="Frequently Asked Questions"/>{faqs.map(([q,a],i)=><Reveal key={q} delay={i*.06}><details className="group mb-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card transition-all duration-300 open:border-brand/40 open:shadow-lg"><summary className="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-navy transition-colors hover:text-brand"><span>{q}</span><span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-mist text-brand transition-transform duration-300 group-open:rotate-180 group-open:bg-brand group-open:text-white"><ChevronDown size={16} aria-hidden="true"/></span></summary><p className="border-t border-slate-100 px-5 pb-5 pt-4 text-slate-600">{a}</p></details></Reveal>)}</div></section><CTA/></>}
 
 export function Courses(){const [cat,setCat]=useState('All');const list=courses.filter(c=>cat==='All'||c.cat===cat);return <><Seo title="Courses" desc="Computer courses at Navya Techno, Porumamilla: basic computer, MS Office, Tally, typing, hardware and more."/><PageHeader title="Our Courses" sub="Discover the skills that move you forward. Contact us for the latest list, eligibility, duration and fees." image="/images/facilities/computer-lab-1920.jpg"/>
@@ -256,7 +291,7 @@ export function Courses(){const [cat,setCat]=useState('All');const list=courses.
 export function Placements(){return <><Seo title="Placements" desc="Career preparation and placement support at Navya Techno."/><PageHeader title="Placements & Career Support" sub="Build Skills. Prepare for Your Career." image="/images/gallery/training-1-1920.jpg"/>
 <section className="section"><div className="container-x"><SectionHeading eyebrow="Career Support" title="Build Skills. Prepare for Your Career."/><Grid cols="lg:grid-cols-4">{placementSupport.map(([i,t,d])=><FeatureCard key={t} icon={i} title={t} text={d}/>)}</Grid></div></section>
 <section className="section bg-mist"><div className="container-x"><SectionHeading eyebrow="Our Impact" title="Learners Who Recommend Us"/><div className="mx-auto grid max-w-3xl gap-6 sm:grid-cols-2"><div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-card"><p className="text-4xl font-extrabold text-[#0B5ED7]">{site.rating.score}</p><div className="mt-1"><Stars/></div><p className="mt-2 text-slate-600">Google rating</p></div><div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-card"><p className="text-4xl font-extrabold text-[#0B5ED7]">{site.rating.count}</p><p className="mt-3 text-slate-600">Google reviews</p></div></div>
-{placementStats.length>0?<div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{placementStats.map(s=><div key={s.label} className="rounded-2xl border bg-white p-6 text-center shadow-card"><p className="text-4xl font-extrabold text-[#0B5ED7]">{s.value}</p><p className="mt-1">{s.label}</p></div>)}</div>:<div className="mx-auto mt-6 max-w-3xl"><Empty>[Placement Statistic]: verified figures from the institute will be shown here</Empty></div>}
+{placementStats.length>0?<div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{placementStats.map(s=><div key={s.label} className="rounded-2xl border bg-white p-6 text-center shadow-card"><p className="text-4xl font-extrabold text-[#0B5ED7]">{s.value}</p><p className="mt-1">{s.label}</p></div>)}</div>:<div className="mx-auto mt-6 max-w-3xl"><Empty>Detailed batch placement records and alumni updates are available at the institute office.</Empty></div>}
 {hiringPartners.length>0&&<ul className="mt-8 flex flex-wrap justify-center gap-4">{hiringPartners.map(p=><li key={p} className="rounded-xl bg-white px-5 py-3 font-semibold shadow-card">{p}</li>)}</ul>}</div></section>
 <section className="section"><div className="container-x"><SectionHeading eyebrow="Career Journey" title="Possible Career Paths" sub="Your journey, step by step. Outcomes depend on your effort and opportunities; employment is not guaranteed."/><ol className="grid gap-4 md:grid-cols-5">{pathSteps.map((s,i)=><li key={s} className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-card"><span className="mx-auto mb-2 grid h-9 w-9 place-items-center rounded-full bg-navy font-bold text-white">{i+1}</span><span className="font-semibold text-navy">{s}</span></li>)}</ol></div></section><CTA/></>}
 

@@ -99,7 +99,7 @@ export const translations = {
   },
 
   te: {
-    // [FOR OWNER REVIEW - తెలుగు అనువాదాలు]
+    // Telugu Translations - తెలుగు అనువాదాలు
     // Navigation
     home: 'హోమ్',
     about: 'మా గురించి',
