@@ -21,7 +21,6 @@ const heroSlides = images.heroSlides;
 export function Home(){
  const {openDemoModal}=useDemoModal();
  const [slideIndex, setSlideIndex] = useState(0);
- const [paused, setPaused] = useState(false);
  const reduceMotion = useReducedMotion();
  const touchStartX = useRef(null);
 
@@ -33,12 +32,12 @@ export function Home(){
  }, []);
 
  useEffect(() => {
-  if (paused || reduceMotion) return undefined;
+  if (reduceMotion) return undefined;
   const timer = setInterval(() => {
    setSlideIndex((prev) => (prev + 1) % heroSlides.length);
   }, 4500);
   return () => clearInterval(timer);
- }, [slideIndex, paused, reduceMotion]);
+ }, [slideIndex, reduceMotion]);
 
  const handleTouchStart = (e) => {
   touchStartX.current = e.touches[0].clientX;
@@ -60,10 +59,6 @@ export function Home(){
 {/* HERO: Horizontal sliding carousel with high contrast overlay & tactile slide controls */}
 <section
  aria-label="Welcome"
- onMouseEnter={() => setPaused(true)}
- onMouseLeave={() => setPaused(false)}
- onFocus={() => setPaused(true)}
- onBlur={() => setPaused(false)}
  onTouchStart={handleTouchStart}
  onTouchEnd={handleTouchEnd}
  className="relative overflow-hidden min-h-[560px] sm:min-h-[620px] lg:min-h-[72vh] lg:max-h-[820px] flex items-end bg-[#021333] select-none"
@@ -121,6 +116,17 @@ export function Home(){
   </motion.div>
  </div>
 
+  {/* Automatic slide timer progress bar */}
+ <div className="absolute bottom-0 left-0 right-0 z-30 h-1 bg-white/20 overflow-hidden" aria-hidden="true">
+  <motion.div
+   key={slideIndex}
+   initial={{ width: '0%' }}
+   animate={{ width: '100%' }}
+   transition={{ duration: 4.5, ease: 'linear' }}
+   className="h-full bg-gradient-to-r from-accent to-[#FFB366]"
+  />
+ </div>
+
  {/* Slide controls */}
  <div className="absolute bottom-5 sm:bottom-7 right-5 sm:right-8 z-30 flex flex-col items-end gap-2.5">
   {heroSlides[slideIndex]?.tag && (
@@ -161,7 +167,7 @@ export function Home(){
      type="button"
      onClick={() => setSlideIndex((prev) => (prev + 1) % heroSlides.length)}
      aria-label="Next slide"
-     className="btn-icon !h-8 !w-8 !bg-black/45 hover:!bg-accent text-white backdrop-blur-md border border-white/20"
+     className="btn-icon text-white hover:!bg-accent border border-white/20"
     >
      <ChevronRight size={15} />
     </button>

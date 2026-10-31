@@ -90,19 +90,31 @@ export function SkillChipsMarquee() {
   return (
     <div
       aria-label="Key Computer Skills Covered"
-      className="marquee-container relative overflow-hidden bg-white py-3 sm:py-4 border-y border-slate-100 group"
+      className="marquee-container relative flex items-center overflow-hidden bg-white py-2.5 sm:py-3 border-y border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)] select-none group"
     >
-      {/* Soft gradient edge masks */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-14 sm:w-24 bg-gradient-to-r from-white via-white/80 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-14 sm:w-24 bg-gradient-to-l from-white via-white/80 to-transparent" />
+      {/* 🔴 Left Fixed News-Style Headline Badge */}
+      <div className="relative z-30 shrink-0 pl-3 sm:pl-6 pr-2 sm:pr-3 flex items-center bg-white shadow-[6px_0_12px_rgba(255,255,255,1)]">
+        <div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#0B5ED7] via-[#0A3E8A] to-navy px-3 sm:px-4 py-1.5 text-xs font-bold text-white shadow-sm ring-1 ring-black/5">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-80" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+          </span>
+          <span className="uppercase tracking-wider whitespace-nowrap">Trending Courses</span>
+          <ChevronRight size={13} className="text-accent shrink-0 hidden sm:inline" />
+        </div>
+      </div>
 
-      {/* Interactive Controls Pill (Visible on hover or mobile tap) */}
-      <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 hidden group-hover:flex items-center gap-1 rounded-full bg-navy/90 backdrop-blur-md px-2 py-1 shadow-lg text-white transition-opacity">
+      {/* Soft gradient edge masks */}
+      <div className="pointer-events-none absolute inset-y-0 left-32 sm:left-48 z-20 w-10 sm:w-16 bg-gradient-to-r from-white via-white/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-12 sm:w-20 bg-gradient-to-l from-white via-white/80 to-transparent" />
+
+      {/* Interactive Controls Pill (Visible on hover or touch) */}
+      <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 hidden group-hover:flex items-center gap-1 rounded-full bg-navy/90 backdrop-blur-md px-2 py-1 shadow-lg text-white transition-opacity">
         <button
           type="button"
           onClick={() => setDirection('left')}
-          title="Move Left"
-          aria-label="Scroll marquee left"
+          title="Scroll Left"
+          aria-label="Scroll ticker left"
           className={`p-1 rounded-full hover:bg-white/20 transition ${direction === 'left' ? 'text-accent' : 'text-white'}`}
         >
           <ChevronLeft size={14} />
@@ -119,8 +131,8 @@ export function SkillChipsMarquee() {
         <button
           type="button"
           onClick={() => setDirection('right')}
-          title="Move Right"
-          aria-label="Scroll marquee right"
+          title="Scroll Right"
+          aria-label="Scroll ticker right"
           className={`p-1 rounded-full hover:bg-white/20 transition ${direction === 'right' ? 'text-accent' : 'text-white'}`}
         >
           <ChevronRight size={14} />
@@ -129,7 +141,7 @@ export function SkillChipsMarquee() {
 
       {/* Continuous Seamless Infinite Ticker Track */}
       <div
-        className={`flex w-max ${
+        className={`flex w-max will-change-transform ${
           direction === 'left' ? 'animate-marquee-left' : 'animate-marquee-right'
         } ${isPaused ? 'animate-paused' : ''}`}
       >
@@ -139,7 +151,7 @@ export function SkillChipsMarquee() {
             <Link
               to="/courses"
               key={`s1-${idx}`}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-mist/70 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-bold text-navy shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0B5ED7] hover:bg-white hover:text-[#0B5ED7] hover:shadow-md active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-mist/80 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-navy shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0B5ED7] hover:bg-white hover:text-[#0B5ED7] hover:shadow-md active:scale-95 whitespace-nowrap"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
               <span>{skill}</span>
@@ -147,14 +159,29 @@ export function SkillChipsMarquee() {
           ))}
         </div>
 
-        {/* Set 2 (Exact duplicate for seamless infinite loop) */}
+        {/* Set 2 (Duplicate for seamless continuous loop) */}
         <div className="flex shrink-0 items-center gap-2.5 sm:gap-3 pr-2.5 sm:pr-3" aria-hidden="true">
           {skills.map((skill, idx) => (
             <Link
               to="/courses"
               key={`s2-${idx}`}
               tabIndex={-1}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-mist/70 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-bold text-navy shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0B5ED7] hover:bg-white hover:text-[#0B5ED7] hover:shadow-md active:scale-95 whitespace-nowrap"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-mist/80 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-navy shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0B5ED7] hover:bg-white hover:text-[#0B5ED7] hover:shadow-md active:scale-95 whitespace-nowrap"
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+              <span>{skill}</span>
+            </Link>
+          ))}
+        </div>
+
+        {/* Set 3 (Buffer for seamless continuous loop on 4K screens) */}
+        <div className="flex shrink-0 items-center gap-2.5 sm:gap-3 pr-2.5 sm:pr-3" aria-hidden="true">
+          {skills.map((skill, idx) => (
+            <Link
+              to="/courses"
+              key={`s3-${idx}`}
+              tabIndex={-1}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200/90 bg-mist/80 px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-navy shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#0B5ED7] hover:bg-white hover:text-[#0B5ED7] hover:shadow-md active:scale-95 whitespace-nowrap"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
               <span>{skill}</span>
